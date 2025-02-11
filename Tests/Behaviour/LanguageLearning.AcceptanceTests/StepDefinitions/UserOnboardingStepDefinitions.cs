@@ -1,27 +1,35 @@
-using System;
-using Reqnroll;
-
 namespace LanguageLearning.AcceptanceTests.StepDefinitions
 {
     [Binding]
     public class UserOnboardingStepDefinitions
     {
-        [Given("a valid SSO token is provided")]
-        public void GivenAValidSSOTokenIsProvided()
+        private readonly IOnboardingService _onboardingService;
+        private readonly IIdentityService _identityService;
+        private OnboardingRequestDto _onboardingRequest;
+        private OnboardingResponseDto _onboardingResponse;
+
+        public UserOnboardingStepDefinitions()
         {
-            throw new PendingStepException();
+            _onboardingRequest = new OnboardingRequestDto();
+        }
+
+        [Given(@"a valid {string} is provided")]
+        public void GivenAValidSSOTokenIsProvided(string token)
+        {
+            var userIdentityFromSSO = _identityService.ValidateSSOToken(token);
         }
 
         [When("I provide the following profile details:")]
         public void WhenIProvideTheFollowingProfileDetails(DataTable dataTable)
         {
-            throw new PendingStepException();
+            _onboardingRequest = dataTable.CreateInstance<OnboardingRequestDto>();
         }
 
         [Then("my profile should be created successfully")]
-        public void ThenMyProfileShouldBeCreatedSuccessfully()
+        public async Task ThenMyProfileShouldBeCreatedSuccessfullyAsync()
         {
-            throw new PendingStepException();
+            _onboardingResponse = await _onboardingService.OnboardUserAsync(_onboardingRequest);
+            Assert.True(_onboardingResponse.IsSuccess);
         }
 
         [Then("my profile should be created successfully \\(using default values for omitted optional fields)")]
@@ -59,5 +67,47 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
         {
             throw new PendingStepException();
         }
+
+
+    }
+
+    internal interface IIdentityService
+    {
+        object ValidateSSOToken(string token);
+    }
+
+    public enum GenderType
+    {
+        male,
+        female,
+        other
+    }
+    public class OnboardingRequestDto
+    {
+
+        public string SSOToken { get; internal set; }
+        public string FirstName { get; internal set; }
+        public string LastName { get; internal set; }
+        public int Age { get; internal set; }
+        public GenderType Gender { get; internal set; }
+        public string NativeLanguage { get; internal set; }
+        public List<string> Hobbies { get; internal set; }
+        public List<string> LearningGoals { get; internal set; }
+        public string SkillProficiency { get; internal set; }
+        public List<string> LearningPreferences { get; internal set; }
+        public int StudyTimePerWeek { get; internal set; }
+        public bool ExamParticipation { get; internal set; }
+        public string CountryOfOrigin { get; internal set; }
+        public string CurrentCountry { get; internal set; }
+        public List<string> Interests { get; internal set; }
+    }
+    public class OnboardingResponseDto
+    {
+        public bool IsSuccess { get; internal set; }
+    }
+
+    public interface IOnboardingService
+    {
+        Task<OnboardingResponseDto> OnboardUserAsync(OnboardingRequestDto onboardingRequest);
     }
 }

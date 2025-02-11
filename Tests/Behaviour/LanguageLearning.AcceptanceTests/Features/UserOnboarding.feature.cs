@@ -113,7 +113,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 11
-    await testRunner.GivenAsync("a valid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("a valid \"SSO token\" is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
                             "Field",
@@ -150,7 +150,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "8"});
                 table1.AddRow(new string[] {
                             "ExamParticipation",
-                            "Yes"});
+                            "1"});
                 table1.AddRow(new string[] {
                             "CountryOfOrigin",
                             "USA"});
@@ -192,7 +192,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 33
-    await testRunner.GivenAsync("a valid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("a valid \"SSO token\" is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Field",
@@ -269,7 +269,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 57
-    await testRunner.GivenAsync("a valid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("a valid \"SSO token\" is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
                             "Field",

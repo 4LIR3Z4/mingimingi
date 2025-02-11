@@ -8,7 +8,7 @@
   # -----------------------------------------------------------------
   
 Scenario: Successful onboarding with complete profile details via SSO
-    Given a valid SSO token is provided
+    Given a valid "SSO token" is provided
     When I provide the following profile details:
         | Field               | Value            |
         | FirstName           | Alice            |
@@ -21,7 +21,7 @@ Scenario: Successful onboarding with complete profile details via SSO
         | SkillProficiency    | Intermediate     |
         | LearningPreferences | Visual, Evening  |
         | StudyTimePerWeek    | 8                |
-        | ExamParticipation   | Yes              |
+        | ExamParticipation   | 1              |
         | CountryOfOrigin     | USA              |
         | CurrentCountry      | Canada           |
         | Interests           | Travel, Culture  |
@@ -30,7 +30,7 @@ Scenario: Successful onboarding with complete profile details via SSO
 
     
 Scenario: Successful onboarding when optional fields (e.g., Hobbies and Interests) are omitted
-    Given a valid SSO token is provided
+    Given a valid "SSO token" is provided
     When I provide the following profile details:
         | Field               | Value           |
         | FirstName           | Bob             |
@@ -54,7 +54,7 @@ Scenario: Successful onboarding when optional fields (e.g., Hobbies and Interest
   # Validation and Data Format Edge Cases
   # -----------------------------------------------------------------
 Scenario: Onboarding fails when required fields are missing
-    Given a valid SSO token is provided
+    Given a valid "SSO token" is provided
     When I attempt to submit the profile details:
         | Field               | Value |
         | FirstName           |       |
