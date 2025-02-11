@@ -6,8 +6,8 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
     [Binding]
     public class UserOnboardingStepDefinitions
     {
-        [Given("I sign in using my SSO account")]
-        public void GivenISignInUsingMySSOAccount()
+        [Given("a valid SSO token is provided")]
+        public void GivenAValidSSOTokenIsProvided()
         {
             throw new PendingStepException();
         }
@@ -20,12 +20,6 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
 
         [Then("my profile should be created successfully")]
         public void ThenMyProfileShouldBeCreatedSuccessfully()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then("the response includes a success message")]
-        public void ThenTheResponseIncludesASuccessMessage()
         {
             throw new PendingStepException();
         }
@@ -54,44 +48,14 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
             throw new PendingStepException();
         }
 
-        [Given("I attempt to sign in using my SSO account")]
-        public void GivenIAttemptToSignInUsingMySSOAccount()
+        [Given("an invalid SSO token is provided")]
+        public void GivenAnInvalidSSOTokenIsProvided()
         {
             throw new PendingStepException();
         }
 
-        [When("the SSO provider returns an authentication error")]
-        public void WhenTheSSOProviderReturnsAnAuthenticationError()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then("I should see an error message indicating that SSO authentication failed")]
-        public void ThenIShouldSeeAnErrorMessageIndicatingThatSSOAuthenticationFailed()
-        {
-            throw new PendingStepException();
-        }
-
-        [Given("I already have an existing account linked to the SSO provider")]
-        public void GivenIAlreadyHaveAnExistingAccountLinkedToTheSSOProvider()
-        {
-            throw new PendingStepException();
-        }
-
-        [When("I sign in again using my SSO account")]
-        public void WhenISignInAgainUsingMySSOAccount()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then("I should be notified that an account already exists")]
-        public void ThenIShouldBeNotifiedThatAnAccountAlreadyExists()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then("my profile should not be createds")]
-        public void ThenMyProfileShouldNotBeCreateds()
+        [Then("I should see an error message with {int} code")]
+        public void ThenIShouldSeeAnErrorMessageWithCode(int p0)
         {
             throw new PendingStepException();
         }
