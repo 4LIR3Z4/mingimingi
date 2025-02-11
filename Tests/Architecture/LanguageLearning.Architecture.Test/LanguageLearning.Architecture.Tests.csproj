@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="NetArchTest.Rules" Version="1.3.2" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Src\01.Core\LanguageLearning.Core.Application\LanguageLearning.Core.Application.csproj" />
+    <ProjectReference Include="..\..\..\Src\01.Core\LanguageLearning.Core.Domain\LanguageLearning.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Identity\LanguageLearning.Infrastructure.Security.csproj" />
+    <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Persistence\LanguageLearning.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Services\LanguageLearning.Infrastructure.ThirdPartyServices.csproj" />
+    <ProjectReference Include="..\..\..\Src\03.Presentation\LanguageLearning.Presentation.APIs\LanguageLearning.Presentation.API.csproj" />
+  </ItemGroup>
+
+</Project>
