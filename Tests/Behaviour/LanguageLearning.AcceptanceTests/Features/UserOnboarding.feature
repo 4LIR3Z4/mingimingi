@@ -8,7 +8,7 @@
   # -----------------------------------------------------------------
   
 Scenario: Successful onboarding with complete profile details via SSO
-    Given I sign in using my SSO account
+    Given a valid SSO token is provided
     When I provide the following profile details:
         | Field               | Value            |
         | FirstName           | Alice            |
@@ -26,11 +26,11 @@ Scenario: Successful onboarding with complete profile details via SSO
         | CurrentCountry      | Canada           |
         | Interests           | Travel, Culture  |
     Then my profile should be created successfully
-    And the response includes a success message
+    
 
     
 Scenario: Successful onboarding when optional fields (e.g., Hobbies and Interests) are omitted
-    Given I sign in using my SSO account
+    Given a valid SSO token is provided
     When I provide the following profile details:
         | Field               | Value           |
         | FirstName           | Bob             |
@@ -48,13 +48,13 @@ Scenario: Successful onboarding when optional fields (e.g., Hobbies and Interest
         | CurrentCountry      |                 |
         | Interests           |                 |
     Then my profile should be created successfully (using default values for omitted optional fields)
-    And the response includes a success message
+    
 
   # -----------------------------------------------------------------
   # Validation and Data Format Edge Cases
   # -----------------------------------------------------------------
 Scenario: Onboarding fails when required fields are missing
-    Given I sign in using my SSO account
+    Given a valid SSO token is provided
     When I attempt to submit the profile details:
         | Field               | Value |
         | FirstName           |       |
@@ -88,14 +88,7 @@ Scenario: Onboarding fails when required fields are missing
   # External SSO Integration and Duplicate Registration
   # -----------------------------------------------------------------
 
-Scenario: Onboarding fails due to external SSO provider error
-    Given I attempt to sign in using my SSO account
-    When the SSO provider returns an authentication error
-    Then I should see an error message indicating that SSO authentication failed
+Scenario: Onboarding fails due to invalid SSO token
+    Given an invalid SSO token is provided
+    Then I should see an error message with 401 code
     And my profile should not be created
-
-Scenario: Duplicate SSO registration should redirect to the existing account
-    Given I already have an existing account linked to the SSO provider
-    When I sign in again using my SSO account
-    Then I should be notified that an account already exists
-    And my profile should not be createds

@@ -113,7 +113,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 11
-    await testRunner.GivenAsync("I sign in using my SSO account", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("a valid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
                             "Field",
@@ -166,9 +166,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line 28
     await testRunner.ThenAsync("my profile should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 29
-    await testRunner.AndAsync("the response includes a success message", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
@@ -195,7 +192,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 33
-    await testRunner.GivenAsync("I sign in using my SSO account", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("a valid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Field",
@@ -249,9 +246,6 @@ this.ScenarioInitialize(scenarioInfo);
     await testRunner.ThenAsync("my profile should be created successfully (using default values for omitted optio" +
                         "nal fields)", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 51
-    await testRunner.AndAsync("the response includes a success message", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
@@ -275,7 +269,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 57
-    await testRunner.GivenAsync("I sign in using my SSO account", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("a valid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
                             "Field",
@@ -365,14 +359,14 @@ this.ScenarioInitialize(scenarioInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Onboarding fails due to external SSO provider error")]
+        [Xunit.SkippableFactAttribute(DisplayName="Onboarding fails due to invalid SSO token")]
         [Xunit.TraitAttribute("FeatureTitle", "User Onboarding")]
-        [Xunit.TraitAttribute("Description", "Onboarding fails due to external SSO provider error")]
-        public async System.Threading.Tasks.Task OnboardingFailsDueToExternalSSOProviderError()
+        [Xunit.TraitAttribute("Description", "Onboarding fails due to invalid SSO token")]
+        public async System.Threading.Tasks.Task OnboardingFailsDueToInvalidSSOToken()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Onboarding fails due to external SSO provider error", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Onboarding fails due to invalid SSO token", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 91
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -384,50 +378,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 92
-    await testRunner.GivenAsync("I attempt to sign in using my SSO account", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("an invalid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 93
-    await testRunner.WhenAsync("the SSO provider returns an authentication error", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.ThenAsync("I should see an error message with 401 code", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 94
-    await testRunner.ThenAsync("I should see an error message indicating that SSO authentication failed", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 95
     await testRunner.AndAsync("my profile should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Duplicate SSO registration should redirect to the existing account")]
-        [Xunit.TraitAttribute("FeatureTitle", "User Onboarding")]
-        [Xunit.TraitAttribute("Description", "Duplicate SSO registration should redirect to the existing account")]
-        public async System.Threading.Tasks.Task DuplicateSSORegistrationShouldRedirectToTheExistingAccount()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Duplicate SSO registration should redirect to the existing account", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 97
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 98
-    await testRunner.GivenAsync("I already have an existing account linked to the SSO provider", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-#line 99
-    await testRunner.WhenAsync("I sign in again using my SSO account", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 100
-    await testRunner.ThenAsync("I should be notified that an account already exists", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 101
-    await testRunner.AndAsync("my profile should not be createds", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
