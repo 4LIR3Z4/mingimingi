@@ -9,7 +9,7 @@ public static class DbContextConfig
 {
     public static void ConfigDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<IDbContext, LanguageLearningContext>(
+        services.AddDbContext<IDbContext, DefaultDbContext>(
             opts => opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), sqlServerOptions =>
             {
                 sqlServerOptions.CommandTimeout(5);

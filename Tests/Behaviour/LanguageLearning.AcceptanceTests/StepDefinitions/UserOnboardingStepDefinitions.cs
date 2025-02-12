@@ -1,3 +1,15 @@
+
+
+using LanguageLearning.Core.Application.Common.Abstractions;
+using LanguageLearning.Core.Domain.Framework;
+using LanguageLearning.Core.Domain.UserProfiles.Entities;
+using LanguageLearning.Infrastructure.IdGenerator;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.TestPlatform.Common;
+using Moq;
+using System.Linq.Expressions;
+
 namespace LanguageLearning.AcceptanceTests.StepDefinitions
 {
     [Binding]
@@ -10,13 +22,24 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
 
         public UserOnboardingStepDefinitions()
         {
+            var serviceProvider = new ServiceCollection()
+                .AddScoped<IDbContext, MockDbContext>()
+                .AddScoped<IIdentityService, MockIdentityService>()
+                .AddScoped<IOnboardingService, OnboardingService>()
+                .AddScoped<IIdGenerator, SnowflakeIdGenerator>()
+                .BuildServiceProvider();
+
+            _identityService = serviceProvider.GetRequiredService<IIdentityService>();
+            _onboardingService = serviceProvider.GetRequiredService<IOnboardingService>();
+
             _onboardingRequest = new OnboardingRequestDto();
         }
 
         [Given(@"a valid {string} is provided")]
-        public void GivenAValidSSOTokenIsProvided(string token)
+        public async Task GivenAValidSSOTokenIsProvided(string token)
         {
-            var userIdentityFromSSO = _identityService.ValidateSSOToken(token);
+            var userIdentityFromSSO = await _identityService.ValidateSSOToken(token);
+            Assert.True(userIdentityFromSSO.IsSuccess);
         }
 
         [When("I provide the following profile details:")]
@@ -28,8 +51,10 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
         [Then("my profile should be created successfully")]
         public async Task ThenMyProfileShouldBeCreatedSuccessfullyAsync()
         {
-            _onboardingResponse = await _onboardingService.OnboardUserAsync(_onboardingRequest);
-            Assert.True(_onboardingResponse.IsSuccess);
+            var response = await _onboardingService.OnboardUserAsync(_onboardingRequest);
+            _onboardingResponse = response.Value;
+            Assert.True(response.IsSuccess);
+            Assert.True(_onboardingResponse.Id > 0);
         }
 
         [Then("my profile should be created successfully \\(using default values for omitted optional fields)")]
@@ -71,16 +96,91 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
 
     }
 
-    internal interface IIdentityService
+    public class OnboardingService : IOnboardingService
     {
-        object ValidateSSOToken(string token);
+        private readonly IDbContext _dbContext;
+        private readonly IIdentityService _identityService;
+        private readonly IIdGenerator _idGenerator;
+        public OnboardingService(IDbContext dbContext, IIdentityService identityService,IIdGenerator idGenerator)
+        {
+            _dbContext = dbContext;
+            _identityService = identityService;
+            _idGenerator = idGenerator;
+        }
+
+        public async Task<Result<OnboardingResponseDto>> OnboardUserAsync(OnboardingRequestDto onboardingRequest)
+        {
+            var y = _identityService.ValidateSSOToken(onboardingRequest.SSOToken);
+            //UserProfile entity = new UserProfile() { Id = _idGenerator.GenerateId(), Email = "", Name = "" };
+            //_dbContext.userProfiles.Add(entity);
+            //var x = await _dbContext.SaveChangesAsync();
+            return Result.Success<OnboardingResponseDto>(new OnboardingResponseDto(1));
+
+        }
+    }
+
+    public class MockDbContext : IDbContext
+    {
+        private readonly DbContextOptions _options;
+
+        public MockDbContext()
+        {
+            var mockUserProfiles = CreateMockDbSet(new List<UserProfile>
+        {
+            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+        });
+
+            userProfiles = mockUserProfiles.Object;
+        }
+
+        public DbSet<UserProfile> userProfiles { get; set; }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            await Task.Delay(100, cancellationToken); // Simulate async work
+            return 1; // Return the number of entities saved (mocked as 1 for simplicity)
+        }
+
+        private static Mock<DbSet<T>> CreateMockDbSet<T>(List<T> data) where T : class
+        {
+            var queryable = data.AsQueryable();
+
+            var mockSet = new Mock<DbSet<T>>();
+            mockSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(queryable.Provider);
+            mockSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(queryable.Expression);
+            mockSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
+            mockSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
+
+            mockSet.Setup(m => m.Add(It.IsAny<T>())).Callback<T>(data.Add);
+
+            return mockSet;
+        }
+    }
+
+
+    public class MockIdentityService : IIdentityService
+    {
+        private readonly bool _authenticationResult;
+
+        public MockIdentityService(bool authenticationResult = true) // Constructor to control mock behavior
+        {
+            _authenticationResult = authenticationResult;
+        }
+        public async Task<Result<bool>> ValidateSSOToken(string token)
+        {
+            if (_authenticationResult)
+                return Result.Success<bool>(true);
+
+            return Result.Failure<bool>(new Error("", ""));
+        }
     }
 
     public enum GenderType
     {
-        male,
-        female,
-        other
+        Male,
+        Female,
+        Other
     }
     public class OnboardingRequestDto
     {
@@ -95,19 +195,17 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
         public List<string> LearningGoals { get; internal set; }
         public string SkillProficiency { get; internal set; }
         public List<string> LearningPreferences { get; internal set; }
-        public int StudyTimePerWeek { get; internal set; }
+        public int StudyTimePerDay { get; internal set; }
         public bool ExamParticipation { get; internal set; }
         public string CountryOfOrigin { get; internal set; }
         public string CurrentCountry { get; internal set; }
         public List<string> Interests { get; internal set; }
     }
-    public class OnboardingResponseDto
-    {
-        public bool IsSuccess { get; internal set; }
-    }
+    public record OnboardingResponseDto(long Id);
+
 
     public interface IOnboardingService
     {
-        Task<OnboardingResponseDto> OnboardUserAsync(OnboardingRequestDto onboardingRequest);
+        Task<Result<OnboardingResponseDto>> OnboardUserAsync(OnboardingRequestDto onboardingRequest);
     }
 }

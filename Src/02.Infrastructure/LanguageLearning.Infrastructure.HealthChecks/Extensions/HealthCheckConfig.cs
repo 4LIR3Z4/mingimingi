@@ -9,7 +9,7 @@ public static class HealthCheckConfig
 {
     public static void ConfigureHealthChecks(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddHealthChecks().AddDbContextCheck<LanguageLearningContext>();
+        services.AddHealthChecks().AddDbContextCheck<DefaultDbContext>();
     }
     public static void MapHealthChecks(this WebApplication app, string path = "/health")
     {
