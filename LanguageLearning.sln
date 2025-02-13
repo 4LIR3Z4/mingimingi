@@ -58,6 +58,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLearning.Infrastructure.IdGenerator", "Src\02.Infrastructure\LanguageLearning.Infrastructure.IdGenerator\LanguageLearning.Infrastructure.IdGenerator.csproj", "{F3B630E3-3C25-44AE-A613-197AFA1D30B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{376924BD-8E9E-4E79-8141-EBB9A559C6B4}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{FD9FA56E-4AB5-4A7C-8CCB-9F3071509D55}"
 	ProjectSection(SolutionItems) = preProject
