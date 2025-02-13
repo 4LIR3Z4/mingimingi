@@ -1,5 +1,6 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Domain.Framework;
+using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,11 @@ public sealed class DefaultDbContext(
     //private readonly IDomainEventService _domainEventService = domainEventService;
     private readonly IPublisher _mediator = mediator;
 
-    public DbSet<UserProfile> userProfiles { get; set; }
+    public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<Hobby> Hobbies { get ; set ; }
+    public DbSet<Interest> Interests { get ; set ; }
+    public DbSet<Language> Languages { get ; set ; }
+    public DbSet<Country> Countries { get ; set ; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

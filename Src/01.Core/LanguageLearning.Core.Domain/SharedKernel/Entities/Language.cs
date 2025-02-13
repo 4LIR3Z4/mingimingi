@@ -1,6 +1,6 @@
 ﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
 
-namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
+namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
 public sealed class Language : BaseEntity<int>
 {
     public string Name { get; init; }

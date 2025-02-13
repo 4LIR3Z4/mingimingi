@@ -1,4 +1,5 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Enums;
+﻿using LanguageLearning.Core.Domain.SharedKernel.Entities;
+using LanguageLearning.Core.Domain.UserProfiles.Enums;
 
 namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
 public class LanguageProficiency : BaseEntity<int>

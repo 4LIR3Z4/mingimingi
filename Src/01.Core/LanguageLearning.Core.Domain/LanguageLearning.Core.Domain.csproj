@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Shared\Errors\" />
-    <Folder Include="Shared\Exceptions\" />
-    <Folder Include="Shared\ValueObjects\" />
+    <Folder Include="SharedKernel\Errors\" />
+    <Folder Include="SharedKernel\Exceptions\" />
+    <Folder Include="SharedKernel\ValueObjects\" />
     <Folder Include="UserProfiles\Errors\" />
     <Folder Include="UserProfiles\Events\" />
     <Folder Include="UserProfiles\Exceptions\" />

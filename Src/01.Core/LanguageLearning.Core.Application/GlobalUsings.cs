@@ -3,4 +3,4 @@ global using LanguageLearning.Core.Domain.Framework;
 global using FluentValidation;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;
-namespace LanguageLearning.Core.Application;
+global using LanguageLearning.Core.Application.Common.Abstractions;

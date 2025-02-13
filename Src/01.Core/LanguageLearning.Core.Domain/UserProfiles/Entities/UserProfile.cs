@@ -1,4 +1,5 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Enums;
+﻿using LanguageLearning.Core.Domain.SharedKernel.Entities;
+using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 
 namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
@@ -72,4 +73,6 @@ public sealed class UserProfile : BaseAggregateRoot<long>
 
         return userProfile;
     }
+
+    
 }

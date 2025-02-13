@@ -15,9 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Abstractions\ExternalServices\" />
     <Folder Include="Common\Extensions\" />
-    <Folder Include="UserProfiles\" />
+    <Folder Include="UserProfiles\EventHandler\" />
+    <Folder Include="UserProfiles\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

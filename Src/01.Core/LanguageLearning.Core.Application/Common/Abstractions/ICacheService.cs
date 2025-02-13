@@ -8,5 +8,5 @@ public interface ICacheService
         CancellationToken ct = default
     );
 
-    Task RemoveAsync(string key, CancellationToken ct = default);
+     Task RemoveAsync(string key, CancellationToken ct = default);
 }
