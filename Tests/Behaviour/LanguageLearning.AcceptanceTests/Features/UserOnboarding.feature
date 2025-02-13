@@ -10,17 +10,18 @@
 Scenario: Successful onboarding with complete profile details via SSO
     Given a valid "SSO token" is provided
     When I provide the following profile details:
-        | Field                 | Value            |
-        | FirstName             | Alice            |
-        | LastName              | Johnson          |
-        | Age                   | 25               |
-        | Gender                | Female           |
-        | NativeLanguage        | FA               |
-        | Hobbies               | Reading, Cycling |
-        | CountryOfOrigin       | USA              |
-        | CurrentCountry        | Canada           |
-        | Interests             | Travel, Culture  |
-        | LanguageProficiencies | EN,Beginner      |
+        | Field                            | Value            |
+        | FirstName                        | Alice            |
+        | LastName                         | Johnson          |
+        | Age                              | 25               |
+        | Gender                           | Female           |
+        | NativeLanguage                   | Farsi            |
+        | Hobbies                          | Reading, Cycling |
+        | CountryOfOrigin                  | United States    |
+        | CurrentCountry                   | Canada           |
+        | Interests                        | Travel, Culture  |
+        | LearningLanguage                 | English          |
+        | LearningLanguageProficiencyLevel | Beginner         |
     Then my profile should be created successfully
     
 
@@ -30,27 +31,29 @@ Scenario: Successful onboarding with complete profile details via SSO
 Scenario: Onboarding fails when required fields are missing
     Given a valid "SSO token" is provided
     When I attempt to submit the profile details:
-        | Field                 | Value |
-        | FirstName             |       |
-        | LastName              |       |
-        | Age                   |       |
-        | Gender                |       |
-        | NativeLanguage        |       |
-        | Hobbies               |       |
-        | CountryOfOrigin       |       |
-        | CurrentCountry        |       |
-        | Interests             |       |
-        | LanguageProficiencies |       |
+        | Field                            | Value |
+        | FirstName                        |       |
+        | LastName                         |       |
+        | Age                              |       |
+        | Gender                           |       |
+        | NativeLanguage                   |       |
+        | Hobbies                          |       |
+        | CountryOfOrigin                  |       |
+        | CurrentCountry                   |       |
+        | Interests                        |       |
+        | LearningLanguage                 |       |
+        | LearningLanguageProficiencyLevel |       |
     Then I should see the following error messages:
-        | Field                 | Error Message                               |
-        | FirstName             | FirstName must be provided.                 |
-        | LastName              | LastName must be provided.                  |
-        | Age                   | Age must be a positive integer.             |
-        | Gender                | Gender must be specified as Male or Female. |
-        | NativeLanguage        | NativeLanguage must be provided.            |
-        | Interests             | At least one interest must be provided.     |
-        | Hobbies               | At least one hobby must be provided.        |
-        | LanguageProficiencies | At least one Language must be selected.     |
+        | Field                            | Error Message                                |
+        | FirstName                        | FirstName must be provided.                  |
+        | LastName                         | LastName must be provided.                   |
+        | Age                              | Age must be a positive integer.              |
+        | Gender                           | Gender must be specified as Male or Female.  |
+        | NativeLanguage                   | NativeLanguage must be provided.             |
+        | Interests                        | At least one interest must be provided.      |
+        | Hobbies                          | At least one hobby must be provided.         |
+        | LearningLanguage                 | LearningLanguage is Required                 |
+        | LearningLanguageProficiencyLevel | LearningLanguageProficiencyLevel is Required |
     And my profile should not be created
 
   # -----------------------------------------------------------------

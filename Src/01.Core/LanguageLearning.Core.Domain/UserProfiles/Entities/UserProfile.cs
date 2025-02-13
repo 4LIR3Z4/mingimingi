@@ -5,16 +5,16 @@ using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
 public sealed class UserProfile : BaseAggregateRoot<long>
 {
-    public FirstName FirstName { get; private set; }
-    public LastName LastName { get; private set; }
-    public Age Age { get; private set; }
-    public GenderType Gender { get; private set; }
-    public Language NativeLanguage { get; private set; }
-    public Country CountryOfOrigin { get; private set; }
-    public Country CurrentCountry { get; private set; }
-    public ICollection<UserHobby> UserHobbies { get; private set; }
-    public ICollection<UserInterest> UserInterests { get; private set; }
-    public List<LanguageProficiency> LanguageProficiencies { get; private set; }
+    public FirstName FirstName { get; private set; } = null!;
+    public LastName LastName { get; private set; } = null!;
+    public Age Age { get; private set; } = null!;
+    public GenderType Gender { get; private set; }  
+    public Language NativeLanguage { get; private set; } = null!;
+    public Country CountryOfOrigin { get; private set; } = null!;
+    public Country CurrentCountry { get; private set; } = null!;
+    public ICollection<UserHobby> UserHobbies { get; private set; } = null!;
+    public ICollection<UserInterest> UserInterests { get; private set; } = null!;
+    public List<LanguageProficiency> LanguageProficiencies { get; private set; } = null!;
     private UserProfile(
         long id,
         FirstName firstName,

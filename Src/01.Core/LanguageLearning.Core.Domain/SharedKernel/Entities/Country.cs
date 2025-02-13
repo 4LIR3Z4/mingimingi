@@ -3,8 +3,8 @@
 namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
 public class Country : BaseEntity<int>
 {
-    public string Name { get; private set; }
-    public string IsoCode { get; private set; }
+    public string Name { get; private set; } = string.Empty;
+    public string IsoCode { get; private set; } = string.Empty;
     private Country(string name, string isoCode)
     {
         Name = name;

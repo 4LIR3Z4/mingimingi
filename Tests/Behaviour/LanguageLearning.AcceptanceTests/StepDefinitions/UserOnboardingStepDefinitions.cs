@@ -2,6 +2,7 @@
 
 using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Domain.Framework;
+using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using LanguageLearning.Infrastructure.IdGenerator;
 using Microsoft.EntityFrameworkCore;
@@ -131,10 +132,14 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
             //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
         });
 
-            userProfiles = mockUserProfiles.Object;
+            UserProfiles = mockUserProfiles.Object;
         }
 
-        public DbSet<UserProfile> userProfiles { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Hobby> Hobbies { get; set; }
+        public DbSet<Interest> Interests { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Country> Countries { get; set; }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

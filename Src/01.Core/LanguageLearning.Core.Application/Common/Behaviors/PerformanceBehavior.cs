@@ -23,14 +23,6 @@ public class PerformanceBehavior<TRequest, TResponse>(
         if (elapsedMilliseconds > 100)
         {
             var requestName = typeof(TRequest).Name;
-            //var userId = _currentUserService.UserId ?? string.Empty;
-            //var userName = string.Empty;
-            var userId = "";
-            var userName = "";
-            //if (!string.IsNullOrEmpty(userId))
-            //{
-            //    userName = await _identityService.GetUserNameAsync(userId);
-            //}
 
         }
 

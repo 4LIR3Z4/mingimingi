@@ -4,7 +4,7 @@ using LanguageLearning.Core.Domain.UserProfiles.Enums;
 namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
 public class LanguageProficiency : BaseEntity<int>
 {
-    public Language Language { get; }
+    public Language Language { get; } = null!;
     public ProficiencyLevel ReadingProficiency { get; }
     public ProficiencyLevel WritingProficiency { get; }
     public ProficiencyLevel ListeningProficiency { get; }

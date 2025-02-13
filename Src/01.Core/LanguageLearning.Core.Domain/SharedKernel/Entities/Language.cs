@@ -3,8 +3,8 @@
 namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
 public sealed class Language : BaseEntity<int>
 {
-    public string Name { get; init; }
-    public string Code { get; init; }
+    public string Name { get; init; } = string.Empty;
+    public string Code { get; init; } = string.Empty;
     private Language(string name, string code)
     {
         Name = name;
