@@ -1,4 +1,4 @@
-﻿# 🌱 LinguaFlow: Language Learning Backbone (Alpha Edition)
+﻿# 🌱 mingimingi: Language Learning Backbone (Alpha Edition)
 
 **Where Code Meets Curriculum**  
 *(This README? AI-generated. The irony? We’re embracing it.)*  
