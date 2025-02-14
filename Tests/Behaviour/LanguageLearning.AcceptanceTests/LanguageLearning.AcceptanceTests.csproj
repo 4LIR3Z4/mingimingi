@@ -1,32 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-    <PackageReference Include="Reqnroll.xUnit" Version="2.3.0" />
-    <PackageReference Include="xunit" Version="2.9.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Reqnroll.xUnit" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Drivers\" />
     <Folder Include="Features\" />
     <Folder Include="Support\" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\Src\01.Core\LanguageLearning.Core.Application\LanguageLearning.Core.Application.csproj" />
     <ProjectReference Include="..\..\..\Src\01.Core\LanguageLearning.Core.Domain\LanguageLearning.Core.Domain.csproj" />
     <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.IdGenerator\LanguageLearning.Infrastructure.IdGenerator.csproj" />
     <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Messaging\LanguageLearning.Infrastructure.MessagingBroker.csproj" />
   </ItemGroup>
-
 </Project>

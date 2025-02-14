@@ -1,12 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Remove="C:\Users\alire\.nuget\packages\microsoft.codeanalysis.workspaces.msbuild\4.12.0\contentFiles\any\any\BuildHost-net472\cs\System.CommandLine.resources.dll" />
     <Content Remove="C:\Users\alire\.nuget\packages\microsoft.codeanalysis.workspaces.msbuild\4.12.0\contentFiles\any\any\BuildHost-net472\de\System.CommandLine.resources.dll" />
@@ -62,35 +60,32 @@
     <Content Remove="C:\Users\alire\.nuget\packages\microsoft.codeanalysis.workspaces.msbuild\4.12.0\contentFiles\any\any\BuildHost-netcore\zh-Hans\System.CommandLine.resources.dll" />
     <Content Remove="C:\Users\alire\.nuget\packages\microsoft.codeanalysis.workspaces.msbuild\4.12.0\contentFiles\any\any\BuildHost-netcore\zh-Hant\System.CommandLine.resources.dll" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Elastic.CommonSchema.Serilog" Version="8.12.3" />
-    <PackageReference Include="Elastic.Serilog.Sinks" Version="8.12.3" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
+    <PackageReference Include="Elastic.CommonSchema.Serilog" />
+    <PackageReference Include="Elastic.Serilog.Sinks" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
-    <PackageReference Include="Serilog" Version="4.2.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
-    <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
-    <PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0" />
-    <PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
-    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.12.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.12.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.12.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Enrichers.Environment" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Extensions.Logging" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="logs\" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Caching\LanguageLearning.Infrastructure.Caching.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Email\LanguageLearning.Infrastructure.Email.csproj" />
@@ -102,5 +97,4 @@
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Persistence\LanguageLearning.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Services\LanguageLearning.Infrastructure.ThirdPartyServices.csproj" />
   </ItemGroup>
-
 </Project>

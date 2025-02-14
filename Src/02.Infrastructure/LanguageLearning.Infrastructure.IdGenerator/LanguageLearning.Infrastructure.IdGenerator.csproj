@@ -1,18 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="IdGen" Version="3.0.7" />
-    <PackageReference Include="IdGen.DependencyInjection" Version="3.0.7" />
+    <PackageReference Include="IdGen" />
+    <PackageReference Include="IdGen.DependencyInjection" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\01.Core\LanguageLearning.Core.Application\LanguageLearning.Core.Application.csproj" />
   </ItemGroup>
-
 </Project>
