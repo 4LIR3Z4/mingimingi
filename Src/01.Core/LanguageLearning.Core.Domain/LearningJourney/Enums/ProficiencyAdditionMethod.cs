@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Domain.UserProfiles.Enums;
+﻿namespace LanguageLearning.Core.Domain.LearningJourney.Enums;
 public enum ProficiencyAdditionMethod
 {
     UserProvided,

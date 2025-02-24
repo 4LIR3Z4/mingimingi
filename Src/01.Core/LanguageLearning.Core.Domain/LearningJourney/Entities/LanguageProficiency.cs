@@ -1,52 +1,57 @@
-﻿using LanguageLearning.Core.Domain.SharedKernel.Entities;
-using LanguageLearning.Core.Domain.UserProfiles.Enums;
+﻿using LanguageLearning.Core.Domain.Languages.Entities;
+using LanguageLearning.Core.Domain.LearningJourney.Enums;
 
-namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
+namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
 public class LanguageProficiency : BaseEntity<int>
 {
-    public Language Language { get; } = null!;
     public ProficiencyLevel ReadingProficiency { get; }
     public ProficiencyLevel WritingProficiency { get; }
     public ProficiencyLevel ListeningProficiency { get; }
     public ProficiencyLevel SpeakingProficiency { get; }
     public DateTime AddedDate { get; }
-    public ProficiencyAdditionMethod additionMethod { get; }
+    public ProficiencyAdditionMethod AdditionMethod { get; }
 
     private LanguageProficiency()
     {
 
     }
     private LanguageProficiency(
-        Language language,
         ProficiencyLevel readingProficiency,
         ProficiencyLevel writingProficiency,
         ProficiencyLevel listeningProficiency,
-        ProficiencyLevel speakingProficiency
+        ProficiencyLevel speakingProficiency,
+        DateTime addedDate,
+        ProficiencyAdditionMethod additionMethod
         )
     {
-        Language = language;
         ReadingProficiency = readingProficiency;
         WritingProficiency = writingProficiency;
         ListeningProficiency = listeningProficiency;
         SpeakingProficiency = speakingProficiency;
-        
+        AddedDate = addedDate;
+        AdditionMethod = additionMethod;
+
     }
     public static LanguageProficiency Create(
-        Language language,
+        
         ProficiencyLevel readingProficiency,
         ProficiencyLevel writingProficiency,
         ProficiencyLevel listeningProficiency,
-        ProficiencyLevel speakingProficiency
+        ProficiencyLevel speakingProficiency,
+        DateTime addedDate,
+        ProficiencyAdditionMethod additionMethod
         )
     {
         return new LanguageProficiency(
-            language,
+            
             readingProficiency,
             writingProficiency,
             listeningProficiency,
-            speakingProficiency
-            
+            speakingProficiency,
+            addedDate,
+            additionMethod
+
         );
     }
-    
+
 }

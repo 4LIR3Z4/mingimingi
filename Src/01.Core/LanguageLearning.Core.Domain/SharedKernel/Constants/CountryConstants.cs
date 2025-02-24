@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Domain.UserProfiles.Constants;
+﻿namespace LanguageLearning.Core.Domain.SharedKernel.Constants;
 public sealed class CountryConstants
 {
     public const int IsoCodeLength = 2;

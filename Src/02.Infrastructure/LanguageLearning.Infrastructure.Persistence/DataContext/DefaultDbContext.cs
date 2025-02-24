@@ -1,5 +1,6 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Domain.Framework;
+using LanguageLearning.Core.Domain.Languages.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using MediatR;

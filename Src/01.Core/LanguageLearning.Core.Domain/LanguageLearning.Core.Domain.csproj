@@ -13,6 +13,7 @@
     <PackageReference Include="MediatR.Contracts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Languages\ValueObjects\" />
     <Folder Include="SharedKernel\Errors\" />
     <Folder Include="SharedKernel\Exceptions\" />
     <Folder Include="SharedKernel\ValueObjects\" />

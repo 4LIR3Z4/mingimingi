@@ -1,6 +1,4 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
-
-namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
+﻿namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
 public class Interest : BaseEntity<int>
 {
     public string Name { get; private set; } = string.Empty;

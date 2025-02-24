@@ -2,4 +2,4 @@
 
 namespace LanguageLearning.Core.Application.UserProfiles.Commands;
 
-public record CreateUserProfileCommand(CreateProfileRequest CreateDto) : ICommand<CreateProfileResponse>;
+public record CreateUserProfileCommand(CreateProfileRequest request) : ICommand<CreateProfileResponse>;

@@ -1,4 +1,5 @@
-﻿using LanguageLearning.Core.Domain.SharedKernel.Entities;
+﻿using LanguageLearning.Core.Domain.Languages.Entities;
+using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 
 namespace LanguageLearning.Core.Application.Common.Abstractions;

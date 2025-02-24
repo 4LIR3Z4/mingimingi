@@ -10,18 +10,22 @@
 Scenario: Successful onboarding with complete profile details via SSO
     Given a valid "SSO token" is provided
     When I provide the following profile details:
-        | Field                            | Value            |
-        | FirstName                        | Alice            |
-        | LastName                         | Johnson          |
-        | Age                              | 25               |
-        | Gender                           | Female           |
-        | NativeLanguage                   | Farsi            |
-        | Hobbies                          | Reading, Cycling |
-        | CountryOfOrigin                  | United States    |
-        | CurrentCountry                   | Canada           |
-        | Interests                        | Travel, Culture  |
-        | LearningLanguage                 | English          |
-        | LearningLanguageProficiencyLevel | Beginner         |
+        | Field                            | Value             |
+        | FirstName                        | Alice             |
+        | LastName                         | Johnson           |
+        | Age                              | 25                |
+        | Gender                           | Female            |
+        | NativeLanguage                   | Farsi             |
+        | Hobbies                          | Reading, Cycling  |
+        | CountryOfOrigin                  | United States     |
+        | CurrentCountry                   | Canada            |
+        | Interests                        | Travel, Culture   |
+        | LearningLanguage                 | English           |
+        | LearningLanguageProficiencyLevel | Beginner          |
+        | LearningGoalDailyMinutes         | 60                |
+        | LearningGoalType                 | Exam Preparation  |
+        | LearningGoalDescription          | IELTS Band 8      |
+        | LearningGoalSkillsToImprove      | Speaking, Writing |
     Then my profile should be created successfully
     
 
@@ -43,6 +47,10 @@ Scenario: Onboarding fails when required fields are missing
         | Interests                        |       |
         | LearningLanguage                 |       |
         | LearningLanguageProficiencyLevel |       |
+        | LearningGoalDailyMinutes         |       |
+        | LearningGoalType                 |       |
+        | LearningGoalDescription          |       |
+        | LearningGoalSkillsToImprove      |       |
     Then I should see the following error messages:
         | Field                            | Error Message                                |
         | FirstName                        | FirstName must be provided.                  |
@@ -54,6 +62,10 @@ Scenario: Onboarding fails when required fields are missing
         | Hobbies                          | At least one hobby must be provided.         |
         | LearningLanguage                 | LearningLanguage is Required                 |
         | LearningLanguageProficiencyLevel | LearningLanguageProficiencyLevel is Required |
+        | LearningGoalDailyMinutes         | Daily study time must be at least 15 minutes |
+        | LearningGoalType                 | Learning goal type must be selected          |
+        | LearningGoalDescription          | Goal description must be provided            |
+        | LearningGoalSkillsToImprove      | At least one skill must be selected          |
     And my profile should not be created
 
   # -----------------------------------------------------------------

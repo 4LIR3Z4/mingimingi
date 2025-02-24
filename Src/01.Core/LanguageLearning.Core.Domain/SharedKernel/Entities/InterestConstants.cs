@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Domain.UserProfiles.Constants;
+﻿namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
 public sealed class InterestConstants
 {
     public const int NameMaxLength = 50;

@@ -1,5 +1,6 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
+using LanguageLearning.Core.Domain.Languages.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using Microsoft.EntityFrameworkCore;
 using ZiggyCreatures.Caching.Fusion;

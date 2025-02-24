@@ -1,4 +1,4 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Entities;
+﻿using LanguageLearning.Core.Domain.LearningJourney.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -29,7 +29,7 @@ public sealed class LanguageProficiencyConfiguration : IEntityTypeConfiguration<
 
         builder.Property(lp=>lp.AddedDate);
 
-        builder.Property(lp => lp.additionMethod);
+        builder.Property(lp => lp.AdditionMethod);
         builder.Property(q => q.RowVersion).IsRowVersion();
     }
 }

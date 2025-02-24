@@ -2,14 +2,14 @@
 
 using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Domain.Framework;
+using LanguageLearning.Core.Domain.Languages.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
+using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Infrastructure.IdGenerator;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestPlatform.Common;
 using Moq;
-using System.Linq.Expressions;
 
 namespace LanguageLearning.AcceptanceTests.StepDefinitions
 {
@@ -181,16 +181,10 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
         }
     }
 
-    public enum GenderType
-    {
-        Male,
-        Female,
-        Other
-    }
     public class OnboardingRequestDto
     {
 
-        public string SSOToken { get; internal set; }
+        public required string SSOToken { get; init; }
         public string FirstName { get; internal set; }
         public string LastName { get; internal set; }
         public int Age { get; internal set; }

@@ -1,8 +1,8 @@
 ﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
-using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using LanguageLearning.Core.Domain.UserProfiles.Enums;
+using LanguageLearning.Core.Domain.LearningJourney.Enums;
+using LanguageLearning.Core.Domain.LearningJourney.Entities;
 
 namespace LanguageLearning.Infrastructure.Persistence.Configuration;
 public sealed class LearningGoalConfiguration : IEntityTypeConfiguration<LearningGoal>

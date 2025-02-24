@@ -1,17 +1,19 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
+﻿using LanguageLearning.Core.Domain.Languages.Constants;
 
-namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
-public sealed class Language : BaseEntity<int>
+namespace LanguageLearning.Core.Domain.Languages.Entities;
+public sealed class Language : BaseAggregateRoot<int>
 {
     public string Name { get; init; } = string.Empty;
     public string Code { get; init; } = string.Empty;
-    private Language(string name, string code)
+    private readonly List<ProficiencyExam> _SupportedExams = new();
+    public IReadOnlyList<ProficiencyExam> SupportedExams => _SupportedExams.AsReadOnly();
+    private Language(string code, string name)
     {
+        Code = code.ToUpperInvariant();
         Name = name;
-        Code = code;
     }
     private Language() { }
-    public static Language Create(string name, string code)
+    public static Language Create(string code, string name)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Language name cannot be null or empty.", nameof(name));
@@ -27,6 +29,15 @@ public sealed class Language : BaseEntity<int>
             throw new ArgumentException($"Language name must be at most {LanguageConstants.NameMaxLength} characters long.", nameof(name));
 
         return new Language(name.Trim(), code.Trim().ToUpperInvariant());
+    }
+    public void AddExam(string examName)
+    {
+        var exam = ProficiencyExam.Create(examName);
+
+        if (_SupportedExams.Any(e => e.ExamName.Equals(examName, StringComparison.OrdinalIgnoreCase)))
+            throw new Exception($"Exam {examName} already exists for this language");
+
+        _SupportedExams.Add(exam);
     }
     public override string ToString()
     {

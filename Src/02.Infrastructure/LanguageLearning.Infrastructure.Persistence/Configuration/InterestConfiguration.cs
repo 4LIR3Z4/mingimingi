@@ -1,5 +1,4 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 

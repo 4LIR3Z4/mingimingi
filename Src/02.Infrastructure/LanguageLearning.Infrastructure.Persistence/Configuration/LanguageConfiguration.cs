@@ -1,7 +1,7 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using LanguageLearning.Core.Domain.SharedKernel.Entities;
+using LanguageLearning.Core.Domain.Languages.Constants;
+using LanguageLearning.Core.Domain.Languages.Entities;
 
 namespace LanguageLearning.Infrastructure.Persistence.Configuration;
 public sealed class LanguageConfiguration : IEntityTypeConfiguration<Language>

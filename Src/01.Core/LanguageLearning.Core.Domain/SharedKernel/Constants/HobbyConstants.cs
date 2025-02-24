@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Domain.UserProfiles.Constants;
+﻿namespace LanguageLearning.Core.Domain.SharedKernel.Constants;
 public sealed class HobbyConstants
 {
     public const int NameMaxLength = 50;

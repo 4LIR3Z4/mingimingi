@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Domain.UserProfiles.Constants;
+﻿namespace LanguageLearning.Core.Domain.Languages.Constants;
 public sealed class LanguageConstants
 {
     public const int CodeLength = 2;

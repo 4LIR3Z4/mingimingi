@@ -1,4 +1,4 @@
-﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
+﻿using LanguageLearning.Core.Domain.SharedKernel.Constants;
 
 namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
 public class Country : BaseEntity<int>
