@@ -1,5 +1,4 @@
-﻿using LanguageLearning.Core.Domain.Languages.Entities;
-using LanguageLearning.Core.Domain.LearningJourney.Enums;
+﻿using LanguageLearning.Core.Domain.LearningJourney.Enums;
 
 namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
 public class LanguageProficiency : BaseEntity<int>
@@ -8,7 +7,7 @@ public class LanguageProficiency : BaseEntity<int>
     public ProficiencyLevel WritingProficiency { get; }
     public ProficiencyLevel ListeningProficiency { get; }
     public ProficiencyLevel SpeakingProficiency { get; }
-    public DateTime AddedDate { get; }
+    public DateTimeOffset AddedDate { get; }
     public ProficiencyAdditionMethod AdditionMethod { get; }
 
     private LanguageProficiency()
@@ -20,7 +19,7 @@ public class LanguageProficiency : BaseEntity<int>
         ProficiencyLevel writingProficiency,
         ProficiencyLevel listeningProficiency,
         ProficiencyLevel speakingProficiency,
-        DateTime addedDate,
+        DateTimeOffset addedDate,
         ProficiencyAdditionMethod additionMethod
         )
     {
@@ -38,7 +37,7 @@ public class LanguageProficiency : BaseEntity<int>
         ProficiencyLevel writingProficiency,
         ProficiencyLevel listeningProficiency,
         ProficiencyLevel speakingProficiency,
-        DateTime addedDate,
+        DateTimeOffset addedDate,
         ProficiencyAdditionMethod additionMethod
         )
     {

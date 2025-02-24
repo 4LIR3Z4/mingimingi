@@ -5,7 +5,6 @@ using LanguageLearning.Core.Domain.LearningJourney.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
-using System.Linq;
 
 namespace LanguageLearning.Core.Application.UserProfiles.Commands;
 class CreateUserProfileCommandHandler
@@ -13,21 +12,30 @@ class CreateUserProfileCommandHandler
     private readonly IDbContext _context;
     private readonly IIdGenerator _idGenerator;
     private readonly IReferenceDataCache _referenceDataCache;
-    public CreateUserProfileCommandHandler(IDbContext context, IIdGenerator idGenerator, IReferenceDataCache referenceDataCache)
+    private readonly TimeProvider _timeProvider;
+    public CreateUserProfileCommandHandler(
+        IDbContext context,
+        IIdGenerator idGenerator,
+        IReferenceDataCache referenceDataCache,
+        TimeProvider timeProvider
+        )
     {
         _context = context;
         _idGenerator = idGenerator;
         _referenceDataCache = referenceDataCache;
+        _timeProvider = timeProvider;
     }
 
     public async Task<Result<CreateProfileResponse>> Handle(
         CreateUserProfileCommand command,
         CancellationToken cancellationToken)
     {
-        var firstName = new FirstName(command.request.FirstName);
-        var lastName = new LastName(command.request.LastName);
-        var age = new Age(command.request.Age);
-        var gender = (GenderType)command.request.Gender;
+        CreateProfileRequest request = command.request;
+
+        var firstName = new FirstName(request.FirstName);
+        var lastName = new LastName(request.LastName);
+        var age = new Age(request.Age);
+        var gender = (GenderType)request.Gender;
 
         var hobbiesTask = _referenceDataCache.GetHobbiesAsync(cancellationToken);
         var interestsTask = _referenceDataCache.GetInterestsAsync(cancellationToken);
@@ -41,24 +49,25 @@ class CreateUserProfileCommandHandler
         var languages = languagesTask.Result;
         var countries = countriesTask.Result;
 
-        var userHobbies = hobbies.Where(q => command.request.Hobbies.Contains(q.Id)).ToList();
-        var userInterests = interests.Where(q => command.request.Interests.Contains(q.Id)).ToList();
-        var userNativeLanguage = languages.FirstOrDefault(l => l.Id == command.request.NativeLanguage)
+        var userHobbies = hobbies.Where(q => request.Hobbies.Contains(q.Id)).ToList();
+        var userInterests = interests.Where(q => request.Interests.Contains(q.Id)).ToList();
+        var userNativeLanguage = languages.FirstOrDefault(l => l.Id == request.NativeLanguage)
                 ?? throw new InvalidOperationException("Invalid native language ID.");
-        var userLearningLanguage = languages.FirstOrDefault(l => l.Id == command.request.LearningLanguage)
-            ?? throw new InvalidOperationException("Invalid learning language ID.");
-        var countryOfOrigin = countries.FirstOrDefault(c => c.Id == command.request.CountryOfOrigin)
+        var countryOfOrigin = countries.FirstOrDefault(c => c.Id == request.CountryOfOrigin)
             ?? throw new InvalidOperationException("Invalid country of origin ID.");
-        var currentCountry = countries.FirstOrDefault(c => c.Id == command.request.CurrentCountry)
+        var currentCountry = countries.FirstOrDefault(c => c.Id == request.CurrentCountry)
             ?? throw new InvalidOperationException("Invalid current country ID.");
 
-        ProficiencyLevel learningLanguageProficiencyLevel = (ProficiencyLevel)command.request.LearningLanguageProficiencyLevel;
+        ProficiencyLevel learningLanguageProficiencyLevel = (ProficiencyLevel)request.LearningLanguageProficiencyLevel;
         var languageProficienciy = LanguageProficiency.Create(
-            userLearningLanguage,
             learningLanguageProficiencyLevel,
             learningLanguageProficiencyLevel,
             learningLanguageProficiencyLevel,
-            learningLanguageProficiencyLevel);
+            learningLanguageProficiencyLevel,
+            _timeProvider.GetUtcNow(),
+            ProficiencyAdditionMethod.UserProvided
+
+            );
 
         var ProfileId = _idGenerator.GenerateId();
 
@@ -67,11 +76,10 @@ class CreateUserProfileCommandHandler
             lastName,
             age,
             gender,
-            userNativeLanguage,
-            userHobbies,
-            new List<LanguageProficiency>() { languageProficienciy },
+            userNativeLanguage.Id,
             countryOfOrigin,
             currentCountry,
+            userHobbies,
             userInterests
             );
 

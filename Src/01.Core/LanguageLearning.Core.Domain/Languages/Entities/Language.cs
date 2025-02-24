@@ -17,10 +17,8 @@ public sealed class Language : BaseAggregateRoot<int>
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Language name cannot be null or empty.", nameof(name));
-
         if (string.IsNullOrWhiteSpace(code))
             throw new ArgumentException("Language code cannot be null or empty.", nameof(code));
-
         if (code.Length != LanguageConstants.CodeLength)
             throw new ArgumentException($"Language code must be exactly {LanguageConstants.CodeLength} characters long.", nameof(code));
         if (name.Length < LanguageConstants.NameMinLength)
