@@ -67,10 +67,10 @@ public sealed class UserProfileConfiguration : IEntityTypeConfiguration<UserProf
         builder.Property(up => up.Gender)
             .IsRequired();
 
-        builder.HasOne(up => up.NativeLanguage)
-            .WithMany()
-            .HasForeignKey("NativeLanguageId")
-            .OnDelete(DeleteBehavior.Restrict);
+        //builder.HasOne(up => up.NativeLanguage)
+        //    .WithMany()
+        //    .HasForeignKey("NativeLanguageId")
+        //    .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(up => up.CountryOfOrigin)
             .WithMany()
@@ -91,10 +91,10 @@ public sealed class UserProfileConfiguration : IEntityTypeConfiguration<UserProf
         //    .WithOne()
         //    .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany(up => up.LanguageProficiencies)
-            .WithOne()
-            .HasForeignKey("UserProfileId")
-            .OnDelete(DeleteBehavior.Cascade);
+        //builder.HasMany(up => up.LanguageProficiencies)
+        //    .WithOne()
+        //    .HasForeignKey("UserProfileId")
+        //    .OnDelete(DeleteBehavior.Cascade);
 
         builder.Property(q => q.RowVersion).IsRowVersion();
     }

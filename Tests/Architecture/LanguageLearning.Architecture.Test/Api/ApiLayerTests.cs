@@ -1,10 +1,7 @@
-﻿using LanguageLearning.Architecture.Test.Shared;
+﻿using FluentAssertions;
+using LanguageLearning.Architecture.Test.Shared;
 using LanguageLearning.Presentation.API.Framework;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using NetArchTest.Rules;
-using System.Linq;
 using System.Reflection;
 
 namespace LanguageLearning.Architecture.Test.Api;

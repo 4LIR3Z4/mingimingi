@@ -3,6 +3,7 @@ using LanguageLearning.Core.Domain.Framework;
 using FluentAssertions;
 using NetArchTest.Rules;
 using System.Reflection;
+using LanguageLearning.Core.Domain.Framework.Events;
 namespace LanguageLearning.Architecture.Test.Domain;
 public class DomainTests
 {
@@ -12,7 +13,7 @@ public class DomainTests
     {
         TestResult result = Types.InAssembly(Layers.DomainAssembly)
             .That()
-            .Inherit(typeof(DomainEvent))
+            .Inherit(typeof(IDomainEvent))
             .Should()
             .BeSealed()
             .GetResult();
@@ -25,7 +26,7 @@ public class DomainTests
     {
         var result = Types.InAssembly(Layers.DomainAssembly)
             .That()
-            .Inherit(typeof(DomainEvent))
+            .Inherit(typeof(IDomainEvent))
             .Should()
             .HaveNameEndingWith("Event")
             .GetResult();

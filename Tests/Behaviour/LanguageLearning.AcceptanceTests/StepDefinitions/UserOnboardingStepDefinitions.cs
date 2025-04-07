@@ -1,5 +1,3 @@
-
-
 using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Domain.Framework;
 using LanguageLearning.Core.Domain.Languages.Entities;
@@ -33,7 +31,7 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
             _identityService = serviceProvider.GetRequiredService<IIdentityService>();
             _onboardingService = serviceProvider.GetRequiredService<IOnboardingService>();
 
-            _onboardingRequest = new OnboardingRequestDto();
+            _onboardingRequest = new OnboardingRequestDto() { SSOToken = "" };
         }
 
         [Given(@"a valid {string} is provided")]
@@ -102,7 +100,7 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
         private readonly IDbContext _dbContext;
         private readonly IIdentityService _identityService;
         private readonly IIdGenerator _idGenerator;
-        public OnboardingService(IDbContext dbContext, IIdentityService identityService,IIdGenerator idGenerator)
+        public OnboardingService(IDbContext dbContext, IIdentityService identityService, IIdGenerator idGenerator)
         {
             _dbContext = dbContext;
             _identityService = identityService;
@@ -127,10 +125,10 @@ namespace LanguageLearning.AcceptanceTests.StepDefinitions
         public MockDbContext()
         {
             var mockUserProfiles = CreateMockDbSet(new List<UserProfile>
-        {
-            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
-            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
-        });
+            {
+                //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+                //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+            });
 
             UserProfiles = mockUserProfiles.Object;
         }

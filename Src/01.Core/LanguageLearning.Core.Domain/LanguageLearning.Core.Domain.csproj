@@ -10,15 +10,11 @@
     <None Remove="Constants\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MediatR.Contracts" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Languages\ValueObjects\" />
     <Folder Include="SharedKernel\Errors\" />
     <Folder Include="SharedKernel\Exceptions\" />
     <Folder Include="SharedKernel\ValueObjects\" />
     <Folder Include="UserProfiles\Errors\" />
-    <Folder Include="UserProfiles\Events\" />
     <Folder Include="UserProfiles\Exceptions\" />
   </ItemGroup>
 </Project>

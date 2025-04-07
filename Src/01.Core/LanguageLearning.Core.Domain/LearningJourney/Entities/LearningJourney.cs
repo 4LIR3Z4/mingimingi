@@ -6,38 +6,47 @@ public class LearningJourney : BaseAggregateRoot<long>
 {
     public long UserId { get; private set; }
     public int LanguageId { get; private set; }
-
+    public LearningTarget LearningTarget { get; private set; }
+    public DateTimeOffset CreatedDate { get; }
     private readonly List<LearningGoal> _goals;
     public IReadOnlyCollection<LearningGoal> Goals => _goals.AsReadOnly();
     private readonly List<LanguageProficiency> _proficiencyHistory;
     public IReadOnlyCollection<LanguageProficiency> ProficiencyHistory => _proficiencyHistory.AsReadOnly();
 
+    private readonly List<LearningPath> _learningPaths;
+    public IReadOnlyCollection<LearningPath> LearningPaths => _learningPaths.AsReadOnly();
     private LearningJourney()
     {
         _goals = new List<LearningGoal>();
         _proficiencyHistory = new List<LanguageProficiency>();
+        _learningPaths = new List<LearningPath>();
     }
 
-    public LearningJourney(long userId, int languageId, List<LearningGoal> goals, List<LanguageProficiency> proficiencyHistory)
+    private LearningJourney(long userId,
+        int languageId,
+        LearningTarget learningTarget,
+        List<LearningGoal> goals,
+        List<LanguageProficiency> proficiencyHistory,
+        List<LearningPath> learningPaths)
     {
         UserId = userId;
         LanguageId = languageId;
+        LearningTarget = learningTarget;
         _goals = goals;
         _proficiencyHistory = proficiencyHistory;
+        _learningPaths = learningPaths;
     }
-    public static LearningJourney Create(long userId, int languageId, List<LearningGoal> goals, List<LanguageProficiency> proficiencyHistory)
+    public static LearningJourney Create(
+        long userId,
+        int languageId,
+        List<LearningGoal> goals,
+        List<LanguageProficiency> proficiencyHistory,
+        List<LearningPath> learningPaths)
     {
-        if (goals == null)
-        {
-            throw new ArgumentNullException(nameof(goals), "Goals list cannot be null.");
-        }
+        ArgumentNullException.ThrowIfNull(goals, nameof(goals));
         var skillTypes = Enum.GetValues(typeof(SkillType)).Cast<SkillType>().ToList();
 
-        if (goals.Count != skillTypes.Count)
-        {
-            throw new ArgumentException(
-                $"LearningJourney must have exactly {skillTypes.Count} goals (one per SkillType).");
-        }
+        ArgumentOutOfRangeException.ThrowIfNotEqual(goals.Count, skillTypes.Count, nameof(goals.Count));
 
         foreach (var skillType in skillTypes)
         {
@@ -48,7 +57,7 @@ public class LearningJourney : BaseAggregateRoot<long>
                     $"LearningJourney must have exactly one LearningGoal for SkillType {skillType}.");
             }
         }
-        return new LearningJourney(userId, languageId, goals, proficiencyHistory);
+        return new LearningJourney(userId, languageId, LearningTarget.General_Training, goals, proficiencyHistory, learningPaths);
     }
     public void AddProficiency(LanguageProficiency proficiency)
     {

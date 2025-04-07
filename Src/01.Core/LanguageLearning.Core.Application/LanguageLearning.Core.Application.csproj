@@ -7,13 +7,10 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
-    <PackageReference Include="MediatR" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
-    <PackageReference Include="Moq" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Extensions\" />
-    <Folder Include="UserProfiles\EventHandler\" />
     <Folder Include="UserProfiles\Queries\" />
   </ItemGroup>
   <ItemGroup>

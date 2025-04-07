@@ -19,7 +19,5 @@ public sealed class ProficiencyExam : BaseEntity<int>
             throw new ArgumentException($"Exam name must be at most {ProficiencyExamConstants.NameMaxLength}", nameof(examName));
         return new ProficiencyExam(examName);
     }
-
-
 }
 

@@ -1,4 +1,6 @@
 ﻿
+using LanguageLearning.Core.Domain.Framework.Events;
+
 namespace LanguageLearning.Core.Domain.Framework;
 public abstract class BaseAggregateRoot<TId> : BaseEntity<TId>, IHasDomainEvent
 {
@@ -8,11 +10,11 @@ public abstract class BaseAggregateRoot<TId> : BaseEntity<TId>, IHasDomainEvent
     protected BaseAggregateRoot(TId Id) : base(Id)
     {
     }
-    private List<DomainEvent> _DomainEvents { get; } = new();
+    private List<IDomainEvent> _DomainEvents { get; } = new();
 
-    public IReadOnlyList<DomainEvent> DomainEvents => _DomainEvents.AsReadOnly();
+    public IReadOnlyList<IDomainEvent> DomainEvents => _DomainEvents.AsReadOnly();
 
-    protected void AddDomainEvent(DomainEvent domainEvent)
+    protected void AddDomainEvent(IDomainEvent domainEvent)
     {
         _DomainEvents.Add(domainEvent);
     }

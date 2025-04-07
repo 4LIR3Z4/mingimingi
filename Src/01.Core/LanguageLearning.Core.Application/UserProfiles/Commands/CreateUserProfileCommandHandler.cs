@@ -7,7 +7,7 @@ using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 
 namespace LanguageLearning.Core.Application.UserProfiles.Commands;
-class CreateUserProfileCommandHandler
+public sealed class CreateUserProfileCommandHandler : ICommandHandler<CreateUserProfileCommand, CreateProfileResponse>
 {
     private readonly IDbContext _context;
     private readonly IIdGenerator _idGenerator;
@@ -87,4 +87,6 @@ class CreateUserProfileCommandHandler
         await _context.SaveChangesAsync(cancellationToken);
         return Result.Success<CreateProfileResponse>(newUserProfile.ToCreateProfileResponseDto());
     }
+
+    
 }

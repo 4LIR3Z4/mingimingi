@@ -6,10 +6,8 @@ public sealed class Age : BaseValueObject
     public int Value { get; private set; }
     public Age(int value)
     {
-        if (value <= UserProfileConstant.AgeMinValue || value > UserProfileConstant.AgeMaxValue) // Example validation
-        {
-            throw new ArgumentOutOfRangeException(nameof(Value), "Age must be a valid age.");
-        }
+        ArgumentOutOfRangeException.ThrowIfLessThan(value, UserProfileConstant.AgeMinValue);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(value, UserProfileConstant.AgeMaxValue);
         Value = value;
     }
     protected override IEnumerable<object> GetEqualityComponents()

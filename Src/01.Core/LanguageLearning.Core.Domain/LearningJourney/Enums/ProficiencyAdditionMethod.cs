@@ -3,6 +3,6 @@ public enum ProficiencyAdditionMethod
 {
     UserProvided,
     Assessment,
-    AppAssessment,
+    InAppAssessment,
     Other // For cases not explicitly covered
 }

@@ -9,6 +9,7 @@ public class IdentityService(IConfiguration configuration) : IIdentityService
 
     public async Task<Result<bool>> ValidateSSOToken(string token)
     {
+        await Task.FromResult(0);
         throw new NotImplementedException();
     }
 }

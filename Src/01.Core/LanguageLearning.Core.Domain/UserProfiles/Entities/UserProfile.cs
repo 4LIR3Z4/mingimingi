@@ -1,7 +1,6 @@
-﻿
-using LanguageLearning.Core.Domain.LearningJourney.Entities;
-using LanguageLearning.Core.Domain.SharedKernel.Entities;
+﻿using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Enums;
+using LanguageLearning.Core.Domain.UserProfiles.Events;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 
 namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
@@ -11,7 +10,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
     public LastName LastName { get; private set; } = null!;
     public Age Age { get; private set; } = null!;
     public GenderType Gender { get; private set; }
-    public int NativeLanguageId { get; private set; } 
+    public int NativeLanguageId { get; private set; }
     public Country CountryOfOrigin { get; private set; } = null!;
     public Country CurrentCountry { get; private set; } = null!;
     public ICollection<UserHobby> UserHobbies { get; private set; } = null!;
@@ -69,7 +68,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
 
         userProfile.UserHobbies = hobbies.Select(hobby => new UserHobby { UserProfile = userProfile, Hobby = hobby }).ToList();
         userProfile.UserInterests = interests.Select(interest => new UserInterest { UserProfile = userProfile, Interest = interest }).ToList();
-
+        userProfile.AddDomainEvent(new ProfileCreatedEvent(userProfile.Id));
         return userProfile;
     }
 

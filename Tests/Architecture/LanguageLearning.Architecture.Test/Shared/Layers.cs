@@ -1,16 +1,16 @@
-﻿using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
-using LanguageLearning.Core.Domain.Framework;
+﻿using FluentAssertions;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
+using LanguageLearning.Core.Domain.Framework.Events;
 using LanguageLearning.Infrastructure.Persistence.DataContext;
 using LanguageLearning.Presentation.API.ServiceCollectionManager;
-using System.Reflection;
 using NetArchTest.Rules;
-using FluentAssertions;
+using System.Reflection;
 
 namespace LanguageLearning.Architecture.Test.Shared;
 public sealed class Layers
 {
-    public static readonly Assembly ApplicationAssembly = typeof(IBaseCommand).Assembly;
-    public static readonly Assembly DomainAssembly = typeof(DomainEvent).Assembly;
+    public static readonly Assembly ApplicationAssembly = typeof(ICommand).Assembly;
+    public static readonly Assembly DomainAssembly = typeof(IDomainEvent).Assembly;
     public static readonly Assembly InfrastructurePersistenceAssembly = typeof(DefaultDbContext).Assembly;
     public static readonly Assembly PresentationAssembly = typeof(InfrastructureCollectionManager).Assembly;
 

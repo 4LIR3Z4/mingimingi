@@ -83,7 +83,6 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="logs\" />
   </ItemGroup>
   <ItemGroup>

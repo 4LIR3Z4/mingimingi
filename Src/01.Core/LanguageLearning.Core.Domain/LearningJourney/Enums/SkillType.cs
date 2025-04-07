@@ -4,5 +4,7 @@ public enum SkillType
     Reading,
     Writing,
     Listening,
-    Speaking
+    Speaking,
+    Grammar,
+    Vocabulary
 }

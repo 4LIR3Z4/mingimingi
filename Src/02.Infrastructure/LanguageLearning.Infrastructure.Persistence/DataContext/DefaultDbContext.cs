@@ -1,9 +1,8 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
-using LanguageLearning.Core.Domain.Framework;
+using LanguageLearning.Core.Domain.Framework.Events;
 using LanguageLearning.Core.Domain.Languages.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanguageLearning.Infrastructure.Persistence.DataContext;
@@ -11,25 +10,25 @@ namespace LanguageLearning.Infrastructure.Persistence.DataContext;
 
 public sealed class DefaultDbContext(
     DbContextOptions options,
-    IPublisher mediator
+    IDomainEventDispatcher domainEventDispatcher
     //,IDomainEventService domainEventService 
     ) :
     DbContext(options), IDbContext
 {
     //private readonly IDomainEventService _domainEventService = domainEventService;
-    private readonly IPublisher _mediator = mediator;
+    private readonly IDomainEventDispatcher _domainEventDispatcher = domainEventDispatcher;
 
     public DbSet<UserProfile> UserProfiles { get; set; }
-    public DbSet<Hobby> Hobbies { get ; set ; }
-    public DbSet<Interest> Interests { get ; set ; }
-    public DbSet<Language> Languages { get ; set ; }
-    public DbSet<Country> Countries { get ; set ; }
+    public DbSet<Hobby> Hobbies { get; set; }
+    public DbSet<Interest> Interests { get; set; }
+    public DbSet<Language> Languages { get; set; }
+    public DbSet<Country> Countries { get; set; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         var result = await base.SaveChangesAsync(cancellationToken);
 
-        await DispatchEvents();
+        await DispatchEvents(cancellationToken);
 
         return result;
     }
@@ -40,7 +39,7 @@ public sealed class DefaultDbContext(
 
         base.OnModelCreating(builder);
     }
-    private async Task DispatchEvents()
+    private async Task DispatchEvents(CancellationToken cancellationToken)
     {
         var domainEvents = ChangeTracker
             .Entries<IHasDomainEvent>()
@@ -55,7 +54,7 @@ public sealed class DefaultDbContext(
 
         foreach (var domainEvent in domainEvents)
         {
-            await _mediator.Publish(domainEvent);
+            await _domainEventDispatcher.Publish(domainEvent, cancellationToken);
         }
 
         //await _domainEventService.Publish(domainEventEntity);

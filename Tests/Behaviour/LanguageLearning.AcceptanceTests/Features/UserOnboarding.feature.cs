@@ -151,10 +151,22 @@ this.ScenarioInitialize(scenarioInfo);
                 table1.AddRow(new string[] {
                             "LearningLanguageProficiencyLevel",
                             "Beginner"});
+                table1.AddRow(new string[] {
+                            "LearningGoalDailyMinutes",
+                            "60"});
+                table1.AddRow(new string[] {
+                            "LearningGoalType",
+                            "Exam Preparation"});
+                table1.AddRow(new string[] {
+                            "LearningGoalDescription",
+                            "IELTS Band 8"});
+                table1.AddRow(new string[] {
+                            "LearningGoalSkillsToImprove",
+                            "Speaking, Writing"});
 #line 12
     await testRunner.WhenAsync("I provide the following profile details:", ((string)(null)), table1, "When ");
 #line hidden
-#line 25
+#line 29
     await testRunner.ThenAsync("my profile should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -169,7 +181,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Onboarding fails when required fields are missing", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 31
+#line 35
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -179,7 +191,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 32
+#line 36
     await testRunner.GivenAsync("a valid \"SSO token\" is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
@@ -218,7 +230,19 @@ this.ScenarioInitialize(scenarioInfo);
                 table2.AddRow(new string[] {
                             "LearningLanguageProficiencyLevel",
                             ""});
-#line 33
+                table2.AddRow(new string[] {
+                            "LearningGoalDailyMinutes",
+                            ""});
+                table2.AddRow(new string[] {
+                            "LearningGoalType",
+                            ""});
+                table2.AddRow(new string[] {
+                            "LearningGoalDescription",
+                            ""});
+                table2.AddRow(new string[] {
+                            "LearningGoalSkillsToImprove",
+                            ""});
+#line 37
     await testRunner.WhenAsync("I attempt to submit the profile details:", ((string)(null)), table2, "When ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
@@ -251,10 +275,22 @@ this.ScenarioInitialize(scenarioInfo);
                 table3.AddRow(new string[] {
                             "LearningLanguageProficiencyLevel",
                             "LearningLanguageProficiencyLevel is Required"});
-#line 46
+                table3.AddRow(new string[] {
+                            "LearningGoalDailyMinutes",
+                            "Daily study time must be at least 15 minutes"});
+                table3.AddRow(new string[] {
+                            "LearningGoalType",
+                            "Learning goal type must be selected"});
+                table3.AddRow(new string[] {
+                            "LearningGoalDescription",
+                            "Goal description must be provided"});
+                table3.AddRow(new string[] {
+                            "LearningGoalSkillsToImprove",
+                            "At least one skill must be selected"});
+#line 54
     await testRunner.ThenAsync("I should see the following error messages:", ((string)(null)), table3, "Then ");
 #line hidden
-#line 57
+#line 69
     await testRunner.AndAsync("my profile should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
@@ -269,7 +305,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Onboarding fails due to invalid SSO token", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 63
+#line 75
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -279,13 +315,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 64
+#line 76
     await testRunner.GivenAsync("an invalid SSO token is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 65
+#line 77
     await testRunner.ThenAsync("I should see an error message with 401 code", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 66
+#line 78
     await testRunner.AndAsync("my profile should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }

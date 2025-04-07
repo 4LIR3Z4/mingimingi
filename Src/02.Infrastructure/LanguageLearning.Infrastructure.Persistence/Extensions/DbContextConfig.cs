@@ -1,5 +1,9 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
+using LanguageLearning.Core.Application.UserProfiles.EventHandler;
+using LanguageLearning.Core.Domain.UserProfiles.Events;
 using LanguageLearning.Infrastructure.Persistence.DataContext;
+using LanguageLearning.Infrastructure.Persistence.Framework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,5 +20,17 @@ public static class DbContextConfig
                 sqlServerOptions.EnableRetryOnFailure(3, TimeSpan.FromSeconds(5), null);
             })
             );
+        services.AddSingleton<IDomainEventDispatcher>(sp =>
+        {
+            var dispatcher = new DomainEventDispatcher();
+            var emailService = sp.GetRequiredService<IEmailService>();
+
+            dispatcher.RegisterHandler<ProfileCreatedEvent>(async (domainEvent, cancellationToken) =>
+            {
+                var handler = new ProfileCreatedEmailHandler(emailService);
+                await handler.Handle(domainEvent, cancellationToken);
+            });
+            return (IDomainEventDispatcher)dispatcher;
+        });
     }
 }

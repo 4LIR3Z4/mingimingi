@@ -1,6 +1,5 @@
-﻿global using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
-global using LanguageLearning.Core.Domain.Framework;
-global using FluentValidation;
-global using MediatR;
-global using Microsoft.EntityFrameworkCore;
+﻿global using FluentValidation;
 global using LanguageLearning.Core.Application.Common.Abstractions;
+global using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
+global using LanguageLearning.Core.Domain.Framework;
+global using Microsoft.EntityFrameworkCore;

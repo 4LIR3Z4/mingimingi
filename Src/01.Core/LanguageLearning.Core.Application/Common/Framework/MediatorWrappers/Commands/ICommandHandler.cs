@@ -1,11 +1,12 @@
 ﻿namespace LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
 
-public interface ICommandHandler<TCommand> : IRequestHandler<TCommand, Result>
+public interface ICommandHandler<TCommand> 
     where TCommand : ICommand
 {
 }
 
-public interface ICommandHandler<TCommand, TResponse> : IRequestHandler<TCommand, Result<TResponse>>
+public interface ICommandHandler<TCommand, TResponse>
     where TCommand : ICommand<TResponse>
 {
+    Task<Result<TResponse>> Handle(TCommand command, CancellationToken cancellationToken);
 }
