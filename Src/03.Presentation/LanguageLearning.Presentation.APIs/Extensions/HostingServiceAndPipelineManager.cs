@@ -5,6 +5,7 @@ using LanguageLearning.Infrastructure.Persistence.Extensions;
 using LanguageLearning.Infrastructure.Security.Extensions;
 using LanguageLearning.Infrastructure.Services.Extensions;
 using LanguageLearning.Infrastructure.Caching.Extensions;
+using LanguageLearning.Infrastructure.IdGenerator.Extensions;
 using LanguageLearning.Presentation.API.Framework;
 using LanguageLearning.Presentation.API.ServiceCollectionManager;
 using Microsoft.AspNetCore.Authentication;
@@ -22,11 +23,11 @@ public static class HostingServiceAndPipelineManager
 
         builder.Services.InitApplication();
         builder.Services.AddExceptionHandler<ExceptionHandler>();
-        builder.Services.RegisterInfraServices(builder.Configuration);
         builder.Services.ConfigDbContext(builder.Configuration);
         builder.Services.ConfigureSecurity(builder.Configuration);
         builder.Services.ConfigureHttpClients();
         builder.Services.ConfigureCaching();
+        builder.Services.RegisterSnowflakeIdGeneratorService(1);
         builder.Services.AddControllers();
         builder.Services.AddOpenApi(options =>
         {
@@ -59,6 +60,7 @@ public static class HostingServiceAndPipelineManager
         {
             config.ReadFrom.Configuration(hostContext.Configuration);
         });
+        builder.Services.RegisterInfraServices(builder.Configuration);
         return builder.Build();
     }
 

@@ -115,56 +115,56 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
     await testRunner.GivenAsync("a valid \"SSO token\" is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "FirstName",
                             "Alice"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LastName",
                             "Johnson"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Age",
                             "25"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Gender",
                             "Female"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "NativeLanguage",
                             "Farsi"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Hobbies",
                             "Reading, Cycling"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "CountryOfOrigin",
                             "United States"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "CurrentCountry",
                             "Canada"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Interests",
                             "Travel, Culture"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LearningLanguage",
                             "English"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LearningLanguageProficiencyLevel",
                             "Beginner"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LearningGoalDailyMinutes",
                             "60"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LearningGoalType",
                             "Exam Preparation"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LearningGoalDescription",
                             "IELTS Band 8"});
-                table1.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LearningGoalSkillsToImprove",
                             "Speaking, Writing"});
 #line 12
-    await testRunner.WhenAsync("I provide the following profile details:", ((string)(null)), table1, "When ");
+    await testRunner.WhenAsync("I provide the following profile details:", ((string)(null)), table12, "When ");
 #line hidden
 #line 29
     await testRunner.ThenAsync("my profile should be created successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
@@ -194,101 +194,101 @@ this.ScenarioInitialize(scenarioInfo);
 #line 36
     await testRunner.GivenAsync("a valid \"SSO token\" is provided", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "FirstName",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LastName",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Age",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Gender",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "NativeLanguage",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Hobbies",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "CountryOfOrigin",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "CurrentCountry",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Interests",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LearningLanguage",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LearningLanguageProficiencyLevel",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LearningGoalDailyMinutes",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LearningGoalType",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LearningGoalDescription",
                             ""});
-                table2.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LearningGoalSkillsToImprove",
                             ""});
 #line 37
-    await testRunner.WhenAsync("I attempt to submit the profile details:", ((string)(null)), table2, "When ");
+    await testRunner.WhenAsync("I attempt to submit the profile details:", ((string)(null)), table13, "When ");
 #line hidden
-                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Error Message"});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "FirstName",
                             "FirstName must be provided."});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LastName",
                             "LastName must be provided."});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Age",
                             "Age must be a positive integer."});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Gender",
                             "Gender must be specified as Male or Female."});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "NativeLanguage",
                             "NativeLanguage must be provided."});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Interests",
                             "At least one interest must be provided."});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Hobbies",
                             "At least one hobby must be provided."});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LearningLanguage",
                             "LearningLanguage is Required"});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LearningLanguageProficiencyLevel",
                             "LearningLanguageProficiencyLevel is Required"});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LearningGoalDailyMinutes",
                             "Daily study time must be at least 15 minutes"});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LearningGoalType",
                             "Learning goal type must be selected"});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LearningGoalDescription",
                             "Goal description must be provided"});
-                table3.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LearningGoalSkillsToImprove",
                             "At least one skill must be selected"});
 #line 54
-    await testRunner.ThenAsync("I should see the following error messages:", ((string)(null)), table3, "Then ");
+    await testRunner.ThenAsync("I should see the following error messages:", ((string)(null)), table14, "Then ");
 #line hidden
 #line 69
     await testRunner.AndAsync("my profile should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
