@@ -66,8 +66,8 @@ public sealed class UserProfile : BaseAggregateRoot<long>
             new List<UserInterest>()
         );
 
-        userProfile.UserHobbies = hobbies.Select(hobby => new UserHobby { UserProfile = userProfile, Hobby = hobby }).ToList();
-        userProfile.UserInterests = interests.Select(interest => new UserInterest { UserProfile = userProfile, Interest = interest }).ToList();
+        userProfile.UserHobbies = hobbies.Select(hobby => new UserHobby { Hobby = hobby }).ToList();
+        userProfile.UserInterests = interests.Select(interest => new UserInterest { Interest = interest }).ToList();
         userProfile.AddDomainEvent(new ProfileCreatedEvent(userProfile.Id));
         return userProfile;
     }
