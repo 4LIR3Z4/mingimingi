@@ -4,10 +4,10 @@ namespace LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 public sealed class FirstName : BaseValueObject
 {
     public string Value { get; private set; }
-    public FirstName(string value)
+    public FirstName(string input)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(value, nameof(value));
-        Value = Value!.Trim();
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(input, nameof(input));
+        Value = input!.Trim();
         if (Value.Length > UserProfileConstant.FirstNameMaxLength)
         {
             throw new ArgumentException($"First name cannot exceed {UserProfileConstant.FirstNameMaxLength} characters.", nameof(Value));
