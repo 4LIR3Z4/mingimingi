@@ -67,7 +67,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADR", "ADR", "{FD9FA56E-4AB
 	ProjectSection(SolutionItems) = preProject
 		Docs\ADR\Decision on Choosing SQL Server for Database.md = Docs\ADR\Decision on Choosing SQL Server for Database.md
 		Docs\ADR\Decision on Using Clean Architecture.md = Docs\ADR\Decision on Using Clean Architecture.md
-		Docs\ADR\Decision on Using MediatR for CQRS.md = Docs\ADR\Decision on Using MediatR for CQRS.md
+		Docs\ADR\Decision on Using CQS.md = Docs\ADR\Decision on Using CQS.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLearning.AcceptanceTests", "Tests\Behaviour\LanguageLearning.AcceptanceTests\LanguageLearning.AcceptanceTests.csproj", "{204F5375-2FCE-40C9-A5EA-DBB227CCC553}"
