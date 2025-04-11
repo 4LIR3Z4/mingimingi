@@ -7,13 +7,13 @@ public sealed class Language : BaseAggregateRoot<int>
     public string Code { get; private set; } = string.Empty;
     private readonly List<ProficiencyExam> _SupportedExams = new();
     public IReadOnlyList<ProficiencyExam> SupportedExams => _SupportedExams.AsReadOnly();
-    private Language(string code, string name)
+    private Language(int id, string code, string name) : base(id)
     {
-        Code = code.ToUpperInvariant();
+        Code = code;
         Name = name;
     }
     private Language() { }
-    public static Language Create(string code, string name)
+    public static Language Create(int id, string code, string name)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Language name cannot be null or empty.", nameof(name));
@@ -26,7 +26,7 @@ public sealed class Language : BaseAggregateRoot<int>
         if (name.Length > LanguageConstants.NameMaxLength)
             throw new ArgumentException($"Language name must be at most {LanguageConstants.NameMaxLength} characters long.", nameof(name));
 
-        return new Language(name.Trim(), code.Trim().ToUpperInvariant());
+        return new Language(id, name.Trim(), code.Trim().ToUpperInvariant());
     }
     public void AddExam(string examName)
     {

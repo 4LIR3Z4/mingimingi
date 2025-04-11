@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Infrastructure.Caching;
 using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
+using LanguageLearning.Core.Application.Common.Extensions;
 
 namespace LanguageLearning.AcceptanceTests.StepDefinitions;
 
@@ -21,7 +23,7 @@ public class NewUserOnboardingStepDefinitions
 {
 
     private Result<CreateProfileResponse>? _commandResult;
-    private CreateProfileRequest _profileRequest = null;
+    private CreateProfileRequest _profileRequest;
     private readonly IIdentityService _identityService;
     private readonly IDbContext _dbContext;
     private readonly IIdGenerator _idGenerator;
@@ -30,13 +32,16 @@ public class NewUserOnboardingStepDefinitions
     private readonly TimeProvider _timeProvider = TimeProvider.System;
     public NewUserOnboardingStepDefinitions()
     {
-
-        var serviceProvider = new ServiceCollection()
+        _profileRequest = new();
+        var serviceCollection = new ServiceCollection();
+        DependencyInjection.InitApplication(serviceCollection);
+        var serviceProvider = serviceCollection
             .AddScoped<IDbContext, MockDbContext>()
             .AddScoped<IIdentityService, MockIdentity>()
-            .AddScoped<IIdGenerator, SnowflakeIdGenerator>()
-            .AddScoped<IReferenceDataCache, ReferenceDataCache>()
+            .AddScoped<IIdGenerator, MockIdGenerator>()
+            .AddScoped<IReferenceDataCache, MockReferenceDataCache>()
             .AddScoped<ICommandDispatcher, CommandDispatcher>()
+            .AddSingleton(TimeProvider.System)
             .BuildServiceProvider();
 
         _identityService = serviceProvider.GetRequiredService<IIdentityService>();
@@ -87,12 +92,13 @@ public class NewUserOnboardingStepDefinitions
     }
 
     [When("the user profile is created")]
-    public async void WhenTheUserProfileIsCreated()
+    public async Task WhenTheUserProfileIsCreated()
     {
-        
+
         var command = new CreateUserProfileCommand(_profileRequest);
-        _commandResult = await _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>(command, CancellationToken.None);
-        
+        _commandResult = await _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>
+            (command, CancellationToken.None);
+
     }
 
     [Then("the profile should be saved successfully")]

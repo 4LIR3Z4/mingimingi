@@ -21,11 +21,11 @@ internal class MockDbContext : IDbContext
         UserProfiles = mockUserProfiles.Object;
     }
 
-    public DbSet<UserProfile> UserProfiles { get; set; }
-    public DbSet<Hobby> Hobbies { get; set; }
-    public DbSet<Interest> Interests { get; set; }
-    public DbSet<Language> Languages { get; set; }
-    public DbSet<Country> Countries { get; set; }
+    public DbSet<UserProfile> UserProfiles { get; set; } = null!;
+    public DbSet<Hobby> Hobbies { get; set; } = null!;
+    public DbSet<Interest> Interests { get; set; } = null!;
+    public DbSet<Language> Languages { get; set; } = null!;
+    public DbSet<Country> Countries { get; set; } = null!;
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

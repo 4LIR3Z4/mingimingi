@@ -1,11 +1,11 @@
 ﻿using LanguageLearning.Core.Domain.UserProfiles.Entities;
 
 namespace LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
-public record CreateProfileResponse(int ProfileId);
+public record CreateProfileResponse(long ProfileId);
 public static class CreateProfileResponseExtensions
 {
     public static CreateProfileResponse ToCreateProfileResponseDto(this UserProfile userProfile)
     {
-        throw new NotImplementedException();
+        return new CreateProfileResponse(userProfile.Id);
     }
 }
