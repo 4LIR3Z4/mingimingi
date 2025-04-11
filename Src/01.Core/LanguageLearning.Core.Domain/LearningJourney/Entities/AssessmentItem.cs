@@ -2,7 +2,7 @@
 
 namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
 
-public class AssessmentItem : BaseEntity<long>
+public sealed class AssessmentItem : BaseEntity<long>
 {
     public string Question { get; private set; } = null!;
     public string CorrectAnswer { get; private set; } = null!;

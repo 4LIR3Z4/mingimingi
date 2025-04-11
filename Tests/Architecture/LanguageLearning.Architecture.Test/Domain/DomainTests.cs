@@ -13,7 +13,7 @@ public class DomainTests
     {
         TestResult result = Types.InAssembly(Layers.DomainAssembly)
             .That()
-            .Inherit(typeof(IDomainEvent))
+            .ImplementInterface(typeof(IDomainEvent))
             .Should()
             .BeSealed()
             .GetResult();
@@ -35,11 +35,11 @@ public class DomainTests
     }
 
     [Fact]
-    public void Entities_ShouldHave_PrivateParameterlessConstructor()
+    public void AggregateRoots_ShouldHave_PrivateParameterlessConstructor()
     {
         IEnumerable<Type> entityTypes = Types.InAssembly(Layers.DomainAssembly)
             .That()
-            .Inherit(typeof(BaseEntity<>))
+            .Inherit(typeof(BaseAggregateRoot<>))
             .And()
             .AreNotAbstract()
             .GetTypes();
@@ -59,13 +59,13 @@ public class DomainTests
         failingTypes.Should().BeEmpty();
     }
     [Fact]
-    public void Entities_Should_Have_PrivateSetter()
+    public void AggregateRoots_Should_Have_PrivateSetter()
     {
         var entityTypes = Types.InAssembly(Layers.DomainAssembly)
             .That()
             .AreClasses()
             .And()
-            .Inherit(typeof(BaseEntity<>))
+            .Inherit(typeof(BaseAggregateRoot<>))
             .GetTypes();
 
         foreach (var entityType in entityTypes)
@@ -81,5 +81,17 @@ public class DomainTests
                 }
             }
         }
+    }
+    [Fact]
+    public void Entities_Should_BeSealed()
+    {
+        TestResult result = Types.InAssembly(Layers.DomainAssembly)
+            .That()
+            .Inherit(typeof(BaseEntity<>))
+            .Should()
+            .BeSealed()
+            .GetResult();
+
+        result.IsSuccessful.Should().BeTrue();
     }
 }

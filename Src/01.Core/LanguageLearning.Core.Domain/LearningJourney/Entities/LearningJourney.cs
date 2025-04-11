@@ -7,7 +7,7 @@ public class LearningJourney : BaseAggregateRoot<long>
     public long UserId { get; private set; }
     public int LanguageId { get; private set; }
     public LearningTarget LearningTarget { get; private set; }
-    public DateTimeOffset CreatedDate { get; }
+    public DateTimeOffset CreatedDate { get; private set; }
     private readonly List<LearningGoal> _goals;
     public IReadOnlyCollection<LearningGoal> Goals => _goals.AsReadOnly();
     private readonly List<LanguageProficiency> _proficiencyHistory;

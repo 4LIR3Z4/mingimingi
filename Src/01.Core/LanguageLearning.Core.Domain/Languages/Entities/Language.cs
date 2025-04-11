@@ -3,8 +3,8 @@
 namespace LanguageLearning.Core.Domain.Languages.Entities;
 public sealed class Language : BaseAggregateRoot<int>
 {
-    public string Name { get; init; } = string.Empty;
-    public string Code { get; init; } = string.Empty;
+    public string Name { get; private set; } = string.Empty;
+    public string Code { get; private set; } = string.Empty;
     private readonly List<ProficiencyExam> _SupportedExams = new();
     public IReadOnlyList<ProficiencyExam> SupportedExams => _SupportedExams.AsReadOnly();
     private Language(string code, string name)

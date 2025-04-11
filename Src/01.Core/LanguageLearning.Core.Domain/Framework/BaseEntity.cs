@@ -10,7 +10,7 @@ public abstract class BaseEntity<TId>
         Id = default(TId)!;
     }
     public virtual TId Id { get; private set; }
-    public byte[] RowVersion { get; set; } = [];
+    public byte[] RowVersion { get; private  set; } = [];
 
 
     public override bool Equals(object? obj)

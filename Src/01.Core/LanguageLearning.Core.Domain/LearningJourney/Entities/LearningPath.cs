@@ -1,7 +1,7 @@
 ﻿using LanguageLearning.Core.Domain.LearningJourney.Enums;
 
 namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
-public class LearningPath : BaseEntity<long>
+public sealed class LearningPath : BaseEntity<long>
 {
     public DateTimeOffset CreatedDate { get; private set; }
     public PathStatus Status { get; private set; }

@@ -1,7 +1,7 @@
 ﻿using LanguageLearning.Core.Domain.SharedKernel.Constants;
 
 namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
-public class Hobby : BaseEntity<int>
+public sealed class Hobby : BaseEntity<int>
 {
     public string Name { get; private set; } = string.Empty;
     private Hobby(string name)

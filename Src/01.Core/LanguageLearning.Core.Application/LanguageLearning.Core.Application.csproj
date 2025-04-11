@@ -10,7 +10,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\Extensions\" />
     <Folder Include="UserProfiles\Queries\" />
   </ItemGroup>
   <ItemGroup>

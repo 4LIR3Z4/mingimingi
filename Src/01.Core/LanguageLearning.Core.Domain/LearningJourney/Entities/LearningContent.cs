@@ -2,7 +2,7 @@
 
 namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
 
-public class LearningContent : BaseEntity<long>
+public sealed class LearningContent : BaseEntity<long>
 {
     public SkillType SkillType { get; private set; }
     public string Title { get; private set; } = null!;

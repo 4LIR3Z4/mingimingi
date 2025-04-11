@@ -2,7 +2,7 @@
 using LanguageLearning.Core.Domain.LearningJourney.Enums;
 
 namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
-public class LearningGoal : BaseEntity<int>
+public sealed class LearningGoal : BaseEntity<int>
 {
     public SkillType Skill { get; private set; }
     public int PracticePerDayMinutes { get; private set; }

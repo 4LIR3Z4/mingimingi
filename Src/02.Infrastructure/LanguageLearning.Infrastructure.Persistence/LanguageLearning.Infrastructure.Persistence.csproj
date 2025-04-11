@@ -76,6 +76,7 @@
     <ProjectReference Include="..\..\01.Core\LanguageLearning.Core.Domain\LanguageLearning.Core.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Framework\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>

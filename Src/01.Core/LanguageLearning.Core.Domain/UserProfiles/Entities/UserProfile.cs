@@ -8,7 +8,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
 {
     public FirstName FirstName { get; private set; } = null!;
     public LastName LastName { get; private set; } = null!;
-    public Age Age { get; private set; } = null!;
+    public Birthdate Birthdate { get; private set; } = null!;
     public GenderType Gender { get; private set; }
     public int NativeLanguageId { get; private set; }
     public Country CountryOfOrigin { get; private set; } = null!;
@@ -19,7 +19,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
         long id,
         FirstName firstName,
         LastName lastName,
-        Age age,
+        Birthdate birthdate,
         GenderType gender,
         int nativeLanguageId,
         Country countryOfOrigin,
@@ -30,7 +30,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
     {
         FirstName = firstName;
         LastName = lastName;
-        Age = age;
+        Birthdate = birthdate;
         Gender = gender;
         NativeLanguageId = nativeLanguageId;
         UserHobbies = userHobbies;
@@ -43,7 +43,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
         long id,
         FirstName firstName,
         LastName lastName,
-        Age age,
+        Birthdate birthdate,
         GenderType gender,
         int nativeLanguageId,
         Country countryOfOrigin,
@@ -57,7 +57,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
             id,
             firstName,
             lastName,
-            age,
+            birthdate,
             gender,
             nativeLanguageId,
             countryOfOrigin,

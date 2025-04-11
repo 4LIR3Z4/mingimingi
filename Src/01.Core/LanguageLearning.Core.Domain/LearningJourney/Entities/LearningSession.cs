@@ -2,7 +2,7 @@
 
 namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
 
-public class LearningSession : BaseEntity<long>
+public sealed class LearningSession : BaseEntity<long>
 {
     public DateTimeOffset CreatedDate { get; private set; }
     public DateTimeOffset FinishedDate { get; private set; }

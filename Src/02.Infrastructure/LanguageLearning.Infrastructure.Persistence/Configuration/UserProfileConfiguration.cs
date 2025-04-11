@@ -22,7 +22,7 @@ public sealed class UserProfileConfiguration : IEntityTypeConfiguration<UserProf
             .ValueGeneratedNever() // Id is provided during creation
             .HasColumnName("Id");
 
-        
+
         //builder.OwnsOne<LastName>(nameof(LastName), q =>
         //{
         //    q.Property(w => w.Value)
@@ -49,10 +49,10 @@ public sealed class UserProfileConfiguration : IEntityTypeConfiguration<UserProf
         //    .HasColumnName(nameof(Age));
         //});
 
-        builder.ComplexProperty(w => w.Age).IsRequired()
+        builder.ComplexProperty(w => w.Birthdate).IsRequired()
             .Property(q => q.Value)
-            .HasColumnName("Age")
-            .IsUnicode(false);
+            .HasColumnName("Birthdate");
+            
         builder.ComplexProperty(w => w.FirstName).IsRequired()
             .Property(q => q.Value)
             .HasColumnName("FirstName")

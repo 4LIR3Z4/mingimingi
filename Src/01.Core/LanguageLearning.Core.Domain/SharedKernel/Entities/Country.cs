@@ -1,7 +1,7 @@
 ﻿using LanguageLearning.Core.Domain.SharedKernel.Constants;
 
 namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
-public class Country : BaseEntity<int>
+public sealed class Country : BaseEntity<int>
 {
     public string Name { get; private set; } = string.Empty;
     public string IsoCode { get; private set; } = string.Empty;

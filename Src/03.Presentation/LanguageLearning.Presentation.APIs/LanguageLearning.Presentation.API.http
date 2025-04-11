@@ -1,0 +1,5 @@
+﻿@LanguageLearning.Presentation.API_HostAddress = https://localhost:7037
+
+GET {{LanguageLearning.Presentation.API_HostAddress}}/api/values
+
+###

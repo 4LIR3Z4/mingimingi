@@ -7,7 +7,8 @@ using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 
 namespace LanguageLearning.Core.Application.UserProfiles.Commands;
-public sealed class CreateUserProfileCommandHandler : ICommandHandler<CreateUserProfileCommand, CreateProfileResponse>
+internal sealed class CreateUserProfileCommandHandler : 
+    ICommandHandler<CreateUserProfileCommand, CreateProfileResponse>
 {
     private readonly IDbContext _context;
     private readonly IIdGenerator _idGenerator;
@@ -34,7 +35,7 @@ public sealed class CreateUserProfileCommandHandler : ICommandHandler<CreateUser
 
         var firstName = new FirstName(request.FirstName);
         var lastName = new LastName(request.LastName);
-        var age = new Age(request.Age);
+        var age = new Birthdate(DateTime.UtcNow.AddYears(-request.Age));
         var gender = (GenderType)request.Gender;
 
         var hobbiesTask = _referenceDataCache.GetHobbiesAsync(cancellationToken);
@@ -88,5 +89,5 @@ public sealed class CreateUserProfileCommandHandler : ICommandHandler<CreateUser
         return Result.Success<CreateProfileResponse>(newUserProfile.ToCreateProfileResponseDto());
     }
 
-    
+
 }

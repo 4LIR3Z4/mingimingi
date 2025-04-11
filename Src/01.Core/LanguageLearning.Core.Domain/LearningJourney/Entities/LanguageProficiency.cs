@@ -1,7 +1,7 @@
 ﻿using LanguageLearning.Core.Domain.LearningJourney.Enums;
 
 namespace LanguageLearning.Core.Domain.LearningJourney.Entities;
-public class LanguageProficiency : BaseEntity<int>
+public sealed class LanguageProficiency : BaseEntity<int>
 {
     public ProficiencyLevel ReadingProficiency { get; }
     public ProficiencyLevel WritingProficiency { get; }

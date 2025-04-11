@@ -6,7 +6,7 @@ public sealed class FirstName : BaseValueObject
     public string Value { get; private set; }
     public FirstName(string input)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(input, nameof(input));
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(input, nameof(FirstName));
         Value = input!.Trim();
         if (Value.Length > UserProfileConstant.FirstNameMaxLength)
         {

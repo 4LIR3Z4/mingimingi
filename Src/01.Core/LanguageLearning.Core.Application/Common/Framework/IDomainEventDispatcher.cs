@@ -1,6 +1,15 @@
 ﻿using LanguageLearning.Core.Domain.Framework.Events;
 
-namespace LanguageLearning.Infrastructure.Persistence.Framework;
+namespace LanguageLearning.Core.Application.Common.Framework;
+public interface IDomainEventDispatcher
+{
+    //void RegisterHandler<TDomainEvent>(IDomainEventHandler<TDomainEvent> handler)
+    //    where TDomainEvent : IDomainEvent;
+    void RegisterHandler<TDomainEvent>(Func<TDomainEvent, CancellationToken, Task> handler)
+        where TDomainEvent : IDomainEvent;
+    Task Publish<TDomainEvent>(TDomainEvent domainEvent, CancellationToken cancellationToken = default)
+        where TDomainEvent : IDomainEvent;
+}
 public class DomainEventDispatcher : IDomainEventDispatcher
 {
     private readonly Dictionary<Type, List<Func<IDomainEvent, CancellationToken, Task>>> _handlers

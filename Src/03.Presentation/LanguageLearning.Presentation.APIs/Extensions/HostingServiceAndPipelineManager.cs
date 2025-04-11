@@ -1,11 +1,10 @@
-﻿using LanguageLearning.Core.Application.Common.ServiceCollectionManager;
+﻿using LanguageLearning.Infrastructure.Caching.Extensions;
 using LanguageLearning.Infrastructure.HealthChecks.Extensions;
+using LanguageLearning.Infrastructure.IdGenerator.Extensions;
 using LanguageLearning.Infrastructure.Observability.Extensions;
 using LanguageLearning.Infrastructure.Persistence.Extensions;
 using LanguageLearning.Infrastructure.Security.Extensions;
 using LanguageLearning.Infrastructure.Services.Extensions;
-using LanguageLearning.Infrastructure.Caching.Extensions;
-using LanguageLearning.Infrastructure.IdGenerator.Extensions;
 using LanguageLearning.Presentation.API.Framework;
 using LanguageLearning.Presentation.API.ServiceCollectionManager;
 using Microsoft.AspNetCore.Authentication;
@@ -13,7 +12,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 using Serilog;
-
+using LanguageLearning.Core.Application.Common.Extensions;
 namespace LanguageLearning.Presentation.API.Extensions;
 
 public static class HostingServiceAndPipelineManager

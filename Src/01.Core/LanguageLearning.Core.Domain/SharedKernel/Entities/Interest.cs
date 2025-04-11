@@ -1,5 +1,5 @@
 ﻿namespace LanguageLearning.Core.Domain.SharedKernel.Entities;
-public class Interest : BaseEntity<int>
+public sealed class Interest : BaseEntity<int>
 {
     public string Name { get; private set; } = string.Empty;
     private Interest(string name)
