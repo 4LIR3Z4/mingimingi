@@ -11,7 +11,12 @@ public class MockIdentity : IIdentityService
         _authenticationResult = authenticationResult;
     }
 
-    public async Task<Result<bool>> ValidateSSOToken(string token)
+    public Task<string> RegisterUserAsync(string email, string password, string externalUserId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<Result<bool>> ValidateUserAsync(string email, string password)
     {
         if (_authenticationResult)
             return await Task.FromResult(Result.Success<bool>(true));

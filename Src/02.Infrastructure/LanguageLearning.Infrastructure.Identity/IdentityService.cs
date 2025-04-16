@@ -1,13 +1,16 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Domain.Framework;
-using Microsoft.Extensions.Configuration;
 
 namespace LanguageLearning.Infrastructure.Security;
-public class IdentityService(IConfiguration configuration) : IIdentityService
+public class IdentityService() : IIdentityService
 {
-    private readonly IConfiguration _configuration = configuration;
 
-    public async Task<Result<bool>> ValidateSSOToken(string token)
+    public Task<string> RegisterUserAsync(string email, string password, string externalUserId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<Result<bool>> ValidateUserAsync(string email, string password)
     {
         await Task.FromResult(0);
         throw new NotImplementedException();
