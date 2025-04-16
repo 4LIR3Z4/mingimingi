@@ -15,6 +15,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
     public Country CurrentCountry { get; private set; } = null!;
     public ICollection<UserHobby> UserHobbies { get; private set; } = null!;
     public ICollection<UserInterest> UserInterests { get; private set; } = null!;
+    public string IdentityUserId { get; private set; } = null!;
     private UserProfile(
         long id,
         FirstName firstName,
@@ -25,7 +26,8 @@ public sealed class UserProfile : BaseAggregateRoot<long>
         Country countryOfOrigin,
         Country currentCountry,
         List<UserHobby> userHobbies,
-        List<UserInterest> userInterests
+        List<UserInterest> userInterests,
+        string identityUserId
         ) : base(id)
     {
         FirstName = firstName;
@@ -37,6 +39,7 @@ public sealed class UserProfile : BaseAggregateRoot<long>
         CountryOfOrigin = countryOfOrigin;
         CurrentCountry = currentCountry;
         UserInterests = userInterests;
+        IdentityUserId = identityUserId;
     }
     private UserProfile() { }
     public static UserProfile Create(
@@ -49,7 +52,8 @@ public sealed class UserProfile : BaseAggregateRoot<long>
         Country countryOfOrigin,
         Country currentCountry,
         List<Hobby> hobbies,
-        List<Interest> interests
+        List<Interest> interests,
+        string identityUserId
         )
     {
         var userProfile = new UserProfile
@@ -63,7 +67,8 @@ public sealed class UserProfile : BaseAggregateRoot<long>
             countryOfOrigin,
             currentCountry,
             new List<UserHobby>(),
-            new List<UserInterest>()
+            new List<UserInterest>(),
+            identityUserId
         );
 
         userProfile.UserHobbies = hobbies.Select(hobby => new UserHobby { Hobby = hobby }).ToList();
