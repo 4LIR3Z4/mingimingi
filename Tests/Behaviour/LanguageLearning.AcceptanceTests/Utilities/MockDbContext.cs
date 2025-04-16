@@ -19,6 +19,38 @@ internal class MockDbContext : IDbContext
         });
 
         UserProfiles = mockUserProfiles.Object;
+
+        var mockHobbies = CreateMockDbSet(new List<Hobby>
+        {
+            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+        });
+
+        Hobbies = mockHobbies.Object;
+
+        var mockCountries = CreateMockDbSet(new List<Country>
+        {
+            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+        });
+
+        Countries = mockCountries.Object;
+
+        var mockInterests = CreateMockDbSet(new List<Interest>
+        {
+            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+        });
+
+        Interests = mockInterests.Object;
+
+        var mockLanguages = CreateMockDbSet(new List<Language>
+        {
+            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+        });
+
+        Languages = mockLanguages.Object;
     }
 
     public DbSet<UserProfile> UserProfiles { get; set; } = null!;
@@ -42,6 +74,8 @@ internal class MockDbContext : IDbContext
         mockSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(queryable.Expression);
         mockSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
         mockSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
+
+        
 
         mockSet.Setup(m => m.Add(It.IsAny<T>())).Callback<T>(data.Add);
 

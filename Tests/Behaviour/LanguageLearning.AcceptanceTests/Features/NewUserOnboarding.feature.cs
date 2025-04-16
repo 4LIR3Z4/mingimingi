@@ -154,14 +154,14 @@ this.ScenarioInitialize(scenarioInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with missing required fields")]
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with missing first name")]
         [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with missing required fields")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithMissingRequiredFields()
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with missing first name")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithMissingFirstName()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with missing required fields", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with missing first name", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -180,47 +180,53 @@ this.ScenarioInitialize(scenarioInfo);
                             ""});
                 table2.AddRow(new string[] {
                             "LastName",
-                            ""});
+                            "Doe"});
                 table2.AddRow(new string[] {
                             "Age",
-                            ""});
+                            "25"});
                 table2.AddRow(new string[] {
                             "Gender",
-                            ""});
+                            "0"});
                 table2.AddRow(new string[] {
                             "NativeLanguageId",
-                            ""});
+                            "1"});
                 table2.AddRow(new string[] {
                             "CountryOfOrigin",
-                            ""});
+                            "1"});
                 table2.AddRow(new string[] {
                             "CurrentCountry",
-                            ""});
+                            "1"});
+                table2.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table2.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
 #line 22
     await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table2, "Given ");
 #line hidden
-#line 31
+#line 33
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 32
+#line 34
     await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 33
-    await testRunner.AndAsync("an error message \"All fields are required\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 35
+    await testRunner.AndAsync("an error message \"FirstName is required\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid age")]
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with missing last name")]
         [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid age")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidAge()
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with missing last name")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithMissingLastName()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid age", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 35
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with missing last name", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 37
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -234,33 +240,57 @@ this.ScenarioInitialize(scenarioInfo);
                             "Field",
                             "Value"});
                 table3.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table3.AddRow(new string[] {
+                            "LastName",
+                            ""});
+                table3.AddRow(new string[] {
                             "Age",
-                            "-5"});
-#line 36
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table3, "Given ");
+                            "25"});
+                table3.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table3.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table3.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table3.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table3.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table3.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 38
+    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table3, "Given ");
 #line hidden
-#line 39
+#line 49
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 40
+#line 50
     await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 41
-    await testRunner.AndAsync("an error message \"Age must be a positive integer\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 51
+    await testRunner.AndAsync("an error message \"LastName is required\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid first name")]
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with missing hobbies")]
         [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid first name")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidFirstName()
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with missing hobbies")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithMissingHobbies()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid first name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 43
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with missing hobbies", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -275,32 +305,56 @@ this.ScenarioInitialize(scenarioInfo);
                             "Value"});
                 table4.AddRow(new string[] {
                             "FirstName",
-                            "12345"});
-#line 44
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table4, "Given ");
+                            "John"});
+                table4.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table4.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table4.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table4.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table4.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table4.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table4.AddRow(new string[] {
+                            "Hobbies",
+                            ""});
+                table4.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 54
+    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table4, "Given ");
 #line hidden
-#line 47
+#line 65
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 48
+#line 66
     await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 49
-    await testRunner.AndAsync("an error message \"FirstName must be a valid string\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 67
+    await testRunner.AndAsync("an error message \"At least one hobby must be provided\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid last name")]
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with missing interests")]
         [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid last name")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidLastName()
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with missing interests")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithMissingInterests()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid last name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 51
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with missing interests", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 69
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -314,33 +368,57 @@ this.ScenarioInitialize(scenarioInfo);
                             "Field",
                             "Value"});
                 table5.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table5.AddRow(new string[] {
                             "LastName",
-                            "67890"});
-#line 52
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table5, "Given ");
+                            "Doe"});
+                table5.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table5.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table5.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table5.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table5.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table5.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table5.AddRow(new string[] {
+                            "Interests",
+                            ""});
+#line 70
+    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table5, "Given ");
 #line hidden
-#line 55
+#line 81
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 56
+#line 82
     await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 57
-    await testRunner.AndAsync("an error message \"LastName must be a valid string\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 83
+    await testRunner.AndAsync("an error message \"At least one interest must be provided\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid gender")]
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid age")]
         [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid gender")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidGender()
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid age")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidAge()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid gender", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 59
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid age", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 85
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -354,18 +432,236 @@ this.ScenarioInitialize(scenarioInfo);
                             "Field",
                             "Value"});
                 table6.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table6.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table6.AddRow(new string[] {
+                            "Age",
+                            "-25"});
+                table6.AddRow(new string[] {
                             "Gender",
-                            "Alien"});
-#line 60
+                            "0"});
+                table6.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table6.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table6.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table6.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table6.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 86
     await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table6, "Given ");
 #line hidden
-#line 63
+#line 97
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 64
+#line 98
     await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 65
+#line 99
+    await testRunner.AndAsync("an error message \"Age must be greater than 3\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid first name")]
+        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid first name")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidFirstName()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid first name", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 101
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table7.AddRow(new string[] {
+                            "FirstName",
+                            "1"});
+                table7.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table7.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table7.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table7.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table7.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table7.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table7.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table7.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 102
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table7, "Given ");
+#line hidden
+#line 113
+    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 114
+    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 115
+    await testRunner.AndAsync("an error message \"FirstName must contain only alphabetic characters\" should be di" +
+                        "splayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid last name")]
+        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid last name")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidLastName()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid last name", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 117
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table8.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table8.AddRow(new string[] {
+                            "LastName",
+                            "2"});
+                table8.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table8.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table8.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table8.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table8.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table8.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table8.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 118
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table8, "Given ");
+#line hidden
+#line 129
+    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 130
+    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 131
+    await testRunner.AndAsync("an error message \"LastName must contain only alphabetic characters\" should be dis" +
+                        "played", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid gender")]
+        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid gender")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidGender()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid gender", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 133
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table9.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table9.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table9.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table9.AddRow(new string[] {
+                            "Gender",
+                            "-20"});
+                table9.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table9.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table9.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table9.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table9.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 134
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table9, "Given ");
+#line hidden
+#line 145
+    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 146
+    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 147
     await testRunner.AndAsync("an error message \"Gender must be one of the predefined values\" should be displaye" +
                         "d", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
@@ -381,128 +677,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid native language ID", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 67
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
-                            "Field",
-                            "Value"});
-                table7.AddRow(new string[] {
-                            "NativeLanguageId",
-                            "-1"});
-#line 68
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table7, "Given ");
-#line hidden
-#line 71
-    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 72
-    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 73
-    await testRunner.AndAsync("an error message \"NativeLanguageId must be a positive integer\" should be displaye" +
-                        "d", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid country of origin")]
-        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid country of origin")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidCountryOfOrigin()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid country of origin", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 75
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
-                            "Field",
-                            "Value"});
-                table8.AddRow(new string[] {
-                            "CountryOfOrigin",
-                            "XYZ"});
-#line 76
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table8, "Given ");
-#line hidden
-#line 79
-    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 80
-    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 81
-    await testRunner.AndAsync("an error message \"CountryOfOrigin must be a valid country\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid current country")]
-        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid current country")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidCurrentCountry()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid current country", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 83
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
-                            "Field",
-                            "Value"});
-                table9.AddRow(new string[] {
-                            "CurrentCountry",
-                            "ABC"});
-#line 84
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table9, "Given ");
-#line hidden
-#line 87
-    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 88
-    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 89
-    await testRunner.AndAsync("an error message \"CurrentCountry must be a valid country\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid hobbies")]
-        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid hobbies")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidHobbies()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid hobbies", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 91
+#line 149
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -516,34 +691,57 @@ this.ScenarioInitialize(scenarioInfo);
                             "Field",
                             "Value"});
                 table10.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table10.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table10.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table10.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table10.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "-31"});
+                table10.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table10.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table10.AddRow(new string[] {
                             "Hobbies",
-                            "123, Invalid"});
-#line 92
+                            "2, 4"});
+                table10.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 150
     await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table10, "Given ");
 #line hidden
-#line 95
+#line 161
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 96
+#line 162
     await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 97
-    await testRunner.AndAsync("an error message \"Hobbies must be a list of valid hobby names\" should be displaye" +
-                        "d", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 163
+    await testRunner.AndAsync("an error message \"Native language ID must be greater than 0\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid interests")]
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid country of origin")]
         [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
-        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid interests")]
-        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidInterests()
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid country of origin")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidCountryOfOrigin()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid interests", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 99
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid country of origin", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 165
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -557,20 +755,236 @@ this.ScenarioInitialize(scenarioInfo);
                             "Field",
                             "Value"});
                 table11.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table11.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table11.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table11.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table11.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table11.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "-81"});
+                table11.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table11.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table11.AddRow(new string[] {
                             "Interests",
-                            "456, Invalid"});
-#line 100
+                            "1, 2, 5"});
+#line 166
     await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table11, "Given ");
 #line hidden
-#line 103
+#line 177
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 104
+#line 178
     await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 105
-    await testRunner.AndAsync("an error message \"Interests must be a list of valid interest names\" should be dis" +
-                        "played", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 179
+    await testRunner.AndAsync("an error message \"Country of origin ID must be greater than 0\" should be displaye" +
+                        "d", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid current country")]
+        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid current country")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidCurrentCountry()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid current country", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 181
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table12.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table12.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table12.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table12.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table12.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table12.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table12.AddRow(new string[] {
+                            "CurrentCountry",
+                            "-91"});
+                table12.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table12.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 182
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table12, "Given ");
+#line hidden
+#line 193
+    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 194
+    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 195
+    await testRunner.AndAsync("an error message \"Current country ID must be greater than 0\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid hobbies")]
+        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid hobbies")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidHobbies()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid hobbies", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 197
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table13.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table13.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table13.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table13.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table13.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table13.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table13.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table13.AddRow(new string[] {
+                            "Hobbies",
+                            "2, -4"});
+                table13.AddRow(new string[] {
+                            "Interests",
+                            "1, 2, 5"});
+#line 198
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table13, "Given ");
+#line hidden
+#line 209
+    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 210
+    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 211
+    await testRunner.AndAsync("an error message \"Each hobby ID must be greater than 0\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Fail to create a user profile with invalid interests")]
+        [Xunit.TraitAttribute("FeatureTitle", "NewUserOnboarding")]
+        [Xunit.TraitAttribute("Description", "Fail to create a user profile with invalid interests")]
+        public async System.Threading.Tasks.Task FailToCreateAUserProfileWithInvalidInterests()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Fail to create a user profile with invalid interests", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 213
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table14.AddRow(new string[] {
+                            "FirstName",
+                            "John"});
+                table14.AddRow(new string[] {
+                            "LastName",
+                            "Doe"});
+                table14.AddRow(new string[] {
+                            "Age",
+                            "25"});
+                table14.AddRow(new string[] {
+                            "Gender",
+                            "0"});
+                table14.AddRow(new string[] {
+                            "NativeLanguageId",
+                            "1"});
+                table14.AddRow(new string[] {
+                            "CountryOfOrigin",
+                            "1"});
+                table14.AddRow(new string[] {
+                            "CurrentCountry",
+                            "1"});
+                table14.AddRow(new string[] {
+                            "Hobbies",
+                            "2, 4"});
+                table14.AddRow(new string[] {
+                            "Interests",
+                            "1, -2, 5"});
+#line 214
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table14, "Given ");
+#line hidden
+#line 225
+    await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 226
+    await testRunner.ThenAsync("the profile creation should fail", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 227
+    await testRunner.AndAsync("an error message \"Each interest ID must be greater than 0\" should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

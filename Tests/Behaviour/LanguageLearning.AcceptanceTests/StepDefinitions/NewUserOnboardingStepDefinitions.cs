@@ -1,19 +1,16 @@
-using LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
-using LanguageLearning.Core.Application.UserProfiles.Commands;
-using LanguageLearning.Core.Domain.SharedKernel.Entities;
-using LanguageLearning.Core.Domain.UserProfiles.Entities;
-using LanguageLearning.Core.Domain.UserProfiles.Enums;
-using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
-using LanguageLearning.Core.Domain.Framework;
 using LanguageLearning.AcceptanceTests.Utilities;
 using LanguageLearning.Core.Application.Common.Abstractions;
-using LanguageLearning.Infrastructure.IdGenerator;
-using Microsoft.Extensions.DependencyInjection;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
-using LanguageLearning.Infrastructure.Caching;
-using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
-using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
 using LanguageLearning.Core.Application.Common.Extensions;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+using LanguageLearning.Core.Application.UserProfiles.Commands;
+using LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
+using LanguageLearning.Core.Domain.Framework;
+using LanguageLearning.Core.Domain.UserProfiles.Enums;
+using LanguageLearning.Infrastructure.Caching;
+using LanguageLearning.Infrastructure.Caching.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel.DataAnnotations;
 
 namespace LanguageLearning.AcceptanceTests.StepDefinitions;
 
@@ -24,6 +21,7 @@ public class NewUserOnboardingStepDefinitions
 
     private Result<CreateProfileResponse>? _commandResult;
     private CreateProfileRequest _profileRequest;
+    private string _createUserProfileValidationResult;
     private readonly IIdentityService _identityService;
     private readonly IDbContext _dbContext;
     private readonly IIdGenerator _idGenerator;
@@ -35,6 +33,7 @@ public class NewUserOnboardingStepDefinitions
         _profileRequest = new();
         var serviceCollection = new ServiceCollection();
         DependencyInjection.InitApplication(serviceCollection);
+        CacheConfig.ConfigureCaching(serviceCollection);
         var serviceProvider = serviceCollection
             .AddScoped<IDbContext, MockDbContext>()
             .AddScoped<IIdentityService, MockIdentity>()
@@ -54,27 +53,35 @@ public class NewUserOnboardingStepDefinitions
     [Given("a user provides valid details:")]
     public void GivenAUserProvidesValidDetails(DataTable dataTable)
     {
+        GenerateUserProfile(dataTable);
+    }
+
+    private void GenerateUserProfile(DataTable dataTable)
+    {
         var data = dataTable.Rows
-        .ToDictionary(row => row["Field"].ToString(), row => row["Value"].ToString());
+                .ToDictionary(row => row["Field"].ToString(), row => row["Value"].ToString());
 
-        var firstName = data["FirstName"];
-        var lastName = data["LastName"];
-        int age = int.Parse(data["Age"]);
-        //var birthDate = new Birthdate(DateTime.UtcNow.AddYears(-age));
-        var gender = int.Parse(data["Gender"]);
-        var nativeLanguageId = int.Parse(data["NativeLanguageId"]);
-        var countryOfOrigin = int.Parse(data["CountryOfOrigin"]); // Assuming ISO code is not required
-        var currentCountry = int.Parse(data["CurrentCountry"]); // Assuming ISO code is not required
+        var firstName = data.ContainsKey("FirstName") ? data["FirstName"] : string.Empty;
+        var lastName = data.ContainsKey("LastName") ? data["LastName"] : string.Empty;
+        int age = data.ContainsKey("Age") ? int.Parse(data["Age"]) : 0;
+        var genderValue = data.ContainsKey("Gender") ? data["Gender"] : null;
+        int gender = -99;
+        if (!string.IsNullOrWhiteSpace(genderValue))
+        {
+            gender = int.Parse(genderValue);
+        }
 
-        var hobbies = data["Hobbies"]
-            .Split(", ")
-            .Select(q => int.Parse(q))
-            .ToList();
+        var nativeLanguageId = data.ContainsKey("NativeLanguageId") ? int.Parse(data["NativeLanguageId"]) : 0;
+        var countryOfOrigin = data.ContainsKey("CountryOfOrigin") ? int.Parse(data["CountryOfOrigin"]) : 0;
+        var currentCountry = data.ContainsKey("CurrentCountry") ? int.Parse(data["CurrentCountry"]) : 0;
 
-        var interests = data["Interests"]
-            .Split(", ")
-            .Select(q => int.Parse(q))
-            .ToList();
+        var hobbies = data.ContainsKey("Hobbies") && !string.IsNullOrWhiteSpace(data["Hobbies"])
+            ? data["Hobbies"].Split(", ").Select(q => int.Parse(q)).ToList()
+            : new List<int>();
+
+        var interests = data.ContainsKey("Interests") && !string.IsNullOrWhiteSpace(data["Interests"])
+            ? data["Interests"].Split(", ").Select(q => int.Parse(q)).ToList()
+            : new List<int>();
 
         _profileRequest = new()
         {
@@ -135,31 +142,45 @@ public class NewUserOnboardingStepDefinitions
     [Given("a user provides incomplete details:")]
     public void GivenAUserProvidesIncompleteDetails(DataTable dataTable)
     {
-        throw new PendingStepException();
+        GenerateUserProfile(dataTable);
     }
 
     [When("the user profile creation is attempted")]
-    public void WhenTheUserProfileCreationIsAttempted()
+    public async Task WhenTheUserProfileCreationIsAttempted()
     {
-        throw new PendingStepException();
+        var command = new CreateUserProfileCommand(_profileRequest);
+        try
+        {
+            _commandResult = await _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>
+                (command, CancellationToken.None);
+        }
+        catch(Exception ex)
+        {
+
+            _createUserProfileValidationResult = ((FluentValidation.ValidationException)ex).Errors.First().ErrorMessage;
+        }
     }
 
     [Then("the profile creation should fail")]
     public void ThenTheProfileCreationShouldFail()
     {
-        throw new PendingStepException();
+        Assert.Null(_commandResult); // Ensure the command result is not null
+        Assert.NotNull(_createUserProfileValidationResult);
+        Assert.False(string.IsNullOrWhiteSpace(_createUserProfileValidationResult), "No error message was provided for the failed profile creation.");
     }
 
     [Then("an error message {string} should be displayed")]
-    public void ThenAnErrorMessageShouldBeDisplayed(string p0)
+    public void ThenAnErrorMessageShouldBeDisplayed(string expectedErrorMessage)
     {
-        throw new PendingStepException();
+        
+        // Validate the error message
+        Assert.Equal(expectedErrorMessage, _createUserProfileValidationResult);
     }
 
     [Given("a user provides invalid details:")]
     public void GivenAUserProvidesInvalidDetails(DataTable dataTable)
     {
-        throw new PendingStepException();
+        GenerateUserProfile(dataTable);
     }
 }
 
