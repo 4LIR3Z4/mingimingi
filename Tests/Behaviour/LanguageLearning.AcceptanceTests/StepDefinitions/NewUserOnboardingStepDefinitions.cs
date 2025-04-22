@@ -1,6 +1,7 @@
 using LanguageLearning.AcceptanceTests.Utilities;
 using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
+using LanguageLearning.Core.Application.Common.Abstractions.Identity;
 using LanguageLearning.Core.Application.Common.Extensions;
 using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
 using LanguageLearning.Core.Application.UserProfiles.Commands;

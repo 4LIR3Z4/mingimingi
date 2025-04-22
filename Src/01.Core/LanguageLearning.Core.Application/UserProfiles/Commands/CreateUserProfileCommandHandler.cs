@@ -1,4 +1,5 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions.Caching;
+using LanguageLearning.Core.Application.Common.Abstractions.Identity;
 using LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
 using LanguageLearning.Core.Domain.LearningJourney.Entities;
 using LanguageLearning.Core.Domain.LearningJourney.Enums;
@@ -7,24 +8,27 @@ using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 
 namespace LanguageLearning.Core.Application.UserProfiles.Commands;
-internal sealed class CreateUserProfileCommandHandler : 
+internal sealed class CreateUserProfileCommandHandler :
     ICommandHandler<CreateUserProfileCommand, CreateProfileResponse>
 {
     private readonly IDbContext _context;
     private readonly IIdGenerator _idGenerator;
     private readonly IReferenceDataCache _referenceDataCache;
+    private readonly IIdentityService _identityService;
     private readonly TimeProvider _timeProvider;
     public CreateUserProfileCommandHandler(
         IDbContext context,
         IIdGenerator idGenerator,
         IReferenceDataCache referenceDataCache,
-        TimeProvider timeProvider
+        TimeProvider timeProvider,
+        IIdentityService identityService
         )
     {
         _context = context;
         _idGenerator = idGenerator;
         _referenceDataCache = referenceDataCache;
         _timeProvider = timeProvider;
+        _identityService = identityService;
     }
 
     public async Task<Result<CreateProfileResponse>> Handle(
@@ -71,7 +75,7 @@ internal sealed class CreateUserProfileCommandHandler :
             );
 
         var ProfileId = _idGenerator.GenerateId();
-
+        var identityUserId = await _identityService.RegisterUserAsync("", "", ProfileId.ToString());
         var newUserProfile = UserProfile.Create(ProfileId,
             firstName,
             lastName,
@@ -81,7 +85,8 @@ internal sealed class CreateUserProfileCommandHandler :
             countryOfOrigin,
             currentCountry,
             userHobbies,
-            userInterests
+            userInterests,
+            identityUserId
             );
 
         _context.UserProfiles.Add(newUserProfile);

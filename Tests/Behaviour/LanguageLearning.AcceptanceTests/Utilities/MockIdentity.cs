@@ -1,4 +1,4 @@
-﻿using LanguageLearning.Core.Application.Common.Abstractions;
+﻿using LanguageLearning.Core.Application.Common.Abstractions.Identity;
 using LanguageLearning.Core.Domain.Framework;
 
 namespace LanguageLearning.AcceptanceTests.Utilities;
@@ -11,7 +11,7 @@ public class MockIdentity : IIdentityService
         _authenticationResult = authenticationResult;
     }
 
-    public Task<string> RegisterUserAsync(string email, string password, string externalUserId)
+    public Task<string> RegisterUserAsync(string email, string password, string userProfileId)
     {
         throw new NotImplementedException();
     }
