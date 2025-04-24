@@ -75,7 +75,17 @@ internal sealed class CreateUserProfileCommandHandler :
             );
 
         var ProfileId = _idGenerator.GenerateId();
-        var identityUserId = await _identityService.RegisterUserAsync("", "", ProfileId.ToString());
+        var userRegistrationResponse = await _identityService.RegisterAsync(new RegistrationRequest()
+        {
+            Email = request.FirstName,
+            Password = request.LastName,
+            FirstName = request.FirstName,
+            LastName = request.LastName
+        });
+        if(userRegistrationResponse.IsFailure)
+        {
+            return Result.Failure<CreateProfileResponse>(userRegistrationResponse.Error);
+        }
         var newUserProfile = UserProfile.Create(ProfileId,
             firstName,
             lastName,
@@ -86,7 +96,7 @@ internal sealed class CreateUserProfileCommandHandler :
             currentCountry,
             userHobbies,
             userInterests,
-            identityUserId
+            userRegistrationResponse.Value.ExternalUserId
             );
 
         _context.UserProfiles.Add(newUserProfile);
