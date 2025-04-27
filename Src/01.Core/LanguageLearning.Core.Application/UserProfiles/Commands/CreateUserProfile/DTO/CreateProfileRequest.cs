@@ -1,6 +1,6 @@
 ﻿using LanguageLearning.Core.Domain.LearningJourney.Enums;
 
-namespace LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
+namespace LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
 public sealed class CreateProfileRequest
 {
     public long Id { get; set; }

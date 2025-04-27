@@ -1,13 +1,13 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Core.Application.Common.Abstractions.Identity;
-using LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
+using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
 using LanguageLearning.Core.Domain.LearningJourney.Entities;
 using LanguageLearning.Core.Domain.LearningJourney.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
 
-namespace LanguageLearning.Core.Application.UserProfiles.Commands;
+namespace LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile;
 internal sealed class CreateUserProfileCommandHandler :
     ICommandHandler<CreateUserProfileCommand, CreateProfileResponse>
 {
@@ -63,7 +63,7 @@ internal sealed class CreateUserProfileCommandHandler :
         var currentCountry = countries.FirstOrDefault(c => c.Id == request.CurrentCountry)
             ?? throw new InvalidOperationException("Invalid current country ID.");
 
-        ProficiencyLevel learningLanguageProficiencyLevel = (ProficiencyLevel)request.LearningLanguageProficiencyLevel;
+        ProficiencyLevel learningLanguageProficiencyLevel = request.LearningLanguageProficiencyLevel;
         var languageProficienciy = LanguageProficiency.Create(
             learningLanguageProficiencyLevel,
             learningLanguageProficiencyLevel,
@@ -101,7 +101,7 @@ internal sealed class CreateUserProfileCommandHandler :
 
         _context.UserProfiles.Add(newUserProfile);
         await _context.SaveChangesAsync(cancellationToken);
-        return Result.Success<CreateProfileResponse>(newUserProfile.ToCreateProfileResponseDto());
+        return Result.Success(newUserProfile.ToCreateProfileResponseDto());
     }
 
 

@@ -1,7 +1,7 @@
 ﻿using LanguageLearning.Core.Domain.UserProfiles.Constants;
 using LanguageLearning.Core.Domain.UserProfiles.Enums;
 
-namespace LanguageLearning.Core.Application.UserProfiles.Commands;
+namespace LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile;
 public sealed class CreateUserProfileCommandValidator : AbstractValidator<CreateUserProfileCommand>
 {
     public CreateUserProfileCommandValidator()

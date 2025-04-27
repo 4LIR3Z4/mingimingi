@@ -1,9 +1,6 @@
 ﻿using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
-using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Queries;
-using LanguageLearning.Core.Application.UserProfiles.Commands;
-using LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
-using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile;
+using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
 
 namespace LanguageLearning.Presentation.API.Controllers;
 //how to use valdiation :

@@ -1,8 +1,7 @@
-﻿using LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
-using LanguageLearning.Core.Application.UserProfiles.Commands;
-using Microsoft.AspNetCore.Http;
+﻿using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile;
+using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
 using Microsoft.AspNetCore.Mvc;
-using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
 
 namespace LanguageLearning.Presentation.API.Controllers;
 [Route("api/[controller]")]

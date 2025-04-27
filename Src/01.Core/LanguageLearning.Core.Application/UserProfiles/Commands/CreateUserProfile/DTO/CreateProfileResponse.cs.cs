@@ -1,6 +1,6 @@
 ﻿using LanguageLearning.Core.Domain.UserProfiles.Entities;
 
-namespace LanguageLearning.Core.Application.UserProfiles.Commands.DTO;
+namespace LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
 public record CreateProfileResponse(long ProfileId);
 public static class CreateProfileResponseExtensions
 {
