@@ -111,38 +111,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Age",
                             "25"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table1.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 7
-    await testRunner.GivenAsync("a user provides valid details:", ((string)(null)), table1, "Given ");
+    await testRunner.GivenAsync("a user provides valid details:", ((string)(null)), table5, "Given ");
 #line hidden
 #line 18
     await testRunner.WhenAsync("the user profile is created", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -172,38 +172,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "FirstName",
                             ""});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "Age",
                             "25"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table2.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 22
-    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table2, "Given ");
+    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table6, "Given ");
 #line hidden
 #line 33
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -236,38 +236,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "LastName",
                             ""});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Age",
                             "25"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table3.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 38
-    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table3, "Given ");
+    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table7, "Given ");
 #line hidden
 #line 49
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -300,38 +300,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Age",
                             "25"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Hobbies",
                             ""});
-                table4.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 54
-    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table4, "Given ");
+    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table8, "Given ");
 #line hidden
 #line 65
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -364,38 +364,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "Age",
                             "25"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table5.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "Interests",
                             ""});
 #line 70
-    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table5, "Given ");
+    await testRunner.GivenAsync("a user provides incomplete details:", ((string)(null)), table9, "Given ");
 #line hidden
 #line 81
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -428,38 +428,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table10 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Age",
                             "-25"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table6.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 86
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table6, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table10, "Given ");
 #line hidden
 #line 97
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -492,38 +492,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "FirstName",
                             "1"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Age",
                             "25"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table7.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 102
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table7, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table11, "Given ");
 #line hidden
 #line 113
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -557,38 +557,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "LastName",
                             "2"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Age",
                             "25"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table8.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 118
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table8, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table12, "Given ");
 #line hidden
 #line 129
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -622,38 +622,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Age",
                             "25"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Gender",
                             "-20"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 134
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table9, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table13, "Given ");
 #line hidden
 #line 145
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -687,38 +687,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table10 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Age",
                             "25"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "NativeLanguageId",
                             "-31"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 150
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table10, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table14, "Given ");
 #line hidden
 #line 161
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -751,38 +751,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table15 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Age",
                             "25"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "CountryOfOrigin",
                             "-81"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 166
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table11, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table15, "Given ");
 #line hidden
 #line 177
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -816,38 +816,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table16 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Age",
                             "25"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "CurrentCountry",
                             "-91"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 182
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table12, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table16, "Given ");
 #line hidden
 #line 193
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -880,38 +880,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table13 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table17 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "Age",
                             "25"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "Hobbies",
                             "2, -4"});
-                table13.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "Interests",
                             "1, 2, 5"});
 #line 198
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table13, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table17, "Given ");
 #line hidden
 #line 209
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -944,38 +944,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table14 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table18 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "FirstName",
                             "John"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "LastName",
                             "Doe"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "Age",
                             "25"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "Gender",
                             "0"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "NativeLanguageId",
                             "1"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "CountryOfOrigin",
                             "1"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "CurrentCountry",
                             "1"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "Hobbies",
                             "2, 4"});
-                table14.AddRow(new string[] {
+                table18.AddRow(new string[] {
                             "Interests",
                             "1, -2, 5"});
 #line 214
-    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table14, "Given ");
+    await testRunner.GivenAsync("a user provides invalid details:", ((string)(null)), table18, "Given ");
 #line hidden
 #line 225
     await testRunner.WhenAsync("the user profile creation is attempted", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");

@@ -11,16 +11,27 @@ public class MockIdentity : IIdentityService
         _authenticationResult = authenticationResult;
     }
 
-    public Task<string> RegisterUserAsync(string email, string password, string userProfileId)
+    public Task<Result<UserInfoResult>> GetUserInfoAsync(UserInfoRequest request)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<Result<bool>> ValidateUserAsync(string email, string password)
+    public Task<Result<AuthenticationResult>> LoginAsync(LoginRequest request)
     {
-        if (_authenticationResult)
-            return await Task.FromResult(Result.Success<bool>(true));
+        throw new NotImplementedException();
+    }
 
-        return await Task.FromResult(Result.Failure<bool>(new Error("", "")));
+    public Task<Result<RefreshTokenResult>> RefreshTokenAsync(RefreshTokenRequest request)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Result<RegistrationResult>> RegisterAsync(RegistrationRequest request)
+    {
+        throw new NotImplementedException();
+    }
+    public Task<Result> RevokeRefreshTokenAsync(TokenRevocationRequest request)
+    {
+        throw new NotImplementedException();
     }
 }
