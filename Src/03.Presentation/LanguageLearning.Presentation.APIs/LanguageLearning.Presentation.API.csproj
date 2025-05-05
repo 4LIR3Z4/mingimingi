@@ -91,7 +91,7 @@
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.HealthChecks\LanguageLearning.Infrastructure.HealthChecks.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Identity\LanguageLearning.Infrastructure.Security.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.IdGenerator\LanguageLearning.Infrastructure.IdGenerator.csproj" />
-    <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Messaging\LanguageLearning.Infrastructure.MessagingBroker.csproj" />
+    <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Messaging\LanguageLearning.Infrastructure.Messaging.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Observability\LanguageLearning.Infrastructure.Observability.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Persistence\LanguageLearning.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Services\LanguageLearning.Infrastructure.ThirdPartyServices.csproj" />

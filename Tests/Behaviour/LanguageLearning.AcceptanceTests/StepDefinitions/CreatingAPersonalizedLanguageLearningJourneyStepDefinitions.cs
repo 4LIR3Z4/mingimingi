@@ -1,12 +1,42 @@
+using LanguageLearning.AcceptanceTests.Utilities;
+using LanguageLearning.Core.Application.Common.Abstractions;
+using LanguageLearning.Core.Application.Common.Abstractions.Caching;
+using LanguageLearning.Core.Application.Common.Abstractions.Identity;
+using LanguageLearning.Core.Application.Common.Extensions;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+using LanguageLearning.Infrastructure.Caching.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace LanguageLearning.AcceptanceTests.StepDefinitions;
 
 [Binding]
 public class CreatingAPersonalizedLanguageLearningJourneyStepDefinitions
 {
+    private readonly IIdentityService _identityService;
+    private readonly IDbContext _dbContext;
+    private readonly ICommandDispatcher _commandDispatcher;
+
+    public CreatingAPersonalizedLanguageLearningJourneyStepDefinitions()
+    {
+        var serviceCollection = new ServiceCollection();
+        DependencyInjection.InitApplication(serviceCollection);
+        CacheConfig.ConfigureCaching(serviceCollection);
+        var serviceProvider = serviceCollection
+            .AddScoped<IDbContext, MockDbContext>()
+            .AddScoped<IIdentityService, MockIdentity>()
+            .AddScoped<ICommandDispatcher, CommandDispatcher>()
+            .AddSingleton(TimeProvider.System)
+            .BuildServiceProvider();
+
+        _identityService = serviceProvider.GetRequiredService<IIdentityService>();
+        _dbContext = serviceProvider.GetRequiredService<IDbContext>();
+        _commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
+    }
+
     [Given("I am logged into the language learning application")]
     public void GivenIAmLoggedIntoTheLanguageLearningApplication()
     {
-        throw new PendingStepException();
+        
     }
 
     [When("I select {string} as my target language")]

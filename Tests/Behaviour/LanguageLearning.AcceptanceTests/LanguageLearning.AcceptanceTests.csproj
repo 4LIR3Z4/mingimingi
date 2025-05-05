@@ -25,6 +25,6 @@
     <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Caching\LanguageLearning.Infrastructure.Caching.csproj" />
     <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Email\LanguageLearning.Infrastructure.Email.csproj" />
     <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.IdGenerator\LanguageLearning.Infrastructure.IdGenerator.csproj" />
-    <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Messaging\LanguageLearning.Infrastructure.MessagingBroker.csproj" />
+    <ProjectReference Include="..\..\..\Src\02.Infrastructure\LanguageLearning.Infrastructure.Messaging\LanguageLearning.Infrastructure.Messaging.csproj" />
   </ItemGroup>
 </Project>

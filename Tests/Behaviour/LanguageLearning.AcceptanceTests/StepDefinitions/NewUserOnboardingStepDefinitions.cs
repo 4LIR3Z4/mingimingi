@@ -8,10 +8,8 @@ using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile;
 using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
 using LanguageLearning.Core.Domain.Framework;
 using LanguageLearning.Core.Domain.UserProfiles.Enums;
-using LanguageLearning.Infrastructure.Caching;
 using LanguageLearning.Infrastructure.Caching.Extensions;
 using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel.DataAnnotations;
 
 namespace LanguageLearning.AcceptanceTests.StepDefinitions;
 
