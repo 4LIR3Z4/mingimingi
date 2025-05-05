@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Caching\LanguageLearning.Infrastructure.Caching.csproj" />
-    <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Email\LanguageLearning.Infrastructure.Email.csproj" />
+    <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Email\LanguageLearning.Infrastructure.Notification.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.HealthChecks\LanguageLearning.Infrastructure.HealthChecks.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.Identity\LanguageLearning.Infrastructure.Security.csproj" />
     <ProjectReference Include="..\..\02.Infrastructure\LanguageLearning.Infrastructure.IdGenerator\LanguageLearning.Infrastructure.IdGenerator.csproj" />

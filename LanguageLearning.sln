@@ -46,7 +46,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLearning.Infrastruc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K6", "K6", "{C2ECC35E-664B-4B64-ABFE-145D75E6772F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLearning.Infrastructure.Email", "Src\02.Infrastructure\LanguageLearning.Infrastructure.Email\LanguageLearning.Infrastructure.Email.csproj", "{D65EE2AD-83A6-45EA-97D8-40E4FC6EF203}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLearning.Infrastructure.Notification", "Src\02.Infrastructure\LanguageLearning.Infrastructure.Email\LanguageLearning.Infrastructure.Notification.csproj", "{D65EE2AD-83A6-45EA-97D8-40E4FC6EF203}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLearning.Infrastructure.Messaging", "Src\02.Infrastructure\LanguageLearning.Infrastructure.Messaging\LanguageLearning.Infrastructure.Messaging.csproj", "{890FD10E-7C86-4FBD-8804-806A30DF4035}"
 EndProject
