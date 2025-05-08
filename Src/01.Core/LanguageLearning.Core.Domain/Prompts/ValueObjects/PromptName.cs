@@ -1,4 +1,6 @@
-﻿namespace LanguageLearning.Core.Domain.Prompts.ValueObjects;
+﻿using LanguageLearning.Core.Domain.Prompts.Constants;
+
+namespace LanguageLearning.Core.Domain.Prompts.ValueObjects;
 public sealed class PromptName : BaseValueObject
 {
     public string Value { get; }
@@ -6,8 +8,8 @@ public sealed class PromptName : BaseValueObject
     {
         if (string.IsNullOrWhiteSpace(value))
             throw new ArgumentException("Name cannot be empty or whitespace.");
-        if (value.Length > 100)
-            throw new ArgumentException("Name cannot exceed 100 characters.");
+        if (value.Length > PromptConstants.MaxNameLength)
+            throw new ArgumentException($"Name cannot exceed {PromptConstants.MaxNameLength} characters.");
 
         Value = value;
     }

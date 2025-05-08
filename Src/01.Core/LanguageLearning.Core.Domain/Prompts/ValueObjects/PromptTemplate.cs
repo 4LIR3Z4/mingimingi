@@ -1,4 +1,6 @@
 ﻿
+using LanguageLearning.Core.Domain.Prompts.Constants;
+
 namespace LanguageLearning.Core.Domain.Prompts.ValueObjects;
 public sealed class PromptTemplate : BaseValueObject
 {
@@ -8,8 +10,8 @@ public sealed class PromptTemplate : BaseValueObject
     {
         if (string.IsNullOrWhiteSpace(value))
             throw new ArgumentException("Template cannot be empty or whitespace.");
-        if (value.Length > 1000)
-            throw new ArgumentException("Template cannot exceed 1000 characters.");
+        if (value.Length > PromptConstants.MaxTemplateLength)
+            throw new ArgumentException($"Template cannot exceed {PromptConstants.MaxTemplateLength} characters.");
 
         Value = value;
     }

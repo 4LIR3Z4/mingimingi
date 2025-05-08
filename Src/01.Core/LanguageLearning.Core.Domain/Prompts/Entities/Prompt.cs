@@ -1,4 +1,7 @@
-﻿using LanguageLearning.Core.Domain.Prompts.ValueObjects;
+﻿using LanguageLearning.Core.Domain.Prompts.Constants;
+using LanguageLearning.Core.Domain.Prompts.Exceptions;
+using LanguageLearning.Core.Domain.Prompts.ValueObjects;
+using System.Text.RegularExpressions;
 
 namespace LanguageLearning.Core.Domain.Prompts.Entities;
 public sealed class Prompt : BaseAggregateRoot<int>
@@ -53,5 +56,41 @@ public sealed class Prompt : BaseAggregateRoot<int>
     public void UpdateDefaultParameters(Dictionary<string, string> parameters)
     {
         DefaultParameters = new PromptParameters(parameters);
+    }
+
+
+    public static string RenderTemplate(Prompt prompt, Dictionary<string, string> parameters)
+    {
+        var renderedTemplate = prompt.Template.Value;
+        var allParameters = new Dictionary<string, string>(prompt.DefaultParameters.Value);
+
+        // Override defaults with provided parameters
+        if (parameters != null)
+        {
+            foreach (var param in parameters)
+            {
+                allParameters[param.Key] = param.Value;
+            }
+        }
+
+        // Replace all parameters in the template
+        foreach (var param in allParameters)
+        {
+            renderedTemplate = renderedTemplate.Replace($"{{{param.Key}}}", param.Value);
+        }
+
+        // Check for any remaining unreplaced parameters
+        var unreplacedParams = Regex.Matches(renderedTemplate, @"\{([^{}]+)\}");
+        if (unreplacedParams.Count > 0)
+        {
+            var missingParams = new List<string>();
+            foreach (Match match in unreplacedParams)
+            {
+                missingParams.Add(match.Groups[1].Value);
+            }
+            throw new NotAllPromptParametersHaveValueException(PromptExceptionsMessage.NotAllPromptParametersHaveValueExceptionMessage, string.Join(',', missingParams));
+        }
+
+        return renderedTemplate;
     }
 }

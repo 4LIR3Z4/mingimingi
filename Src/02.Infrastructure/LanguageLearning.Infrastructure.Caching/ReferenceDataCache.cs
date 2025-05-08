@@ -1,6 +1,7 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Core.Domain.Languages.Entities;
+using LanguageLearning.Core.Domain.Prompts.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using Microsoft.EntityFrameworkCore;
 using ZiggyCreatures.Caching.Fusion;
@@ -80,6 +81,23 @@ public class ReferenceDataCache : IReferenceDataCache
             async (ctx, c) =>
             {
                 return await _dbContext.Countries.AsNoTracking().ToListAsync(c);
+            }
+        , options, cancellationToken);
+    }
+
+    public async Task<List<Prompt>> GetPromptsAsync(CancellationToken cancellationToken)
+    {
+        var options = new FusionCacheEntryOptions
+        {
+            Duration = TimeSpan.FromHours(1),
+            IsFailSafeEnabled = true, // Return stale data on errors
+            FailSafeMaxDuration = TimeSpan.FromHours(1),
+            JitterMaxDuration = TimeSpan.FromSeconds(1) // Prevent stampedes
+        };
+        return await _cache.GetOrSetAsync<List<Prompt>>("Prompts",
+            async (ctx, c) =>
+            {
+                return await _dbContext.Prompts.AsNoTracking().ToListAsync(c);
             }
         , options, cancellationToken);
     }

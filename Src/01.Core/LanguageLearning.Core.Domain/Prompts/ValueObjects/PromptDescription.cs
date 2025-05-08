@@ -1,4 +1,6 @@
-﻿namespace LanguageLearning.Core.Domain.Prompts.ValueObjects;
+﻿using LanguageLearning.Core.Domain.Prompts.Constants;
+
+namespace LanguageLearning.Core.Domain.Prompts.ValueObjects;
 public sealed class PromptDescription : BaseValueObject
 {
     public string Value { get; private set; }
@@ -6,8 +8,8 @@ public sealed class PromptDescription : BaseValueObject
     {
         if (value == null)
             throw new ArgumentNullException(nameof(value));
-        if (value.Length > 500)
-            throw new ArgumentException("Description cannot exceed 500 characters.");
+        if (value.Length > PromptConstants.MaxDescriptionLength)
+            throw new ArgumentException($"Description cannot exceed {PromptConstants.MaxDescriptionLength} characters.");
 
         Value = value;
     }
