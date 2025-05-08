@@ -10,6 +10,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Prompts\Commands\" />
+    <Folder Include="Prompts\EventHandler\" />
+    <Folder Include="Prompts\Queries\" />
     <Folder Include="UserProfiles\Queries\" />
   </ItemGroup>
   <ItemGroup>
