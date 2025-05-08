@@ -59,10 +59,10 @@ public sealed class Prompt : BaseAggregateRoot<int>
     }
 
 
-    public static string RenderTemplate(Prompt prompt, Dictionary<string, string> parameters)
+    public string RenderTemplate(Dictionary<string, string> parameters)
     {
-        var renderedTemplate = prompt.Template.Value;
-        var allParameters = new Dictionary<string, string>(prompt.DefaultParameters.Value);
+        var renderedTemplate = this.Template.Value;
+        var allParameters = new Dictionary<string, string>(this.DefaultParameters.Value);
 
         // Override defaults with provided parameters
         if (parameters != null)

@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\..\01.Core\LanguageLearning.Core.Application\LanguageLearning.Core.Application.csproj" />
+    <ProjectReference Include="..\..\01.Core\LanguageLearning.Core.Domain\LanguageLearning.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>
