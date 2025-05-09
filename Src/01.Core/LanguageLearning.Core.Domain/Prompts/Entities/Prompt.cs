@@ -76,11 +76,11 @@ public sealed class Prompt : BaseAggregateRoot<int>
         // Replace all parameters in the template
         foreach (var param in allParameters)
         {
-            renderedTemplate = renderedTemplate.Replace($"{{{param.Key}}}", param.Value);
+            renderedTemplate = renderedTemplate.Replace(param.Key, param.Value);
         }
 
         // Check for any remaining unreplaced parameters
-        var unreplacedParams = Regex.Matches(renderedTemplate, @"\{([^{}]+)\}");
+        var unreplacedParams = Regex.Matches(renderedTemplate, @"__\w+__");
         if (unreplacedParams.Count > 0)
         {
             var missingParams = new List<string>();
