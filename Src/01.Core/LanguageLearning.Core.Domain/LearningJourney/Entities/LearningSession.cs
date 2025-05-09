@@ -15,19 +15,16 @@ public sealed class LearningSession : BaseEntity<long>
     private readonly List<AssessmentItem> _assessments;
     public IReadOnlyCollection<AssessmentItem> Assessments => _assessments.AsReadOnly();
 
-    private LearningSession()
+    private LearningSession(SessionStatus status, DateTimeOffset createdDate)
     {
         _contents = new List<LearningContent>();
         _assessments = new List<AssessmentItem>();
+        CreatedDate = createdDate;
+        Status = status;
     }
-
-    public static LearningSession Start(DateTimeOffset startTime)
+    public static LearningSession Create(DateTimeOffset createdDate)
     {
-        return new LearningSession();
-    }
-    public static LearningSession Create(DateTimeOffset startTime)
-    {
-        return new LearningSession();
+        return new LearningSession(SessionStatus.Planned, createdDate);
     }
     public void AddContent(LearningContent content)
     {
