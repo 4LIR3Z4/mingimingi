@@ -4,15 +4,14 @@ using LanguageLearning.Core.Domain.Languages.Entities;
 using LanguageLearning.Core.Domain.Prompts.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using Microsoft.EntityFrameworkCore;
-using ZiggyCreatures.Caching.Fusion;
 
 namespace LanguageLearning.Infrastructure.Caching;
 public class ReferenceDataCache : IReferenceDataCache
 {
     private readonly IDbContext _dbContext;
-    private readonly IFusionCache _cache;
+    private readonly ICacheService _cache;
 
-    public ReferenceDataCache(IDbContext dbContext, IFusionCache cache)
+    public ReferenceDataCache(IDbContext dbContext, ICacheService cache)
     {
         this._dbContext = dbContext;
         this._cache = cache;
@@ -20,15 +19,9 @@ public class ReferenceDataCache : IReferenceDataCache
 
     public async Task<List<Hobby>> GetHobbiesAsync(CancellationToken cancellationToken)
     {
-        var options = new FusionCacheEntryOptions
-        {
-            Duration = TimeSpan.FromMinutes(5),
-            IsFailSafeEnabled = true, // Return stale data on errors
-            FailSafeMaxDuration = TimeSpan.FromHours(1),
-            JitterMaxDuration = TimeSpan.FromSeconds(1) // Prevent stampedes
-        };
+        var options = new CacheEntryOptions(Duration: TimeSpan.FromMinutes(5), IsFailSafeEnabled: true, FailSafeMaxDuration: TimeSpan.FromHours(1), JitterMaxDuration: TimeSpan.FromSeconds(1));
         return await _cache.GetOrSetAsync<List<Hobby>>("hobbies",
-            async (ctx, c) =>
+            async (c) =>
             {
                 return await _dbContext.Hobbies.AsNoTracking().ToListAsync(c);
             }
@@ -37,15 +30,9 @@ public class ReferenceDataCache : IReferenceDataCache
 
     public async Task<List<Interest>> GetInterestsAsync(CancellationToken cancellationToken)
     {
-        var options = new FusionCacheEntryOptions
-        {
-            Duration = TimeSpan.FromMinutes(5),
-            IsFailSafeEnabled = true, // Return stale data on errors
-            FailSafeMaxDuration = TimeSpan.FromHours(1),
-            JitterMaxDuration = TimeSpan.FromSeconds(1) // Prevent stampedes
-        };
+        var options = new CacheEntryOptions(Duration: TimeSpan.FromMinutes(5), IsFailSafeEnabled: true, FailSafeMaxDuration: TimeSpan.FromHours(1), JitterMaxDuration: TimeSpan.FromSeconds(1));
         return await _cache.GetOrSetAsync<List<Interest>>("Interests",
-            async (ctx, c) =>
+            async (c) =>
             {
                 return await _dbContext.Interests.AsNoTracking().ToListAsync(c);
             }
@@ -54,15 +41,9 @@ public class ReferenceDataCache : IReferenceDataCache
 
     public async Task<List<Language>> GetLanguagesAsync(CancellationToken cancellationToken)
     {
-        var options = new FusionCacheEntryOptions
-        {
-            Duration = TimeSpan.FromMinutes(5),
-            IsFailSafeEnabled = true, // Return stale data on errors
-            FailSafeMaxDuration = TimeSpan.FromHours(1),
-            JitterMaxDuration = TimeSpan.FromSeconds(1) // Prevent stampedes
-        };
+        var options = new CacheEntryOptions(Duration: TimeSpan.FromMinutes(5), IsFailSafeEnabled: true, FailSafeMaxDuration: TimeSpan.FromHours(1), JitterMaxDuration: TimeSpan.FromSeconds(1));
         return await _cache.GetOrSetAsync<List<Language>>("Languages",
-            async (ctx, c) =>
+            async (c) =>
             {
                 return await _dbContext.Languages.AsNoTracking().ToListAsync(c);
             }
@@ -70,15 +51,9 @@ public class ReferenceDataCache : IReferenceDataCache
     }
     public async Task<List<Country>> GetCountriesAsync(CancellationToken cancellationToken)
     {
-        var options = new FusionCacheEntryOptions
-        {
-            Duration = TimeSpan.FromMinutes(5),
-            IsFailSafeEnabled = true, // Return stale data on errors
-            FailSafeMaxDuration = TimeSpan.FromHours(1),
-            JitterMaxDuration = TimeSpan.FromSeconds(1) // Prevent stampedes
-        };
-        return await _cache.GetOrSetAsync<List<Country>>("Languages",
-            async (ctx, c) =>
+        var options = new CacheEntryOptions(Duration: TimeSpan.FromMinutes(5), IsFailSafeEnabled: true, FailSafeMaxDuration: TimeSpan.FromHours(1), JitterMaxDuration: TimeSpan.FromSeconds(1));
+        return await _cache.GetOrSetAsync<List<Country>>("Countries",
+            async (c) =>
             {
                 return await _dbContext.Countries.AsNoTracking().ToListAsync(c);
             }
@@ -87,15 +62,9 @@ public class ReferenceDataCache : IReferenceDataCache
 
     public async Task<List<Prompt>> GetPromptsAsync(CancellationToken cancellationToken)
     {
-        var options = new FusionCacheEntryOptions
-        {
-            Duration = TimeSpan.FromHours(1),
-            IsFailSafeEnabled = true, // Return stale data on errors
-            FailSafeMaxDuration = TimeSpan.FromHours(1),
-            JitterMaxDuration = TimeSpan.FromSeconds(1) // Prevent stampedes
-        };
+        var options = new CacheEntryOptions(Duration: TimeSpan.FromMinutes(5), IsFailSafeEnabled: true, FailSafeMaxDuration: TimeSpan.FromHours(1), JitterMaxDuration: TimeSpan.FromSeconds(1));
         return await _cache.GetOrSetAsync<List<Prompt>>("Prompts",
-            async (ctx, c) =>
+            async (c) =>
             {
                 return await _dbContext.Prompts.AsNoTracking().ToListAsync(c);
             }
