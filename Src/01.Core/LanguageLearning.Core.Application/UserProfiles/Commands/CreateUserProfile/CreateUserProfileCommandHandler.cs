@@ -1,8 +1,6 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Core.Application.Common.Abstractions.Identity;
 using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
-using LanguageLearning.Core.Domain.LearningJourney.Entities;
-using LanguageLearning.Core.Domain.LearningJourney.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Enums;
 using LanguageLearning.Core.Domain.UserProfiles.ValueObjects;
@@ -62,17 +60,6 @@ internal sealed class CreateUserProfileCommandHandler :
             ?? throw new InvalidOperationException("Invalid country of origin ID.");
         var currentCountry = countries.FirstOrDefault(c => c.Id == request.CurrentCountry)
             ?? throw new InvalidOperationException("Invalid current country ID.");
-
-        ProficiencyLevel learningLanguageProficiencyLevel = request.LearningLanguageProficiencyLevel;
-        var languageProficienciy = LanguageProficiency.Create(
-            learningLanguageProficiencyLevel,
-            learningLanguageProficiencyLevel,
-            learningLanguageProficiencyLevel,
-            learningLanguageProficiencyLevel,
-            _timeProvider.GetUtcNow(),
-            ProficiencyAdditionMethod.UserProvided
-
-            );
 
         var ProfileId = _idGenerator.GenerateId();
         var userRegistrationResponse = await _identityService.RegisterAsync(new RegistrationRequest()
