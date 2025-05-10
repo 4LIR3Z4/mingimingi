@@ -5,6 +5,7 @@ using LanguageLearning.Infrastructure.Observability.Extensions;
 using LanguageLearning.Infrastructure.Persistence.Extensions;
 using LanguageLearning.Infrastructure.Security.Extensions;
 using LanguageLearning.Infrastructure.Services.Extensions;
+using LanguageLearning.Infrastructure.Messaging.Extensions;
 using LanguageLearning.Presentation.API.Framework;
 using LanguageLearning.Presentation.API.ServiceCollectionManager;
 using Microsoft.AspNetCore.Authentication;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using LanguageLearning.Core.Application.Common.Extensions;
+using Microsoft.Extensions.Options;
 namespace LanguageLearning.Presentation.API.Extensions;
 
 public static class HostingServiceAndPipelineManager
@@ -26,6 +28,8 @@ public static class HostingServiceAndPipelineManager
         builder.Services.ConfigureSecurity(builder.Configuration);
         builder.Services.ConfigureHttpClients();
         builder.Services.ConfigureCaching();
+        var messageBrokerSettings = builder.Configuration.GetSection("MessageBrokerSettings").Get<MessageBrokerSettings>();
+        builder.Services.RegisterMessageBroker(messageBrokerSettings);
         builder.Services.RegisterSnowflakeIdGeneratorService(1);
         builder.Services.AddControllers();
         builder.Services.AddOpenApi(options =>
