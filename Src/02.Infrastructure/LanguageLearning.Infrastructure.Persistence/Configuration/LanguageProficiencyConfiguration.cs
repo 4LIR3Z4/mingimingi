@@ -1,4 +1,4 @@
-﻿using LanguageLearning.Core.Domain.LearningJourney.Entities;
+﻿using LanguageLearning.Core.Domain.LearningJourneys.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

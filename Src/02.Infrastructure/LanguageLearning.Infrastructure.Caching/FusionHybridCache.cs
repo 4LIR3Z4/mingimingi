@@ -1,5 +1,4 @@
-﻿using LanguageLearning.Core.Application.Common.Abstractions;
-using LanguageLearning.Core.Application.Common.Abstractions.Caching;
+﻿using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using ZiggyCreatures.Caching.Fusion;
 
 namespace LanguageLearning.Infrastructure.Caching;

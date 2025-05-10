@@ -1,6 +1,4 @@
-﻿using LanguageLearning.Core.Application.Common.Abstractions.Caching;
-
-namespace LanguageLearning.Core.Application.Common.Abstractions;
+﻿namespace LanguageLearning.Core.Application.Common.Abstractions.Caching;
 public interface ICacheService
 {
     Task<T> GetOrSetAsync<T>(

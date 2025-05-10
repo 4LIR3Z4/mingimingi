@@ -1,4 +1,0 @@
-﻿using LanguageLearning.Core.Application.LearningJourney.Commands.CreateLearningJourney.DTO;
-
-namespace LanguageLearning.Core.Application.LearningJourney.Commands.CreateLearningJourney;
-public record CreateLearningJourneyCommand(CreateLearningJourneyRequest request) : ICommand<CreateLearningJourneyResponse>;

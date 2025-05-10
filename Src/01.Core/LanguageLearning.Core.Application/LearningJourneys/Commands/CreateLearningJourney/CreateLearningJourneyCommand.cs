@@ -1,0 +1,5 @@
+﻿using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+using LanguageLearning.Core.Application.LearningJourneys.Commands.CreateLearningJourney.DTO;
+
+namespace LanguageLearning.Core.Application.LearningJourneys.Commands.CreateLearningJourney;
+public record CreateLearningJourneyCommand(CreateLearningJourneyRequest request) : ICommand<CreateLearningJourneyResponse>;

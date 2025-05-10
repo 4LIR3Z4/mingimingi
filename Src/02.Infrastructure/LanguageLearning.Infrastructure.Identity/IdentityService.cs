@@ -13,22 +13,22 @@ public class IdentityService : IIdentityService
         _httpClient = httpClient;
     }
 
-    public Task<Result<UserInfoResult>> GetUserInfoAsync(UserInfoRequest request)
+    public Task<Result<UserInfoResult>> GetUserInfoAsync(UserInfoRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Result<AuthenticationResult>> LoginAsync(LoginRequest request)
+    public Task<Result<AuthenticationResult>> LoginAsync(LoginRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Result<RefreshTokenResult>> RefreshTokenAsync(RefreshTokenRequest request)
+    public Task<Result<RefreshTokenResult>> RefreshTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<Result<RegistrationResult>> RegisterAsync(RegistrationRequest request)
+    public async Task<Result<RegistrationResult>> RegisterAsync(RegistrationRequest request, CancellationToken cancellationToken = default)
     {
         if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -73,7 +73,7 @@ public class IdentityService : IIdentityService
         return Result.Success(result);
     }
 
-    public Task<Result> RevokeRefreshTokenAsync(TokenRevocationRequest request)
+    public Task<Result> RevokeRefreshTokenAsync(TokenRevocationRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

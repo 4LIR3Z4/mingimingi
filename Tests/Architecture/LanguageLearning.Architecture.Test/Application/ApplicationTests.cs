@@ -1,8 +1,9 @@
 ﻿using LanguageLearning.Architecture.Test.Shared;
-using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
 using FluentValidation;
 using NetArchTest.Rules;
 using FluentAssertions;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Queries;
 
 namespace LanguageLearning.Architecture.Test.Application;
 public class ApplicationTests

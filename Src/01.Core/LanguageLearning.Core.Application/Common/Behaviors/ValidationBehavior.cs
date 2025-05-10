@@ -1,4 +1,6 @@
-﻿namespace LanguageLearning.Core.Application.Common.Behaviors;
+﻿using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+
+namespace LanguageLearning.Core.Application.Common.Behaviors;
 public class ValidationBehavior<TCommand, TResponse>
     where TCommand : ICommand<TResponse>
 {

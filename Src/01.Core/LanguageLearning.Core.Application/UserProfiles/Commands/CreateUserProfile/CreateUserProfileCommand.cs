@@ -1,4 +1,5 @@
-﻿using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
+﻿using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
+using LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile.DTO;
 
 namespace LanguageLearning.Core.Application.UserProfiles.Commands.CreateUserProfile;
 

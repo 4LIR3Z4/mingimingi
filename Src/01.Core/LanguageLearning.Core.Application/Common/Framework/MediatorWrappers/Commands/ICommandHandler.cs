@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
+﻿namespace LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
 
 public interface ICommandHandler<TCommand> 
     where TCommand : ICommand

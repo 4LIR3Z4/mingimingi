@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers;
+using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
 using LanguageLearning.Core.Domain.Framework.Events;
 using LanguageLearning.Infrastructure.Persistence.DataContext;
 using LanguageLearning.Presentation.API.ServiceCollectionManager;

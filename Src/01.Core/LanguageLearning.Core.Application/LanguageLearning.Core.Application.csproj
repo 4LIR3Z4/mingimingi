@@ -10,8 +10,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LearningJourney\EventHandler\" />
-    <Folder Include="LearningJourney\Queries\" />
+    <Folder Include="LearningJourneys\Queries\" />
     <Folder Include="Prompts\Commands\" />
     <Folder Include="Prompts\EventHandler\" />
     <Folder Include="Prompts\Queries\" />
