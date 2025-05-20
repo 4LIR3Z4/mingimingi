@@ -6,21 +6,18 @@ namespace LanguageLearning.Core.Application.LearningJourneys.EventHandler;
 public sealed class JourneyCreatedEventHandler : IDomainEventHandler<JourneyCreatedEvent>
 {
     private readonly IMessageBroker _messageBroker;
-
-    public JourneyCreatedEventHandler(IMessageBroker messageBroker)
+    private readonly TimeProvider _timeProvider;
+    public JourneyCreatedEventHandler(IMessageBroker messageBroker, TimeProvider timeProvider)
     {
         _messageBroker = messageBroker;
+        _timeProvider = timeProvider;
     }
 
     public async Task Handle(JourneyCreatedEvent domainEvent, CancellationToken cancellationToken)
     {
-        if(domainEvent is not null)
+        if (domainEvent is not null)
         {
-            var message = new
-            {
-                JourneyId = domainEvent.JourneyId,
-                CreatedAt = DateTime.UtcNow
-            };
+            JourneyMessage message = new(domainEvent.JourneyId, _timeProvider.GetUtcNow());
             await _messageBroker.Publish(message, "journey", "journey.created", cancellationToken);
         }
     }
