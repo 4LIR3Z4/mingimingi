@@ -15,7 +15,7 @@ public static class RabitMQConfig
             {
                 throw new Exception("MessageBrokerSettings is null");
             }
-            return MessageBroker.CreateAsync(settings).GetAwaiter().GetResult();
+            return MessageBroker.InitializeAsync(settings).GetAwaiter().GetResult();
         });
     }
 }

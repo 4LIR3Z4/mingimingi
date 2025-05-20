@@ -17,7 +17,7 @@ public sealed class MessageBroker : IMessageBroker
         _settings = settings;
     }
 
-    public async Task Publish<T>(T message, string exchangeName, string routingKey, CancellationToken cancellationToken)
+    public async Task PublishMessageAsync<T>(T message, string exchangeName, string routingKey, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
         await _channel.ExchangeDeclareAsync(exchange: exchangeName, type: ExchangeType.Fanout, durable: true, cancellationToken: cancellationToken);
@@ -29,7 +29,7 @@ public sealed class MessageBroker : IMessageBroker
 
         await Task.CompletedTask;
     }
-    public static async Task<MessageBroker> CreateAsync(MessageBrokerSettings settings, CancellationToken cancellationToken = default)
+    public static async Task<MessageBroker> InitializeAsync(MessageBrokerSettings settings, CancellationToken cancellationToken = default)
     {
         var factory = new ConnectionFactory
         {
@@ -44,7 +44,7 @@ public sealed class MessageBroker : IMessageBroker
         var channel = await connection.CreateChannelAsync(cancellationToken: cancellationToken);
         return new MessageBroker(connection, channel, settings);
     }
-    public async Task<string> Subscribe<T>(string queueName, Func<T, Task> handler)
+    public async Task<string> SubscribeToQueueAsync<T>(string queueName, Func<T, Task> handler)
     {
 
         throw new Exception("");
