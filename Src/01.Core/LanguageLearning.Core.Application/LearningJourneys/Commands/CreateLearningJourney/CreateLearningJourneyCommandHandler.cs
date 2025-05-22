@@ -46,8 +46,7 @@ public sealed class CreateLearningJourneyCommandHandler :
         List<LanguageProficiency> languageProficiencies = new List<LanguageProficiency>();
         languageProficiencies.Add(LanguageProficiency.Create(journeyRequest.ReadingProficiency, journeyRequest.WritingProficiency, journeyRequest.ListeningProficiency, journeyRequest.SpeakingProficiency, _timeProvider.GetUtcNow(), Domain.LearningJourneys.Enums.ProficiencyAdditionMethod.UserProvided));
 
-        var learningJourney = LearningJourney.Create(learningJourneyId, (long)userId, targetLanguage.Id, languageProficiencies, new List<LearningPath>());
-
+        var learningJourney = LearningJourney.Create(learningJourneyId, (long)userId, targetLanguage.Id, languageProficiencies);
 
 
         _context.learningJourneys.Add(learningJourney);
