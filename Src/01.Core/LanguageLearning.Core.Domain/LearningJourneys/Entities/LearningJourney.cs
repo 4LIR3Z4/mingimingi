@@ -13,7 +13,7 @@ public class LearningJourney : BaseAggregateRoot<long>
     private readonly List<LanguageProficiency> _proficiencyHistory;
     public IReadOnlyCollection<LanguageProficiency> ProficiencyHistory => _proficiencyHistory.AsReadOnly();
 
-    private readonly List<LearningPath> _learningPaths;
+    private readonly List<LearningPath> _learningPaths = new();
     public IReadOnlyCollection<LearningPath> LearningPaths => _learningPaths.AsReadOnly();
     private LearningJourney()
     {
@@ -22,29 +22,31 @@ public class LearningJourney : BaseAggregateRoot<long>
     private LearningJourney(long id, long userId,
         int languageId,
         LearningTarget learningTarget,
-        List<LanguageProficiency> proficiencyHistory,
-        List<LearningPath> learningPaths) : base(id)
+        List<LanguageProficiency> proficiencyHistory) : base(id)
     {
         UserId = userId;
         LanguageId = languageId;
         LearningTarget = learningTarget;
         _proficiencyHistory = proficiencyHistory;
-        _learningPaths = learningPaths;
     }
     public static LearningJourney Create(
         long id,
         long userId,
         int languageId,
-    List<LanguageProficiency> proficiencyHistory,
-        List<LearningPath> learningPaths)
+    List<LanguageProficiency> proficiencyHistory)
     {
-        var journey = new LearningJourney(id, userId, languageId, LearningTarget.General_Training, proficiencyHistory, learningPaths);
+        var journey = new LearningJourney(id, userId, languageId, LearningTarget.General_Training, proficiencyHistory);
         journey.AddDomainEvent(new JourneyCreatedEvent(journey.Id));
         return journey;
     }
     public void AddProficiency(LanguageProficiency proficiency)
     {
         _proficiencyHistory.Add(proficiency);
+    }
+    public void AddLearningPath(LearningPath learningPath)
+    {
+        _learningPaths.Add(learningPath);
+        this.AddDomainEvent(new LearningPathAddedEvent(this.Id));
     }
 }
 
