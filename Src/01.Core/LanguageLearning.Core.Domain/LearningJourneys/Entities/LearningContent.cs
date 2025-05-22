@@ -27,22 +27,24 @@ public sealed class LearningContent : BaseEntity<long>
     public ContentDifficulty Difficulty { get; private set; }
     private LearningContent() { }
 
-    private LearningContent(SkillType skillType, string title, string contentData, string contentMetadata, ContentDifficulty difficulty)
+    private LearningContent(SkillType skillType, string title, string contentData, string contentMetadata, ContentDifficulty difficulty, int timeNeededToComplete, ContentType contentType)
     {
         SkillType = skillType;
         Title = title;
         ContentData = contentData;
         ContentMetadata = contentMetadata;
         Difficulty = difficulty;
+        ContentType = contentType;
+        TimeNeededToComplete = timeNeededToComplete;
     }
 
-    public static LearningContent Create(SkillType skillType, string title, string contentData, string contentMetadata, ContentDifficulty difficulty)
+    public static LearningContent Create(SkillType skillType, string title, string contentData, string contentMetadata, ContentDifficulty difficulty, int timeNeededToComplete, ContentType contentType)
     {
         if (string.IsNullOrWhiteSpace(title))
             throw new ArgumentException("Title cannot be empty", nameof(title));
         if (string.IsNullOrWhiteSpace(contentData))
             throw new ArgumentException("Content data cannot be empty", nameof(contentData));
 
-        return new LearningContent(skillType, title, contentData, contentMetadata, difficulty);
+        return new LearningContent(skillType, title, contentData, contentMetadata, difficulty, timeNeededToComplete, contentType);
     }
 }

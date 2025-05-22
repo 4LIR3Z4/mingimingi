@@ -16,8 +16,8 @@ public sealed class UserLearningProfile
     /// Proficiency Level per skill
     /// </summary>
     /// <example>
-    /// reading,A1
-    /// writing,B2
+    /// reading,beginner
+    /// writing,intermediate
     /// </example>
     public Dictionary<string, string> LanguageProficiencies { get; set; } = null!;
 

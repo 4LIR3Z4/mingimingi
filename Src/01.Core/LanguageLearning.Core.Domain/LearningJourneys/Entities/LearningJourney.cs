@@ -1,7 +1,5 @@
 ﻿using LanguageLearning.Core.Domain.LearningJourneys.Enums;
 using LanguageLearning.Core.Domain.LearningJourneys.Events;
-using LanguageLearning.Core.Domain.UserProfiles.Entities;
-using LanguageLearning.Core.Domain.UserProfiles.Events;
 
 namespace LanguageLearning.Core.Domain.LearningJourneys.Entities;
 

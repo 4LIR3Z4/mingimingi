@@ -1,4 +1,5 @@
-﻿using LanguageLearning.Core.Domain.Framework.Events;
+﻿using LanguageLearning.Core.Application.Common.Abstractions.Notification;
+using LanguageLearning.Core.Domain.Framework.Events;
 using LanguageLearning.Core.Domain.UserProfiles.Events;
 
 namespace LanguageLearning.Core.Application.UserProfiles.EventHandler;

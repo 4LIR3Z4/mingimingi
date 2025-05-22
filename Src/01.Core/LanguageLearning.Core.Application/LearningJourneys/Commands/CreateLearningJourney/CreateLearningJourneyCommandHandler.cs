@@ -49,11 +49,11 @@ public sealed class CreateLearningJourneyCommandHandler :
         var learningJourney = LearningJourney.Create(learningJourneyId, (long)userId, targetLanguage.Id, languageProficiencies, new List<LearningPath>());
 
 
-        
 
+        _context.learningJourneys.Add(learningJourney);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return Result.Success(response);
+        return Result.Success(learningJourney.ToCreateLearningJourneyResponseDto());
 
     }
 }

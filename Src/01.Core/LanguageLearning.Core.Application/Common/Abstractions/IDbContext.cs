@@ -1,4 +1,5 @@
 ﻿using LanguageLearning.Core.Domain.Languages.Entities;
+using LanguageLearning.Core.Domain.LearningJourneys.Entities;
 using LanguageLearning.Core.Domain.Prompts.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
@@ -12,6 +13,7 @@ public interface IDbContext
     public DbSet<Language> Languages { get; set; }
     public DbSet<Country> Countries { get; set; }
     public DbSet<Prompt> Prompts { get; set; }
+    public DbSet<LearningJourney> learningJourneys { get; set; }
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
