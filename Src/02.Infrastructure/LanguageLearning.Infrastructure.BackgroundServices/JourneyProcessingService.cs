@@ -76,14 +76,25 @@ internal class JourneyProcessingService : IHostedService
                                 );
                                 learningSession.AddContent(learningContent);
                             }
-                            
-                            
-                            var sessionAssessment = await _learningPathGenerator.GenerateSessionAssessmentAsync(userLearningProfile, cancellationToken);
-                        }
 
+
+                            var sessionAssessment = await _learningPathGenerator.GenerateSessionAssessmentAsync(userLearningProfile, cancellationToken);
+                            foreach (var assessment in sessionAssessment.Assessments)
+                            {
+                                var assessmentItem = AssessmentItem.Create(
+                                    assessment.Question,
+                                    assessment.CorrectAnswer,
+                                    assessment.TargetedSkill,
+                                    assessment.Difficulty
+                                    );
+                                learningSession.AddAssessment(assessmentItem);
+                            }
+                            learningPath.AddSession(learningSession);
+                        }
+                        journey.AddLearningPath(learningPath);
+                        await _context.SaveChangesAsync(cancellationToken);
 
                     }
-                    Console.WriteLine($"Received JourneyStartedMessage: {message.JourneyId}");
                 }
             });
         return Task.CompletedTask;
