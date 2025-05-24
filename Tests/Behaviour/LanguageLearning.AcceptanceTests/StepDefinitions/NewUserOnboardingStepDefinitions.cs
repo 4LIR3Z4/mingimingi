@@ -20,7 +20,7 @@ public class NewUserOnboardingStepDefinitions
 
     private Result<CreateProfileResponse>? _commandResult;
     private CreateProfileRequest _profileRequest;
-    private string _createUserProfileValidationResult;
+    private string _createUserProfileValidationResult = string.Empty;
     private readonly IIdentityService _identityService;
     private readonly IDbContext _dbContext;
     private readonly IIdGenerator _idGenerator;
@@ -84,7 +84,6 @@ public class NewUserOnboardingStepDefinitions
 
         _profileRequest = new()
         {
-            Id = _idGenerator.GenerateId(),
             FirstName = firstName,
             LastName = lastName,
             Age = age,
@@ -153,7 +152,7 @@ public class NewUserOnboardingStepDefinitions
             _commandResult = await _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>
                 (command, CancellationToken.None);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
 
             _createUserProfileValidationResult = ((FluentValidation.ValidationException)ex).Errors.First().ErrorMessage;
@@ -171,7 +170,7 @@ public class NewUserOnboardingStepDefinitions
     [Then("an error message {string} should be displayed")]
     public void ThenAnErrorMessageShouldBeDisplayed(string expectedErrorMessage)
     {
-        
+
         // Validate the error message
         Assert.Equal(expectedErrorMessage, _createUserProfileValidationResult);
     }
