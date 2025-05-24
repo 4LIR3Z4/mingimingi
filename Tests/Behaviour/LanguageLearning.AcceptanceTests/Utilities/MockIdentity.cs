@@ -11,26 +11,27 @@ public class MockIdentity : IIdentityService
         _authenticationResult = authenticationResult;
     }
 
-    public Task<Result<UserInfoResult>> GetUserInfoAsync(UserInfoRequest request)
+    public Task<Result<UserInfoResult>> GetUserInfoAsync(UserInfoRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Result<AuthenticationResult>> LoginAsync(LoginRequest request)
+    public Task<Result<AuthenticationResult>> LoginAsync(LoginRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Result<RefreshTokenResult>> RefreshTokenAsync(RefreshTokenRequest request)
+    public Task<Result<RefreshTokenResult>> RefreshTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Result<RegistrationResult>> RegisterAsync(RegistrationRequest request)
+    public Task<Result<RegistrationResult>> RegisterAsync(RegistrationRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
-    public Task<Result> RevokeRefreshTokenAsync(TokenRevocationRequest request)
+
+    public Task<Result> RevokeRefreshTokenAsync(TokenRevocationRequest request, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }
