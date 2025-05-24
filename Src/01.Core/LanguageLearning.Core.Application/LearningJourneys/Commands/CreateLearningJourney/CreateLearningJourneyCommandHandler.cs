@@ -49,7 +49,7 @@ public sealed class CreateLearningJourneyCommandHandler :
         var learningJourney = LearningJourney.Create(learningJourneyId, (long)userId, targetLanguage.Id, languageProficiencies);
 
 
-        _context.learningJourneys.Add(learningJourney);
+        _context.LearningJourneys.Add(learningJourney);
         await _context.SaveChangesAsync(cancellationToken);
 
         return Result.Success(learningJourney.ToCreateLearningJourneyResponseDto());

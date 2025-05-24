@@ -28,7 +28,7 @@ internal class JourneyProcessingService : IHostedService
             "journey.created",
             async message =>
             {
-                var journey = _context.learningJourneys.Find(message.JourneyId);
+                var journey = _context.LearningJourneys.Find(message.JourneyId);
                 if (journey is not null)
                 {
                     var userProfile = _context.UserProfiles.Find(journey.UserId);
