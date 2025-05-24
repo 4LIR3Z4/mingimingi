@@ -27,7 +27,7 @@ public sealed class DefaultDbContext(
     public DbSet<Language> Languages { get; set; }
     public DbSet<Country> Countries { get; set; }
     public DbSet<Prompt> Prompts { get; set; }
-    public DbSet<LearningJourney> learningJourneys { get; set; }
+    public DbSet<LearningJourney> LearningJourneys { get; set; }
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         var result = await base.SaveChangesAsync(cancellationToken);

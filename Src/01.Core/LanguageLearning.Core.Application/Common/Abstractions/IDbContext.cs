@@ -13,7 +13,7 @@ public interface IDbContext
     public DbSet<Language> Languages { get; set; }
     public DbSet<Country> Countries { get; set; }
     public DbSet<Prompt> Prompts { get; set; }
-    public DbSet<LearningJourney> learningJourneys { get; set; }
+    public DbSet<LearningJourney> LearningJourneys { get; set; }
 
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

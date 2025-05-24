@@ -1,5 +1,7 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
 using LanguageLearning.Core.Domain.Languages.Entities;
+using LanguageLearning.Core.Domain.LearningJourneys.Entities;
+using LanguageLearning.Core.Domain.Prompts.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 using LanguageLearning.Core.Domain.UserProfiles.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +10,7 @@ using Moq;
 namespace LanguageLearning.AcceptanceTests.Utilities;
 internal class MockDbContext : IDbContext
 {
-    private readonly DbContextOptions _options;
+    //private readonly DbContextOptions _options = null!;
 
     public MockDbContext()
     {
@@ -51,6 +53,22 @@ internal class MockDbContext : IDbContext
         });
 
         Languages = mockLanguages.Object;
+
+        var mockPrompts = CreateMockDbSet(new List<Prompt>
+        {
+            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+        });
+
+        Prompts = mockPrompts.Object;
+
+        var mockLearningJourney = CreateMockDbSet(new List<LearningJourney>
+        {
+            //new UserProfile { Id = 1, Name = "John Doe", Email = "john.doe@example.com" },
+            //new UserProfile { Id = 2, Name = "Jane Smith", Email = "jane.smith@example.com" }
+        });
+
+        LearningJourneys = mockLearningJourney.Object;
     }
 
     public DbSet<UserProfile> UserProfiles { get; set; } = null!;
@@ -58,6 +76,8 @@ internal class MockDbContext : IDbContext
     public DbSet<Interest> Interests { get; set; } = null!;
     public DbSet<Language> Languages { get; set; } = null!;
     public DbSet<Country> Countries { get; set; } = null!;
+    public DbSet<Prompt> Prompts { get; set; } = null!;
+    public DbSet<LearningJourney> LearningJourneys { get; set; } = null!;
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
@@ -75,7 +95,7 @@ internal class MockDbContext : IDbContext
         mockSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
         mockSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(() => queryable.GetEnumerator());
 
-        
+
 
         mockSet.Setup(m => m.Add(It.IsAny<T>())).Callback<T>(data.Add);
 
