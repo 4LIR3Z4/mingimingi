@@ -2,6 +2,7 @@
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Core.Domain.Framework;
 using LanguageLearning.Core.Domain.Languages.Entities;
+using LanguageLearning.Core.Domain.Prompts.Entities;
 using LanguageLearning.Core.Domain.SharedKernel.Entities;
 
 namespace LanguageLearning.AcceptanceTests.Utilities;
@@ -383,5 +384,13 @@ internal class MockReferenceDataCache : IReferenceDataCache
         languages.Add(Language.Create(13, "Fa", "Persian"));
         return Task.FromResult(languages);
 
+    }
+
+    public Task<List<Prompt>> GetPromptsAsync(CancellationToken cancellationToken)
+    {
+        List<Prompt> prompts = new List<Prompt>();
+        prompts.Add(Prompt.Create("Introduction", "1.0", "Tell me about yourself.", "A simple introduction prompt.", new Dictionary<string, string>()));
+        prompts.Add(Prompt.Create("Daily Routine", "1.0", "Describe your daily routine.", "A prompt to discuss daily activities.", new Dictionary<string, string>()));
+        return Task.FromResult(prompts);
     }
 }
