@@ -9,6 +9,7 @@ public static class SecurityConfigs
 {
     public static void ConfigureSecurity(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddHttpClient<IdentityService>();
         services.AddCors(options =>
         {
             options.AddPolicy("CorsPolicy", builder => builder
