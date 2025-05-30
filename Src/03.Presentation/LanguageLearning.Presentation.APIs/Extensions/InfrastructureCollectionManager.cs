@@ -6,6 +6,7 @@ using LanguageLearning.Infrastructure.AI.Services;
 using LanguageLearning.Infrastructure.Caching;
 using LanguageLearning.Infrastructure.IdGenerator;
 using LanguageLearning.Infrastructure.Security;
+using LanguageLearning.Infrastructure.BackgroundServices.Extensions;
 namespace LanguageLearning.Presentation.API.ServiceCollectionManager;
 
 public static class InfrastructureCollectionManager
@@ -16,11 +17,13 @@ public static class InfrastructureCollectionManager
 
         //External Services
         services.AddScoped<ICacheService, FusionHybridCache>();
+        services.AddScoped<IIdentityService, IdentityService>();
         services.AddScoped<IReferenceDataCache, ReferenceDataCache>();
         services.AddSingleton<IIdGenerator, SnowflakeIdGenerator>();
-        services.AddSingleton<ILearningPathGenerator, LearningPathGenerator>();
+        services.AddScoped<ILearningPathGenerator, LearningPathGenerator>();
         services.AddHttpContextAccessor();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.ConfigureBackgroudServices();
         //services.AddScoped<IDomainEventService, DomainEventService>();
 
 
