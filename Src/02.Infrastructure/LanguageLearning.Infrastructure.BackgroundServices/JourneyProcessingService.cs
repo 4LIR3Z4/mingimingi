@@ -52,7 +52,7 @@ internal class JourneyProcessingService : BackgroundService
         var _timeProvider = scope.ServiceProvider.GetRequiredService<TimeProvider>();
 
         _messageBroker.SubscribeToQueueAsync<JourneyMessage>(
-            "journey.created",
+            "journey",
             async message =>
             {
                 var journey = _context.LearningJourneys.Find(message.JourneyId);
@@ -103,7 +103,7 @@ internal class JourneyProcessingService : BackgroundService
 
                     }
                 }
-            });
+            }, stoppingToken);
         return Task.CompletedTask;
     }
 }
