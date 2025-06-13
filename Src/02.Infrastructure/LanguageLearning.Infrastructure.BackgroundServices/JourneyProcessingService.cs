@@ -52,7 +52,7 @@ internal class JourneyProcessingService : BackgroundService
         var _timeProvider = scope.ServiceProvider.GetRequiredService<TimeProvider>();
 
         _messageBroker.SubscribeToQueueAsync<JourneyMessage>(
-            "journey",
+            QueueName.JourneyCreated,
             async message =>
             {
                 var journey = _context.LearningJourneys.Find(message.JourneyId);

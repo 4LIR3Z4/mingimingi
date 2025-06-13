@@ -18,7 +18,7 @@ public sealed class JourneyCreatedEventHandler : IDomainEventHandler<JourneyCrea
         if (domainEvent is not null)
         {
             JourneyMessage message = new(domainEvent.JourneyId, _timeProvider.GetUtcNow());
-            await _messageBroker.PublishMessageAsync(message, "journey", cancellationToken);
+            await _messageBroker.PublishMessageAsync(message, QueueName.JourneyCreated, cancellationToken);
         }
     }
 }
