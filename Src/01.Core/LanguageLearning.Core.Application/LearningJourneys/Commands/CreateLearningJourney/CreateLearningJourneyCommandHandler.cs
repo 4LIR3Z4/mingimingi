@@ -3,6 +3,7 @@ using LanguageLearning.Core.Application.Common.Abstractions.Identity;
 using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
 using LanguageLearning.Core.Application.LearningJourneys.Commands.CreateLearningJourney.DTO;
 using LanguageLearning.Core.Domain.LearningJourneys.Entities;
+using LanguageLearning.Core.Domain.LearningJourneys.Errors;
 
 namespace LanguageLearning.Core.Application.LearningJourneys.Commands.CreateLearningJourney;
 public sealed class CreateLearningJourneyCommandHandler :
@@ -32,7 +33,7 @@ public sealed class CreateLearningJourneyCommandHandler :
         var targetLanguage = languages.Find(l => l.Id == journeyRequest.TargetLanguageId);
         if (targetLanguage is null)
         {
-            return Result.Failure<CreateLearningJourneyResponse>(new Error("Language.NotFound", "The specified target language does not exist."));
+            return Result.Failure<CreateLearningJourneyResponse>(LearningJourneyErrors.LanguageNotFound);
         }
 
 
@@ -40,7 +41,7 @@ public sealed class CreateLearningJourneyCommandHandler :
         var userId = _currentUserService.UserId;
         if (userId is null)
         {
-            return Result.Failure<CreateLearningJourneyResponse>(new Error("User.NotFound", "User not found."));
+            return Result.Failure<CreateLearningJourneyResponse>(LearningJourneyErrors.UserNotFound);
         }
 
         List<LanguageProficiency> languageProficiencies = new List<LanguageProficiency>();
