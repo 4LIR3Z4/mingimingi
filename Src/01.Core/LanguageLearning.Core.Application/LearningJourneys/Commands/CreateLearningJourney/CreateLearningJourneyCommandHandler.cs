@@ -6,30 +6,15 @@ using LanguageLearning.Core.Domain.LearningJourneys.Entities;
 using LanguageLearning.Core.Domain.LearningJourneys.Errors;
 
 namespace LanguageLearning.Core.Application.LearningJourneys.Commands.CreateLearningJourney;
-public sealed class CreateLearningJourneyCommandHandler :
+public sealed class CreateLearningJourneyCommandHandler(IDbContext context, IIdGenerator idGenerator, IReferenceDataCache referenceDataCache, ICurrentUserService currentUserService, TimeProvider timeProvider) :
     ICommandHandler<CreateLearningJourneyCommand, CreateLearningJourneyResponse>
 {
-    private readonly IDbContext _context;
-    private readonly IIdGenerator _idGenerator;
-    private readonly IReferenceDataCache _referenceDataCache;
-    private readonly ICurrentUserService _currentUserService;
-    private readonly TimeProvider _timeProvider;
-
-    public CreateLearningJourneyCommandHandler(IDbContext context, IIdGenerator idGenerator, IReferenceDataCache referenceDataCache, ICurrentUserService currentUserService, TimeProvider timeProvider)
-    {
-        _context = context;
-        _idGenerator = idGenerator;
-        _referenceDataCache = referenceDataCache;
-        _currentUserService = currentUserService;
-        _timeProvider = timeProvider;
-    }
-
     public async Task<Result<CreateLearningJourneyResponse>> Handle(
         CreateLearningJourneyCommand command,
         CancellationToken cancellationToken)
     {
         CreateLearningJourneyRequest journeyRequest = command.request;
-        var languages = await _referenceDataCache.GetLanguagesAsync(cancellationToken);
+        var languages = await referenceDataCache.GetLanguagesAsync(cancellationToken);
         var targetLanguage = languages.Find(l => l.Id == journeyRequest.TargetLanguageId);
         if (targetLanguage is null)
         {
@@ -37,21 +22,21 @@ public sealed class CreateLearningJourneyCommandHandler :
         }
 
 
-        var learningJourneyId = _idGenerator.GenerateId();
-        var userId = _currentUserService.UserId;
+        var learningJourneyId = idGenerator.GenerateId();
+        var userId = currentUserService.UserId;
         if (userId is null)
         {
             return Result.Failure<CreateLearningJourneyResponse>(LearningJourneyErrors.UserNotFound);
         }
 
         List<LanguageProficiency> languageProficiencies = new List<LanguageProficiency>();
-        languageProficiencies.Add(LanguageProficiency.Create(journeyRequest.ReadingProficiency, journeyRequest.WritingProficiency, journeyRequest.ListeningProficiency, journeyRequest.SpeakingProficiency, _timeProvider.GetUtcNow(), Domain.LearningJourneys.Enums.ProficiencyAdditionMethod.UserProvided));
+        languageProficiencies.Add(LanguageProficiency.Create(journeyRequest.ReadingProficiency, journeyRequest.WritingProficiency, journeyRequest.ListeningProficiency, journeyRequest.SpeakingProficiency, timeProvider.GetUtcNow(), Domain.LearningJourneys.Enums.ProficiencyAdditionMethod.UserProvided));
 
         var learningJourney = LearningJourney.Create(learningJourneyId, (long)userId, targetLanguage.Id, languageProficiencies);
 
 
-        _context.LearningJourneys.Add(learningJourney);
-        await _context.SaveChangesAsync(cancellationToken);
+        context.LearningJourneys.Add(learningJourney);
+        await context.SaveChangesAsync(cancellationToken);
 
         return Result.Success(learningJourney.ToCreateLearningJourneyResponseDto());
 
