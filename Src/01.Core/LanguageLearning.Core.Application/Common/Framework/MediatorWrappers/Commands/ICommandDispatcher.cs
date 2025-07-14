@@ -1,24 +1,25 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using LanguageLearning.Core.Application.Common.Abstractions.Notification;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Commands;
 public interface ICommandDispatcher
 {
-    Task<Result<TResponse>> Dispatch<TCommand, TResponse>(TCommand command, CancellationToken cancellationToken = default)
+    Task<Result<TResponse>> DispatchAsync<TCommand, TResponse>(TCommand command, CancellationToken cancellationToken = default)
         where TCommand : ICommand<TResponse>;
 }
 public sealed class CommandDispatcher : ICommandDispatcher
 {
-    private readonly IServiceProvider _serviceProvider;
-
-    public CommandDispatcher(IServiceProvider serviceProvider)
+    private readonly IServiceScopeFactory _scopeFactory;
+    public CommandDispatcher(IServiceScopeFactory scopeFactory)
     {
-        _serviceProvider = serviceProvider;
+        _scopeFactory = scopeFactory;
     }
 
-    public async Task<Result<TResponse>> Dispatch<TCommand, TResponse>(TCommand command, CancellationToken cancellationToken = default)
+    public async Task<Result<TResponse>> DispatchAsync<TCommand, TResponse>(TCommand command, CancellationToken cancellationToken = default)
         where TCommand : ICommand<TResponse>
     {
-        var validators = _serviceProvider.GetServices<IValidator<TCommand>>();
+        using var scope = _scopeFactory.CreateScope();
+        var validators = scope.ServiceProvider.GetServices<IValidator<TCommand>>();
         if (validators.Any())
         {
             var context = new ValidationContext<TCommand>(command);
@@ -35,7 +36,7 @@ public sealed class CommandDispatcher : ICommandDispatcher
                 throw new ValidationException(failures);
             }
         }
-        var handler = _serviceProvider.GetRequiredService<ICommandHandler<TCommand, TResponse>>();
+        var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand, TResponse>>();
         return await handler.Handle(command, cancellationToken);
     }
 }

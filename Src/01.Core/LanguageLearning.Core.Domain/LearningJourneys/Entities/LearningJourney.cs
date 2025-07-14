@@ -10,7 +10,7 @@ public class LearningJourney : BaseAggregateRoot<long>
     public LearningTarget LearningTarget { get; private set; }
     public int PracticePerDayInMinutes { get; private set; }
     public DateTimeOffset CreatedDate { get; private set; }
-    private readonly List<LanguageProficiency> _proficiencyHistory;
+    private readonly List<LanguageProficiency> _proficiencyHistory = null!;
     public IReadOnlyCollection<LanguageProficiency> ProficiencyHistory => _proficiencyHistory.AsReadOnly();
 
     private readonly List<LearningPath> _learningPaths = new();

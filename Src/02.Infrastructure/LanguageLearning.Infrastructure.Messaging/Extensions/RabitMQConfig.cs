@@ -9,6 +9,7 @@ public static class RabitMQConfig
         this IServiceCollection services,
          MessageBrokerSettings? settings)
     {
+
         services.AddSingleton<IMessageBroker>(provider =>
         {
             if (settings is null)
@@ -16,6 +17,8 @@ public static class RabitMQConfig
                 throw new Exception("MessageBrokerSettings is null");
             }
             return MessageBroker.InitializeAsync(settings).GetAwaiter().GetResult();
+
         });
+
     }
 }
