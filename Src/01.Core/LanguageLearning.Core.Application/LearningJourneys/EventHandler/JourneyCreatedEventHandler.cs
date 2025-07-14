@@ -1,4 +1,5 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions.Messaging;
+using LanguageLearning.Core.Application.Common.Abstractions.Messaging.Dto;
 using LanguageLearning.Core.Domain.Framework.Events;
 using LanguageLearning.Core.Domain.LearningJourneys.Events;
 
@@ -18,7 +19,7 @@ public sealed class JourneyCreatedEventHandler : IDomainEventHandler<JourneyCrea
         if (domainEvent is not null)
         {
             JourneyMessage message = new(domainEvent.JourneyId, _timeProvider.GetUtcNow());
-            await _messageBroker.PublishMessageAsync(message, QueueName.JourneyCreated, cancellationToken);
+            await _messageBroker.PublishMessageAsync(message, QueueConfig.JourneyCreatedQueue, cancellationToken);
         }
     }
 }
