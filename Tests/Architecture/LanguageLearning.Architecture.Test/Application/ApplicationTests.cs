@@ -103,4 +103,32 @@ public class ApplicationTests
 
         result.IsSuccessful.Should().BeTrue();
     }
+
+    [Fact]
+    public void Each_ICommand_Should_Have_Exactly_One_AbstractValidator()
+    {
+        var applicationAssembly = Layers.ApplicationAssembly;
+        var commandTypes = Types.InAssembly(applicationAssembly)
+            .That()
+            .ImplementInterface(typeof(ICommand<>))
+            .GetTypes();
+
+        var validatorTypes = Types.InAssembly(applicationAssembly)
+            .That()
+            .Inherit(typeof(AbstractValidator<>))
+            .GetTypes();
+
+        foreach (var commandType in commandTypes)
+        {
+            var matchingValidators = validatorTypes
+                .Where(v =>
+                    v.BaseType is { IsGenericType: true }
+                    && v.BaseType.GetGenericTypeDefinition() == typeof(AbstractValidator<>)
+                    && v.BaseType.GetGenericArguments()[0] == commandType
+                )
+                .ToList();
+
+            matchingValidators.Count.Should().Be(1, $"Command '{commandType.Name}' should have exactly one AbstractValidator");
+        }
+    }
 }
