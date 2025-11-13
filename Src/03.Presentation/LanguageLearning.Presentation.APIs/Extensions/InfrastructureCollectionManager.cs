@@ -6,7 +6,9 @@ using LanguageLearning.Infrastructure.AI.Services;
 using LanguageLearning.Infrastructure.Caching;
 using LanguageLearning.Infrastructure.IdGenerator;
 using LanguageLearning.Infrastructure.Security;
+using LanguageLearning.Infrastructure.Notification;
 using LanguageLearning.Infrastructure.BackgroundServices.Extensions;
+using LanguageLearning.Core.Application.Common.Abstractions.Notification;
 namespace LanguageLearning.Presentation.API.ServiceCollectionManager;
 
 public static class InfrastructureCollectionManager
@@ -17,6 +19,7 @@ public static class InfrastructureCollectionManager
 
         //External Services
         services.AddScoped<ICacheService, FusionHybridCache>();
+        services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IIdentityService, IdentityService>();
         services.AddScoped<IReferenceDataCache, ReferenceDataCache>();
         services.AddSingleton<IIdGenerator, SnowflakeIdGenerator>();

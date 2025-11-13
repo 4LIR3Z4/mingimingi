@@ -3,6 +3,7 @@ using LanguageLearning.Infrastructure.Caching.Extensions;
 using LanguageLearning.Infrastructure.HealthChecks.Extensions;
 using LanguageLearning.Infrastructure.IdGenerator.Extensions;
 using LanguageLearning.Infrastructure.Messaging.Extensions;
+using LanguageLearning.Infrastructure.Notification;
 using LanguageLearning.Infrastructure.Observability.Extensions;
 using LanguageLearning.Infrastructure.Persistence.Extensions;
 using LanguageLearning.Infrastructure.Security.Extensions;
@@ -31,6 +32,11 @@ public static class HostingServiceAndPipelineManager
         var messageBrokerSettings = builder.Configuration.GetSection("MessageBrokerSettings").Get<MessageBrokerSettings>();
         builder.Services.RegisterMessageBroker(messageBrokerSettings);
         builder.Services.RegisterSnowflakeIdGeneratorService(1);
+
+        var emailSenderSettings = builder.Configuration.GetSection("MessageBrokerSettings").Get<EmailSenderOptions>();
+
+        builder.Services.AddEmailSender(emailSenderSettings);
+
         builder.Services.AddControllers();
         builder.Services.AddOpenApi(options =>
         {

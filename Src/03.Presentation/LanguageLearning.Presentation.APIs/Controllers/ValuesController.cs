@@ -19,7 +19,7 @@ public class ValuesController : ControllerBase
     public async Task<ActionResult<string>> GetUserProfiles()
     {
         var result = await
-            _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>
+            _commandDispatcher.DispatchAsync<CreateUserProfileCommand, CreateProfileResponse>
             (new CreateUserProfileCommand(
             new CreateProfileRequest()
             {

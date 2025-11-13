@@ -101,7 +101,7 @@ public class NewUserOnboardingStepDefinitions
     {
 
         var command = new CreateUserProfileCommand(_profileRequest);
-        _commandResult = await _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>
+        _commandResult = await _commandDispatcher.DispatchAsync<CreateUserProfileCommand, CreateProfileResponse>
             (command, CancellationToken.None);
 
     }
@@ -149,7 +149,7 @@ public class NewUserOnboardingStepDefinitions
         var command = new CreateUserProfileCommand(_profileRequest);
         try
         {
-            _commandResult = await _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>
+            _commandResult = await _commandDispatcher.DispatchAsync<CreateUserProfileCommand, CreateProfileResponse>
                 (command, CancellationToken.None);
         }
         catch (Exception ex)

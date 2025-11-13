@@ -59,9 +59,8 @@ public class IdentityService : IIdentityService
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         var dto = JsonSerializer.Deserialize<RegistrationResult>(json, options);
 
-        if (dto == null || string.IsNullOrEmpty(dto.ExternalUserId))
+        if (dto is null || string.IsNullOrEmpty(dto.ExternalUserId))
         {
-
             return Result.Failure<RegistrationResult>(IdentityErrors.InvalidResponseError);
         }
 

@@ -1,5 +1,5 @@
 ﻿namespace LanguageLearning.Core.Application.Common.Abstractions.Identity;
 public class RegistrationResult
 {
-    public string ExternalUserId { get; init; }
+    public required string ExternalUserId { get; init; }
 }

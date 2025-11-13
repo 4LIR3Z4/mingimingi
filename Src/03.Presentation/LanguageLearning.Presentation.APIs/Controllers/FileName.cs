@@ -36,7 +36,7 @@ public class FileName
     public async Task<string> GetUserProfile(long id)
     {
         var result = await
-            _commandDispatcher.Dispatch<CreateUserProfileCommand, CreateProfileResponse>
+            _commandDispatcher.DispatchAsync<CreateUserProfileCommand, CreateProfileResponse>
             (new CreateUserProfileCommand(
             new CreateProfileRequest()
             {

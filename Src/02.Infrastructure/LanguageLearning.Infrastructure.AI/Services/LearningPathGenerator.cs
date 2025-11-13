@@ -1,7 +1,10 @@
-﻿using LanguageLearning.Core.Application.Common.Abstractions.AI.LearningPathGenerator;
+﻿using GeminiDotnet;
+using GeminiDotnet.Extensions.AI;
+using LanguageLearning.Core.Application.Common.Abstractions.AI.LearningPathGenerator;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Core.Domain.Prompts.Entities;
-
+using Microsoft.Extensions.AI;
+using OllamaSharp;
 namespace LanguageLearning.Infrastructure.AI.Services;
 public sealed class LearningPathGenerator : ILearningPathGenerator
 {
@@ -14,7 +17,7 @@ public sealed class LearningPathGenerator : ILearningPathGenerator
 
     public async Task<int> CalculateTotalSessionsAsync(UserLearningProfile profile, CancellationToken cancellationToken = default)
     {
-        
+
         var languageProficienciesFormatted = string.Join(" , ", profile.LanguageProficiencies.Select(q => $"{q.Key} = {q.Value}"));
         var promptParameters = new Dictionary<string, string>
         {
@@ -59,15 +62,27 @@ Your task is to:
 6. in each session the user will work on all the skills.
 7. after your calculations , review the time required for each skill and adjust them in a way that user can achieve the target in all skills at the same time.(for instance if writing skill requires 100 sessions and listening skill requires 50 sessions , adjust the practice per day so user can achieve both targets in 75 days)
 
-Output : only a JSON (no text, no explanation) in this format : 
+Output : only a number (no text, no explanation) for the total required sessions
+";
+
+        /*Output : only a JSON (no text, no explanation) in this format : 
 {
 ""total_sessions_required"":""100"",
 ""time_required_in_minutes_per_skill"":{""reading"":10 , ""writing"":20 , ""listening"":10 , ""speaking"" : 10}
 }
-";
+"*/
         var prompt = Prompt.Create("test", "1.0.0", template, "test desc", promptParameters);
         var promptText = prompt.RenderTemplate(promptParameters);
-        return await Task.FromResult(1);
+        //IChatClient client = new OllamaApiClient(new Uri("http://localhost:11434/"), "phi3:mini");
+        var options = new GeminiClientOptions
+        {
+            ApiKey = "<your-api-key>"
+        };
+        IChatClient client = new GeminiChatClient(options);
+        var aiResult = await client.GetResponseAsync(promptText);
+        var totalSessions = int.Parse(aiResult.Text.Trim());
+        
+        return await Task.FromResult(totalSessions);
     }
 
     public Task<SessionAssessment> GenerateSessionAssessmentAsync(UserLearningProfile profile, CancellationToken cancellationToken = default)
