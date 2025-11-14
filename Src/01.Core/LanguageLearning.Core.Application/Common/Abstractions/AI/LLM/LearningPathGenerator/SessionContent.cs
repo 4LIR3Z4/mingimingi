@@ -1,6 +1,6 @@
 ﻿using LanguageLearning.Core.Domain.LearningJourneys.Enums;
 
-namespace LanguageLearning.Core.Application.Common.Abstractions.AI.LearningPathGenerator;
+namespace LanguageLearning.Core.Application.Common.Abstractions.AI.LLM.LearningPathGenerator;
 
 public sealed record Content(
     string Title,

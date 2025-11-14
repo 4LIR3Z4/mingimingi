@@ -1,11 +1,11 @@
 ﻿using GeminiDotnet;
 using GeminiDotnet.Extensions.AI;
-using LanguageLearning.Core.Application.Common.Abstractions.AI.LearningPathGenerator;
+using LanguageLearning.Core.Application.Common.Abstractions.AI.LLM.LearningPathGenerator;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Core.Domain.Prompts.Entities;
 using Microsoft.Extensions.AI;
 using OllamaSharp;
-namespace LanguageLearning.Infrastructure.AI.Services;
+namespace LanguageLearning.Infrastructure.AI.LLM.Services;
 public sealed class LearningPathGenerator : ILearningPathGenerator
 {
     private readonly IReferenceDataCache _referenceDataCache;

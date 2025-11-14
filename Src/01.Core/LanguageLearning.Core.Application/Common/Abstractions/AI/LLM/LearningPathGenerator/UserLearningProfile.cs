@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Application.Common.Abstractions.AI.LearningPathGenerator;
+﻿namespace LanguageLearning.Core.Application.Common.Abstractions.AI.LLM.LearningPathGenerator;
 public sealed class UserLearningProfile
 {
     public int Age { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace LanguageLearning.Core.Application.Common.Abstractions.AI.LearningPathGenerator;
+﻿namespace LanguageLearning.Core.Application.Common.Abstractions.AI.LLM.LearningPathGenerator;
 public interface ILearningPathGenerator
 {
     public Task<int> CalculateTotalSessionsAsync(UserLearningProfile profile, CancellationToken cancellationToken = default);
