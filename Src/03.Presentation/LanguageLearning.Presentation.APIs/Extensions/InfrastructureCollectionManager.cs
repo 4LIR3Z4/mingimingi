@@ -1,14 +1,16 @@
 ﻿using LanguageLearning.Core.Application.Common.Abstractions;
-using LanguageLearning.Core.Application.Common.Abstractions.AI.LearningPathGenerator;
 using LanguageLearning.Core.Application.Common.Abstractions.Caching;
 using LanguageLearning.Core.Application.Common.Abstractions.Identity;
-using LanguageLearning.Infrastructure.AI.Services;
 using LanguageLearning.Infrastructure.Caching;
 using LanguageLearning.Infrastructure.IdGenerator;
 using LanguageLearning.Infrastructure.Security;
 using LanguageLearning.Infrastructure.Notification;
 using LanguageLearning.Infrastructure.BackgroundServices.Extensions;
 using LanguageLearning.Core.Application.Common.Abstractions.Notification;
+using LanguageLearning.Infrastructure.AI.LLM.Services;
+using LanguageLearning.Infrastructure.AI.VectorDatabase.Clients;
+using LanguageLearning.Core.Application.Common.Abstractions.AI.VectorDatabase;
+using LanguageLearning.Core.Application.Common.Abstractions.AI.LLM.LearningPathGenerator;
 namespace LanguageLearning.Presentation.API.ServiceCollectionManager;
 
 public static class InfrastructureCollectionManager
@@ -20,6 +22,7 @@ public static class InfrastructureCollectionManager
         //External Services
         services.AddScoped<ICacheService, FusionHybridCache>();
         services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IVectorDatabase, Qdrant>();
         services.AddScoped<IIdentityService, IdentityService>();
         services.AddScoped<IReferenceDataCache, ReferenceDataCache>();
         services.AddSingleton<IIdGenerator, SnowflakeIdGenerator>();
