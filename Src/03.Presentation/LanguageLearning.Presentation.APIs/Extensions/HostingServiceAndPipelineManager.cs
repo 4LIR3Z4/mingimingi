@@ -13,7 +13,7 @@ using LanguageLearning.Presentation.API.ServiceCollectionManager;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.OpenApi;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Serilog;
 namespace LanguageLearning.Presentation.API.Extensions;
 
@@ -80,7 +80,7 @@ public static class HostingServiceAndPipelineManager
             var authenticationSchemes = await authenticationSchemeProvider.GetAllSchemesAsync();
             if (authenticationSchemes.Any(authScheme => authScheme.Name == "Bearer"))
             {
-                var requirements = new Dictionary<string, OpenApiSecurityScheme>
+                var requirements = new Dictionary<string, IOpenApiSecurityScheme>
                 {
                     ["Bearer"] = new OpenApiSecurityScheme
                     {

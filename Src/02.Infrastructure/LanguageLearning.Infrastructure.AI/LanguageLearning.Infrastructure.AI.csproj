@@ -10,6 +10,7 @@
     <PackageReference Include="GeminiDotnet.Extensions.AI" />
     <PackageReference Include="Microsoft.Extensions.AI" />
     <PackageReference Include="OllamaSharp" />
+    <PackageReference Include="Qdrant.Client" />
   </ItemGroup>
 
   <ItemGroup>

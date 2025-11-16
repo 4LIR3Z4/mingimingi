@@ -3,5 +3,5 @@
 namespace LanguageLearning.Core.Domain.UserProfiles.Entities;
 public sealed class UserHobby : BaseEntity<int>
 {
-    public Hobby Hobby { get; set; } = null!;
+    public Hobby Hobby { get; init; } = null!;
 }
