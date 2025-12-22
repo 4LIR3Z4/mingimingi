@@ -22,7 +22,7 @@ public sealed class LearningPathAddedEventHandler : IDomainEventHandler<Learning
         // Get the journey
         var journey = await _dbContext.LearningJourneys
             .AsNoTracking()
-            .FirstOrDefaultAsync(j => j.Id == domainEvent.JourneyId, cancellationToken);
+            .FirstOrDefaultAsync(j => j.Id == domainEvent.journeyId, cancellationToken);
         if (journey is null)
             return;
 
