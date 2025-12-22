@@ -4,8 +4,10 @@ using LanguageLearning.Core.Application.Common.Framework.MediatorWrappers.Comman
 using LanguageLearning.Core.Application.LearningJourneys.Commands.CreateLearningJourney.DTO;
 using LanguageLearning.Core.Domain.LearningJourneys.Entities;
 using LanguageLearning.Core.Domain.LearningJourneys.Errors;
+using LanguageLearning.Core.Domain.LearningJourneys.ValueObjects;
 
 namespace LanguageLearning.Core.Application.LearningJourneys.Commands.CreateLearningJourney;
+
 public sealed class CreateLearningJourneyCommandHandler(IDbContext context, IIdGenerator idGenerator, IReferenceDataCache referenceDataCache, ICurrentUserService currentUserService, TimeProvider timeProvider) :
     ICommandHandler<CreateLearningJourneyCommand, CreateLearningJourneyResponse>
 {
@@ -32,7 +34,11 @@ public sealed class CreateLearningJourneyCommandHandler(IDbContext context, IIdG
         List<LanguageProficiency> languageProficiencies = new List<LanguageProficiency>();
         languageProficiencies.Add(LanguageProficiency.Create(journeyRequest.ReadingProficiency, journeyRequest.WritingProficiency, journeyRequest.ListeningProficiency, journeyRequest.SpeakingProficiency, timeProvider.GetUtcNow(), Domain.LearningJourneys.Enums.ProficiencyAdditionMethod.UserProvided));
 
-        var learningJourney = LearningJourney.Create(learningJourneyId, (long)userId, targetLanguage.Id, languageProficiencies);
+        var learningJourney = LearningJourney.Create(learningJourneyId,
+            (long)userId,
+            targetLanguage.Id,
+            new PracticeDuration(journeyRequest.PracticePerDayInMinutes),
+            languageProficiencies);
 
 
         context.LearningJourneys.Add(learningJourney);
